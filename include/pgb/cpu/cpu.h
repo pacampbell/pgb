@@ -4,8 +4,10 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "clock.h"
-#include "registers.h"
+#include <pgb/cpu/clock.h>
+#include <pgb/cpu/registers.h>
+
+struct device;
 
 struct cpu_status {
 	bool halted;
@@ -25,7 +27,7 @@ struct cpu {
 
 int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size);
 int cpu_load_rom_from_file(struct cpu *cpu, const char *path);
-int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped);
+int cpu_step(struct device *device, size_t step, size_t *instructions_stepped);
 int cpu_init(struct cpu *cpu);
 int cpu_destroy(struct cpu *cpu);
 bool cpu_is_halted(struct cpu *cpu);

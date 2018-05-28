@@ -26,4 +26,6 @@ struct registers {
 	struct flags flags;
 };
 
+int registers_init(struct registers *registers);
+
 #endif /* PGB_CPU_REGISTERS_H */

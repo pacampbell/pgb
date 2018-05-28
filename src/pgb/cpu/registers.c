@@ -1,6 +1,6 @@
 #include "pgb/cpu/registers.h"
 
-void registers_init(struct registers *registers)
+int registers_init(struct registers *registers)
 {
 	registers->a = 0x0;
 	registers->b = 0x0;
@@ -18,4 +18,6 @@ void registers_init(struct registers *registers)
 	registers->flags.h = 0;
 	registers->flags.n = 0;
 	registers->flags.z = 0;
+
+	return 0;
 }

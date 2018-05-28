@@ -8,16 +8,18 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include <pgb/cpu/cpu.h>
-#include <pgb/debug.h>
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/isa.h>
-#include <pgb/cpu/private/prefix_cb.h>
+#include <pgb/cpu/registers.h>
+#include <pgb/debug.h>
+#include <pgb/device/device.h>
 
 int cpu_init(struct cpu *cpu)
 {
 	cpu->rom_image.data = NULL;
 	cpu->status.halted = false;
+
+	registers_init(&cpu->registers);
 
 	return 0;
 }
@@ -61,16 +63,18 @@ int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size)
 	cpu->rom_image.data = data;
 	cpu->rom_image.size = size;
 
-	for (i = 0; i < size; i++) {
-		if (i != 0 && (i % 16 == 0))
-			printf("\n");
-		if (i == 0 || (i % 16) == 0)
-			printf("0x%08x ", i);
+	if (IS_DEBUG()) {
+		for (i = 0; i < size; i++) {
+			if (i != 0 && (i % 16 == 0))
+				printf("\n");
+			if (i == 0 || (i % 16) == 0)
+				printf("0x%08x ", i);
 
-		printf("%02x ", data[i]);
+			printf("%02x ", data[i]);
+		}
+
+		printf("\n");
 	}
-
-	printf("\n");
 
 	return 0;
 }
@@ -82,52 +86,26 @@ bool cpu_is_halted(struct cpu *cpu)
 
 void cpu_dump_register_state(struct cpu *cpu)
 {
-	const char *border_regs = "+------+----------+--------+";
-	const char *border_flags = "+------+-------+";
-
-	printf("%s\n", border_regs);
-	printf("| %4s | %8s | %6s |\n", "Name", "Size", "Value");
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "A", "8 bits", cpu->registers.a);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "B", "8 bits", cpu->registers.b);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "C", "8 bits", cpu->registers.c);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "D", "8 bits", cpu->registers.d);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "E", "8 bits", cpu->registers.e);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "H", "8 bits", cpu->registers.h);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s |   0x%02x |\n", "L", "8 bits", cpu->registers.l);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s | 0x%04x |\n", "PC", "16 bits", cpu->registers.pc);
-	printf("%s\n", border_regs);
-	printf("| %-4s | %8s | 0x%04x |\n", "SP", "16 bits", cpu->registers.sp);
-	printf("%s\n", border_regs);
-
-	printf("\n");
-
-	printf("%s\n", border_flags);
-	printf("| %4s | %5s |\n", "Flag", "Value");
-	printf("%s\n", border_flags);
-	printf("| %4s | %5u |\n", "C", cpu->registers.flags.c);
-	printf("%s\n", border_flags);
-	printf("| %4s | %5u |\n", "H", cpu->registers.flags.h);
-	printf("%s\n", border_flags);
-	printf("| %4s | %5u |\n", "N", cpu->registers.flags.n);
-	printf("%s\n", border_flags);
-	printf("| %4s | %5u |\n", "Z", cpu->registers.flags.z);
-	printf("%s\n", border_flags);
+	printf("+------+---------+\n");
+	printf("| PC   | 0x%04x  |\n", cpu->registers.pc);
+	printf("| SP   | 0x%04x  |\n", cpu->registers.sp);
+	printf("| A    | 0x%02x    |\n", cpu->registers.a);
+	printf("| BC   | 0x%02x%02x  |\n", cpu->registers.b, cpu->registers.c);
+	printf("| DE   | 0x%02x%02x  |\n", cpu->registers.d, cpu->registers.e);
+	printf("| HL   | 0x%02x%02x  |\n", cpu->registers.h, cpu->registers.l);
+	printf("| CHNZ | %u %u %u %u |\n", cpu->registers.flags.c, cpu->registers.flags.h,
+				       cpu->registers.flags.n, cpu->registers.flags.z);
+	printf("+------+---------+\n");
 }
 
 static
-int fetch(struct cpu *cpu, uint8_t *opcode)
+int fetch(struct device *device, uint8_t *opcode)
 {
+	struct cpu *cpu;
 	struct registers *registers;
 	struct rom_image *rom_image;
 
+	cpu = &device->cpu;
 	registers = &cpu->registers;
 	rom_image = &cpu->rom_image;
 
@@ -139,15 +117,17 @@ int fetch(struct cpu *cpu, uint8_t *opcode)
 }
 
 static
-int decode(struct cpu *cpu, uint8_t opcode, struct isa_instruction **__isa_instruction,
+int decode(struct device *device, uint8_t opcode, struct isa_instruction **__isa_instruction,
 	   uint8_t *instruction_buffer, size_t size)
 {
 	int ret;
 	struct isa_instruction *isa_instruction;
+	struct cpu *cpu;
 	struct registers *registers;
 	struct rom_image *rom_image;
 	size_t num_bytes;
 
+	cpu = &device->cpu;
 	registers = &cpu->registers;
 	rom_image = &cpu->rom_image;
 
@@ -158,7 +138,7 @@ int decode(struct cpu *cpu, uint8_t opcode, struct isa_instruction **__isa_instr
 		num_bytes = isa_instruction->num_bytes;
 	} else {
 		registers->pc += LR35902_OPCODE_PREFIX_CB_NUM_BYTES;
-		ret = fetch(cpu, &opcode);
+		ret = fetch(device, &opcode);
 		OK_OR_RETURN(ret == 0, ret);
 
 		ret = isa_prefix_cb_get_instruction(opcode, &isa_instruction);
@@ -181,17 +161,48 @@ int decode(struct cpu *cpu, uint8_t opcode, struct isa_instruction **__isa_instr
 }
 
 static
-int execute(struct cpu *cpu, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
+int execute(struct device *device, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
 {
 	int ret;
 
-	ret = isa_instruction->isa_instruction_implementation(isa_instruction, &cpu->registers, instruction_buffer);
+	if (IS_DEBUG()) {
+		unsigned i, j;
+		uint16_t immediate = 0;
+		size_t actual_size;
+
+		actual_size = isa_instruction->is_prefix ? size - 1 : size;
+		for (i = 1; i < actual_size; i++) {
+			immediate |= instruction_buffer[i] << ((i - 1) * 8);
+		}
+
+		printf("%04x ", device->cpu.registers.pc - (uint16_t)size);
+
+		for (j = 0; j < 3 - size; j++) {
+			printf("  ");
+		}
+
+		if (isa_instruction->is_prefix) {
+			printf("%02x", LR35902_OPCODE_PREFIX_CB);
+		}
+
+		for (j = 0; j < actual_size; j++) {
+			printf("%02x", instruction_buffer[j]);
+		}
+
+		printf(" %s", isa_instruction->assembly);
+		if (actual_size > 1) {
+			printf("\t; ($%x)", immediate);
+		}
+		printf("\n");
+	}
+
+	ret = isa_execute_instruction(device, isa_instruction, instruction_buffer);
 	OK_OR_WARN(ret == 0);
 
 	return ret;
 }
 
-int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped)
+int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 {
 	int ret;
 	size_t i;
@@ -199,16 +210,16 @@ int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped)
 	uint8_t instruction_buffer[4];
 	struct isa_instruction *isa_instruction;
 
-	OK_OR_RETURN(!cpu_is_halted(cpu), -EINVAL);
+	OK_OR_RETURN(!cpu_is_halted(&device->cpu), -EINVAL);
 
 	for (i = 0; i < step; i++) {
-		ret = fetch(cpu, &opcode);
+		ret = fetch(device, &opcode);
 		OK_OR_BREAK(ret == 0);
 
-		ret = decode(cpu, opcode, &isa_instruction, instruction_buffer, sizeof(instruction_buffer));
+		ret = decode(device, opcode, &isa_instruction, instruction_buffer, sizeof(instruction_buffer));
 		OK_OR_BREAK(ret == 0);
 
-		execute(cpu, isa_instruction, instruction_buffer, isa_instruction->num_bytes);
+		execute(device, isa_instruction, instruction_buffer, isa_instruction->num_bytes);
 		OK_OR_BREAK(ret == 0);
 	}
 

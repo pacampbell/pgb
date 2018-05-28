@@ -29,11 +29,15 @@ int device_emulate(struct device *device, const char *rom_path)
 	int ret;
 	size_t stepped_instructions, num_instructions = 0;
 
+	if (IS_DEBUG()) {
+		cpu_dump_register_state(&device->cpu);
+	}
+
 	ret = cpu_load_rom_from_file(&device->cpu, rom_path);
 	OK_OR_RETURN(ret == 0, ret);
 
 	do {
-		ret = cpu_step(&device->cpu, 1, &stepped_instructions);
+		ret = cpu_step(device, 1, &stepped_instructions);
 		OK_OR_BREAK(ret == 0);
 
 		num_instructions += stepped_instructions;
