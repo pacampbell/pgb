@@ -4,8 +4,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#include <pgb/cpu/cpu.h>
-#include <pgb/mmu/mmu.h>
+#include <pgb/device/device.h>
 #include <pgb/debug.h>
 
 const char *help_text = \
@@ -24,31 +23,15 @@ static
 int start_emulating(const char *rom_path)
 {
 	int ret;
-	size_t stepped_instructions, num_instructions = 0;
-	struct cpu cpu;
-	struct mmu mmu;
+	struct device device;
 
-	ret = cpu_init(&cpu);
+	ret = device_init(&device);
 	OK_OR_RETURN(ret == 0, ret);
 
-	ret = mmu_init(&mmu);
-	OK_OR_GOTO(ret == 0, cleanup_and_exit);
+	ret = device_emulate(&device, rom_path);
+	OK_OR_WARN(ret == 0);
 
-	ret = cpu_load_rom_from_file(&cpu, rom_path);
-	OK_OR_GOTO(ret == 0, cleanup_and_exit);
-
-	do {
-		ret = cpu_step(&cpu, 1, &stepped_instructions);
-		OK_OR_BREAK(ret == 0);
-
-		num_instructions += stepped_instructions;
-	} while (!cpu_is_halted(&cpu));
-
-cleanup_and_exit:
-	cpu_destroy(&cpu);
-	mmu_destroy(&mmu);
-
-	printf("Stepped %zu instructions\n", num_instructions);
+	device_destroy(&device);
 
 	return ret;
 }
@@ -81,8 +64,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "The rom file '%s' does not exist at the given path. Exiting.\n", rom_path);
 		exit(EXIT_FAILURE);
 	}
-
-	// TODO: Check to see if it is a valid Gameboy binary
 
 	ret = start_emulating(rom_path);
 	OK_OR_WARN(ret == 0);

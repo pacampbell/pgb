@@ -12,6 +12,7 @@ SRC = \
 	src/pgb/cpu/isa.c			\
 	src/pgb/cpu/prefix_cb.c		\
 	src/pgb/cpu/registers.c		\
+	src/pgb/device/device.c		\
 	src/pgb/mmu/mmu.c
 
 .PHONY: all debug clean
