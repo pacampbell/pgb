@@ -14,17 +14,21 @@
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/private/prefix_cb.h>
 
-void cpu_init(struct cpu *cpu)
+int cpu_init(struct cpu *cpu)
 {
 	cpu->rom_image.data = NULL;
 	cpu->status.halted = false;
+
+	return 0;
 }
 
-void cpu_destroy(struct cpu *cpu)
+int cpu_destroy(struct cpu *cpu)
 {
 	if (cpu->rom_image.data != NULL) {
 		munmap(cpu->rom_image.data, cpu->rom_image.size);
 	}
+
+	return 0;
 }
 
 int cpu_load_rom_from_file(struct cpu *cpu, const char *path)
@@ -179,23 +183,12 @@ int decode(struct cpu *cpu, uint8_t opcode, struct isa_instruction **__isa_instr
 static
 int execute(struct cpu *cpu, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
 {
-	unsigned i;
-	uint16_t immediate = 0;
-	size_t actual_size;
+	int ret;
 
-	actual_size = isa_instruction->is_prefix ? size - 1 : size;
+	ret = isa_instruction->isa_instruction_implementation(isa_instruction, &cpu->registers, instruction_buffer);
+	OK_OR_WARN(ret == 0);
 
-	printf("\t%s ", isa_instruction->name);
-	for (i = 1; i < actual_size; i++) {
-		immediate |= instruction_buffer[i] << ((i - 1) * 8);
-	}
-
-	if (actual_size > 1)
-		printf("$%x", immediate);
-
-	printf("\t; %04x \n", cpu->registers.pc - (uint16_t)actual_size);
-
-	return 0;
+	return ret;
 }
 
 int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped)

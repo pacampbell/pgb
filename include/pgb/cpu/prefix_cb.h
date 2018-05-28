@@ -3,7 +3,7 @@
 #define PGB_CPU_PREFIX_CB_H
 
 #define LR35902_PREFIX_CB_OPCODE_RLC_B                                      0x00
-#define LR35902_PREFIX_CB_RLC_B_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_B_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_B_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_B_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_B_FLAG_MASK                             0xf
@@ -12,7 +12,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_B_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_B_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_C                                      0x01
-#define LR35902_PREFIX_CB_RLC_C_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_C_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_C_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_C_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_C_FLAG_MASK                             0xf
@@ -21,7 +21,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_C_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_C_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_D                                      0x02
-#define LR35902_PREFIX_CB_RLC_D_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_D_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_D_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_D_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_D_FLAG_MASK                             0xf
@@ -30,7 +30,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_D_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_D_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_E                                      0x03
-#define LR35902_PREFIX_CB_RLC_E_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_E_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_E_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_E_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_E_FLAG_MASK                             0xf
@@ -39,7 +39,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_E_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_E_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_H                                      0x04
-#define LR35902_PREFIX_CB_RLC_H_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_H_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_H_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_H_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_H_FLAG_MASK                             0xf
@@ -48,7 +48,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_H_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_H_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_L                                      0x05
-#define LR35902_PREFIX_CB_RLC_L_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_L_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_L_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_L_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_L_FLAG_MASK                             0xf
@@ -57,7 +57,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_L_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_L_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16                            0x06
-#define LR35902_PREFIX_CB_RLC_HL_MEM_W_16_NUM_BYTES                            2
+#define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_NUM_BYTES                     2
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_NUM_CYCLES_C0                16
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_NUM_CYCLES_C1                 0
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_FLAG_MASK                   0xf
@@ -66,7 +66,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_FLAG_H                        0
 #define LR35902_PREFIX_CB_OPCODE_RLC_HL_MEM_W_16_FLAG_C                        2
 #define LR35902_PREFIX_CB_OPCODE_RLC_A                                      0x07
-#define LR35902_PREFIX_CB_RLC_A_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RLC_A_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RLC_A_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RLC_A_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RLC_A_FLAG_MASK                             0xf
@@ -75,7 +75,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RLC_A_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RLC_A_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_B                                      0x08
-#define LR35902_PREFIX_CB_RRC_B_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_B_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_B_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_B_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_B_FLAG_MASK                             0xf
@@ -84,7 +84,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_B_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_B_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_C                                      0x09
-#define LR35902_PREFIX_CB_RRC_C_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_C_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_C_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_C_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_C_FLAG_MASK                             0xf
@@ -93,7 +93,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_C_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_C_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_D                                      0x0a
-#define LR35902_PREFIX_CB_RRC_D_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_D_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_D_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_D_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_D_FLAG_MASK                             0xf
@@ -102,7 +102,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_D_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_D_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_E                                      0x0b
-#define LR35902_PREFIX_CB_RRC_E_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_E_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_E_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_E_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_E_FLAG_MASK                             0xf
@@ -111,7 +111,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_E_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_E_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_H                                      0x0c
-#define LR35902_PREFIX_CB_RRC_H_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_H_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_H_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_H_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_H_FLAG_MASK                             0xf
@@ -120,7 +120,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_H_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_H_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_L                                      0x0d
-#define LR35902_PREFIX_CB_RRC_L_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_L_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_L_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_L_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_L_FLAG_MASK                             0xf
@@ -129,7 +129,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_L_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_L_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16                            0x0e
-#define LR35902_PREFIX_CB_RRC_HL_MEM_W_16_NUM_BYTES                            2
+#define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_NUM_BYTES                     2
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_NUM_CYCLES_C0                16
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_NUM_CYCLES_C1                 0
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_FLAG_MASK                   0xf
@@ -138,7 +138,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_FLAG_H                        0
 #define LR35902_PREFIX_CB_OPCODE_RRC_HL_MEM_W_16_FLAG_C                        2
 #define LR35902_PREFIX_CB_OPCODE_RRC_A                                      0x0f
-#define LR35902_PREFIX_CB_RRC_A_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_RRC_A_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_RRC_A_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_RRC_A_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_RRC_A_FLAG_MASK                             0xf
@@ -147,7 +147,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RRC_A_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_RRC_A_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_RL_B                                       0x10
-#define LR35902_PREFIX_CB_RL_B_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_B_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_B_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_B_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_B_FLAG_MASK                              0xf
@@ -156,7 +156,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_B_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_B_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_C                                       0x11
-#define LR35902_PREFIX_CB_RL_C_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_C_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_C_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_C_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_C_FLAG_MASK                              0xf
@@ -165,7 +165,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_C_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_C_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_D                                       0x12
-#define LR35902_PREFIX_CB_RL_D_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_D_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_D_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_D_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_D_FLAG_MASK                              0xf
@@ -174,7 +174,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_D_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_D_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_E                                       0x13
-#define LR35902_PREFIX_CB_RL_E_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_E_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_E_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_E_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_E_FLAG_MASK                              0xf
@@ -183,7 +183,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_E_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_E_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_H                                       0x14
-#define LR35902_PREFIX_CB_RL_H_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_H_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_H_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_H_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_H_FLAG_MASK                              0xf
@@ -192,7 +192,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_H_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_H_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_L                                       0x15
-#define LR35902_PREFIX_CB_RL_L_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_L_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_L_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_L_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_L_FLAG_MASK                              0xf
@@ -201,7 +201,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_L_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_L_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16                             0x16
-#define LR35902_PREFIX_CB_RL_HL_MEM_W_16_NUM_BYTES                             2
+#define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_NUM_BYTES                      2
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_NUM_CYCLES_C0                 16
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_NUM_CYCLES_C1                  0
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_FLAG_MASK                    0xf
@@ -210,7 +210,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_FLAG_H                         0
 #define LR35902_PREFIX_CB_OPCODE_RL_HL_MEM_W_16_FLAG_C                         2
 #define LR35902_PREFIX_CB_OPCODE_RL_A                                       0x17
-#define LR35902_PREFIX_CB_RL_A_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RL_A_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RL_A_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RL_A_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RL_A_FLAG_MASK                              0xf
@@ -219,7 +219,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RL_A_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RL_A_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_B                                       0x18
-#define LR35902_PREFIX_CB_RR_B_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_B_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_B_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_B_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_B_FLAG_MASK                              0xf
@@ -228,7 +228,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_B_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_B_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_C                                       0x19
-#define LR35902_PREFIX_CB_RR_C_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_C_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_C_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_C_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_C_FLAG_MASK                              0xf
@@ -237,7 +237,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_C_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_C_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_D                                       0x1a
-#define LR35902_PREFIX_CB_RR_D_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_D_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_D_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_D_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_D_FLAG_MASK                              0xf
@@ -246,7 +246,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_D_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_D_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_E                                       0x1b
-#define LR35902_PREFIX_CB_RR_E_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_E_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_E_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_E_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_E_FLAG_MASK                              0xf
@@ -255,7 +255,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_E_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_E_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_H                                       0x1c
-#define LR35902_PREFIX_CB_RR_H_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_H_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_H_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_H_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_H_FLAG_MASK                              0xf
@@ -264,7 +264,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_H_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_H_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_L                                       0x1d
-#define LR35902_PREFIX_CB_RR_L_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_L_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_L_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_L_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_L_FLAG_MASK                              0xf
@@ -273,7 +273,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_L_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_L_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16                             0x1e
-#define LR35902_PREFIX_CB_RR_HL_MEM_W_16_NUM_BYTES                             2
+#define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_NUM_BYTES                      2
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_NUM_CYCLES_C0                 16
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_NUM_CYCLES_C1                  0
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_FLAG_MASK                    0xf
@@ -282,7 +282,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_FLAG_H                         0
 #define LR35902_PREFIX_CB_OPCODE_RR_HL_MEM_W_16_FLAG_C                         2
 #define LR35902_PREFIX_CB_OPCODE_RR_A                                       0x1f
-#define LR35902_PREFIX_CB_RR_A_NUM_BYTES                                       2
+#define LR35902_PREFIX_CB_OPCODE_RR_A_NUM_BYTES                                2
 #define LR35902_PREFIX_CB_OPCODE_RR_A_NUM_CYCLES_C0                            8
 #define LR35902_PREFIX_CB_OPCODE_RR_A_NUM_CYCLES_C1                            0
 #define LR35902_PREFIX_CB_OPCODE_RR_A_FLAG_MASK                              0xf
@@ -291,7 +291,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RR_A_FLAG_H                                   0
 #define LR35902_PREFIX_CB_OPCODE_RR_A_FLAG_C                                   2
 #define LR35902_PREFIX_CB_OPCODE_SLA_B                                      0x20
-#define LR35902_PREFIX_CB_SLA_B_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_B_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_B_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_B_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_B_FLAG_MASK                             0xf
@@ -300,7 +300,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_B_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_B_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_C                                      0x21
-#define LR35902_PREFIX_CB_SLA_C_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_C_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_C_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_C_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_C_FLAG_MASK                             0xf
@@ -309,7 +309,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_C_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_C_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_D                                      0x22
-#define LR35902_PREFIX_CB_SLA_D_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_D_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_D_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_D_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_D_FLAG_MASK                             0xf
@@ -318,7 +318,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_D_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_D_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_E                                      0x23
-#define LR35902_PREFIX_CB_SLA_E_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_E_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_E_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_E_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_E_FLAG_MASK                             0xf
@@ -327,7 +327,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_E_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_E_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_H                                      0x24
-#define LR35902_PREFIX_CB_SLA_H_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_H_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_H_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_H_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_H_FLAG_MASK                             0xf
@@ -336,7 +336,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_H_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_H_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_L                                      0x25
-#define LR35902_PREFIX_CB_SLA_L_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_L_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_L_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_L_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_L_FLAG_MASK                             0xf
@@ -345,7 +345,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_L_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_L_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16                            0x26
-#define LR35902_PREFIX_CB_SLA_HL_MEM_W_16_NUM_BYTES                            2
+#define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_NUM_BYTES                     2
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_NUM_CYCLES_C0                16
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_NUM_CYCLES_C1                 0
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_FLAG_MASK                   0xf
@@ -354,7 +354,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_FLAG_H                        0
 #define LR35902_PREFIX_CB_OPCODE_SLA_HL_MEM_W_16_FLAG_C                        2
 #define LR35902_PREFIX_CB_OPCODE_SLA_A                                      0x27
-#define LR35902_PREFIX_CB_SLA_A_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SLA_A_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SLA_A_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SLA_A_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SLA_A_FLAG_MASK                             0xf
@@ -363,7 +363,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SLA_A_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SLA_A_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRA_B                                      0x28
-#define LR35902_PREFIX_CB_SRA_B_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_B_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_B_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_B_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_B_FLAG_MASK                             0xf
@@ -372,7 +372,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_B_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_B_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_C                                      0x29
-#define LR35902_PREFIX_CB_SRA_C_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_C_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_C_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_C_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_C_FLAG_MASK                             0xf
@@ -381,7 +381,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_C_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_C_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_D                                      0x2a
-#define LR35902_PREFIX_CB_SRA_D_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_D_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_D_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_D_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_D_FLAG_MASK                             0xf
@@ -390,7 +390,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_D_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_D_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_E                                      0x2b
-#define LR35902_PREFIX_CB_SRA_E_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_E_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_E_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_E_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_E_FLAG_MASK                             0xf
@@ -399,7 +399,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_E_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_E_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_H                                      0x2c
-#define LR35902_PREFIX_CB_SRA_H_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_H_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_H_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_H_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_H_FLAG_MASK                             0xf
@@ -408,7 +408,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_H_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_H_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_L                                      0x2d
-#define LR35902_PREFIX_CB_SRA_L_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_L_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_L_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_L_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_L_FLAG_MASK                             0xf
@@ -417,7 +417,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_L_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_L_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16                            0x2e
-#define LR35902_PREFIX_CB_SRA_HL_MEM_W_16_NUM_BYTES                            2
+#define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_NUM_BYTES                     2
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_NUM_CYCLES_C0                16
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_NUM_CYCLES_C1                 0
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_FLAG_MASK                   0xf
@@ -426,7 +426,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_FLAG_H                        0
 #define LR35902_PREFIX_CB_OPCODE_SRA_HL_MEM_W_16_FLAG_C                        0
 #define LR35902_PREFIX_CB_OPCODE_SRA_A                                      0x2f
-#define LR35902_PREFIX_CB_SRA_A_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRA_A_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRA_A_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRA_A_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRA_A_FLAG_MASK                             0xf
@@ -435,7 +435,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRA_A_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRA_A_FLAG_C                                  0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B                                     0x30
-#define LR35902_PREFIX_CB_SWAP_B_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_B_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B_FLAG_MASK                            0xf
@@ -444,7 +444,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_B_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C                                     0x31
-#define LR35902_PREFIX_CB_SWAP_C_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_C_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C_FLAG_MASK                            0xf
@@ -453,7 +453,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_C_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D                                     0x32
-#define LR35902_PREFIX_CB_SWAP_D_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_D_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D_FLAG_MASK                            0xf
@@ -462,7 +462,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_D_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E                                     0x33
-#define LR35902_PREFIX_CB_SWAP_E_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_E_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E_FLAG_MASK                            0xf
@@ -471,7 +471,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_E_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H                                     0x34
-#define LR35902_PREFIX_CB_SWAP_H_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_H_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H_FLAG_MASK                            0xf
@@ -480,7 +480,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_H_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L                                     0x35
-#define LR35902_PREFIX_CB_SWAP_L_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_L_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L_FLAG_MASK                            0xf
@@ -489,7 +489,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_L_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16                           0x36
-#define LR35902_PREFIX_CB_SWAP_HL_MEM_W_16_NUM_BYTES                           2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_NUM_BYTES                    2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_NUM_CYCLES_C0               16
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_NUM_CYCLES_C1                0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_FLAG_MASK                  0xf
@@ -498,7 +498,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_FLAG_H                       0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_HL_MEM_W_16_FLAG_C                       0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A                                     0x37
-#define LR35902_PREFIX_CB_SWAP_A_NUM_BYTES                                     2
+#define LR35902_PREFIX_CB_OPCODE_SWAP_A_NUM_BYTES                              2
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A_NUM_CYCLES_C0                          8
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A_NUM_CYCLES_C1                          0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A_FLAG_MASK                            0xf
@@ -507,7 +507,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A_FLAG_H                                 0
 #define LR35902_PREFIX_CB_OPCODE_SWAP_A_FLAG_C                                 0
 #define LR35902_PREFIX_CB_OPCODE_SRL_B                                      0x38
-#define LR35902_PREFIX_CB_SRL_B_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_B_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_B_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_B_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_B_FLAG_MASK                             0xf
@@ -516,7 +516,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_B_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_B_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_C                                      0x39
-#define LR35902_PREFIX_CB_SRL_C_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_C_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_C_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_C_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_C_FLAG_MASK                             0xf
@@ -525,7 +525,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_C_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_C_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_D                                      0x3a
-#define LR35902_PREFIX_CB_SRL_D_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_D_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_D_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_D_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_D_FLAG_MASK                             0xf
@@ -534,7 +534,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_D_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_D_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_E                                      0x3b
-#define LR35902_PREFIX_CB_SRL_E_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_E_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_E_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_E_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_E_FLAG_MASK                             0xf
@@ -543,7 +543,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_E_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_E_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_H                                      0x3c
-#define LR35902_PREFIX_CB_SRL_H_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_H_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_H_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_H_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_H_FLAG_MASK                             0xf
@@ -552,7 +552,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_H_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_H_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_L                                      0x3d
-#define LR35902_PREFIX_CB_SRL_L_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_L_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_L_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_L_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_L_FLAG_MASK                             0xf
@@ -561,7 +561,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_L_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_L_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16                            0x3e
-#define LR35902_PREFIX_CB_SRL_HL_MEM_W_16_NUM_BYTES                            2
+#define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_NUM_BYTES                     2
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_NUM_CYCLES_C0                16
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_NUM_CYCLES_C1                 0
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_FLAG_MASK                   0xf
@@ -570,7 +570,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_FLAG_H                        0
 #define LR35902_PREFIX_CB_OPCODE_SRL_HL_MEM_W_16_FLAG_C                        2
 #define LR35902_PREFIX_CB_OPCODE_SRL_A                                      0x3f
-#define LR35902_PREFIX_CB_SRL_A_NUM_BYTES                                      2
+#define LR35902_PREFIX_CB_OPCODE_SRL_A_NUM_BYTES                               2
 #define LR35902_PREFIX_CB_OPCODE_SRL_A_NUM_CYCLES_C0                           8
 #define LR35902_PREFIX_CB_OPCODE_SRL_A_NUM_CYCLES_C1                           0
 #define LR35902_PREFIX_CB_OPCODE_SRL_A_FLAG_MASK                             0xf
@@ -579,7 +579,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SRL_A_FLAG_H                                  0
 #define LR35902_PREFIX_CB_OPCODE_SRL_A_FLAG_C                                  2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B                                    0x40
-#define LR35902_PREFIX_CB_BIT_0_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B_FLAG_MASK                           0xe
@@ -588,7 +588,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C                                    0x41
-#define LR35902_PREFIX_CB_BIT_0_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C_FLAG_MASK                           0xe
@@ -597,7 +597,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D                                    0x42
-#define LR35902_PREFIX_CB_BIT_0_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D_FLAG_MASK                           0xe
@@ -606,7 +606,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E                                    0x43
-#define LR35902_PREFIX_CB_BIT_0_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E_FLAG_MASK                           0xe
@@ -615,7 +615,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H                                    0x44
-#define LR35902_PREFIX_CB_BIT_0_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H_FLAG_MASK                           0xe
@@ -624,7 +624,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L                                    0x45
-#define LR35902_PREFIX_CB_BIT_0_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L_FLAG_MASK                           0xe
@@ -633,7 +633,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16                          0x46
-#define LR35902_PREFIX_CB_BIT_0_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -642,7 +642,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A                                    0x47
-#define LR35902_PREFIX_CB_BIT_0_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_0_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A_FLAG_MASK                           0xe
@@ -651,7 +651,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_0_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B                                    0x48
-#define LR35902_PREFIX_CB_BIT_1_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B_FLAG_MASK                           0xe
@@ -660,7 +660,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C                                    0x49
-#define LR35902_PREFIX_CB_BIT_1_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C_FLAG_MASK                           0xe
@@ -669,7 +669,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D                                    0x4a
-#define LR35902_PREFIX_CB_BIT_1_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D_FLAG_MASK                           0xe
@@ -678,7 +678,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E                                    0x4b
-#define LR35902_PREFIX_CB_BIT_1_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E_FLAG_MASK                           0xe
@@ -687,7 +687,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H                                    0x4c
-#define LR35902_PREFIX_CB_BIT_1_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H_FLAG_MASK                           0xe
@@ -696,7 +696,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L                                    0x4d
-#define LR35902_PREFIX_CB_BIT_1_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L_FLAG_MASK                           0xe
@@ -705,7 +705,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16                          0x4e
-#define LR35902_PREFIX_CB_BIT_1_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -714,7 +714,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A                                    0x4f
-#define LR35902_PREFIX_CB_BIT_1_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_1_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A_FLAG_MASK                           0xe
@@ -723,7 +723,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_1_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B                                    0x50
-#define LR35902_PREFIX_CB_BIT_2_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B_FLAG_MASK                           0xe
@@ -732,7 +732,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C                                    0x51
-#define LR35902_PREFIX_CB_BIT_2_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C_FLAG_MASK                           0xe
@@ -741,7 +741,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D                                    0x52
-#define LR35902_PREFIX_CB_BIT_2_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D_FLAG_MASK                           0xe
@@ -750,7 +750,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E                                    0x53
-#define LR35902_PREFIX_CB_BIT_2_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E_FLAG_MASK                           0xe
@@ -759,7 +759,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H                                    0x54
-#define LR35902_PREFIX_CB_BIT_2_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H_FLAG_MASK                           0xe
@@ -768,7 +768,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L                                    0x55
-#define LR35902_PREFIX_CB_BIT_2_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L_FLAG_MASK                           0xe
@@ -777,7 +777,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16                          0x56
-#define LR35902_PREFIX_CB_BIT_2_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -786,7 +786,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A                                    0x57
-#define LR35902_PREFIX_CB_BIT_2_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_2_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A_FLAG_MASK                           0xe
@@ -795,7 +795,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_2_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B                                    0x58
-#define LR35902_PREFIX_CB_BIT_3_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B_FLAG_MASK                           0xe
@@ -804,7 +804,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C                                    0x59
-#define LR35902_PREFIX_CB_BIT_3_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C_FLAG_MASK                           0xe
@@ -813,7 +813,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D                                    0x5a
-#define LR35902_PREFIX_CB_BIT_3_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D_FLAG_MASK                           0xe
@@ -822,7 +822,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E                                    0x5b
-#define LR35902_PREFIX_CB_BIT_3_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E_FLAG_MASK                           0xe
@@ -831,7 +831,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H                                    0x5c
-#define LR35902_PREFIX_CB_BIT_3_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H_FLAG_MASK                           0xe
@@ -840,7 +840,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L                                    0x5d
-#define LR35902_PREFIX_CB_BIT_3_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L_FLAG_MASK                           0xe
@@ -849,7 +849,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16                          0x5e
-#define LR35902_PREFIX_CB_BIT_3_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -858,7 +858,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A                                    0x5f
-#define LR35902_PREFIX_CB_BIT_3_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_3_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A_FLAG_MASK                           0xe
@@ -867,7 +867,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_3_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B                                    0x60
-#define LR35902_PREFIX_CB_BIT_4_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B_FLAG_MASK                           0xe
@@ -876,7 +876,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C                                    0x61
-#define LR35902_PREFIX_CB_BIT_4_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C_FLAG_MASK                           0xe
@@ -885,7 +885,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D                                    0x62
-#define LR35902_PREFIX_CB_BIT_4_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D_FLAG_MASK                           0xe
@@ -894,7 +894,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E                                    0x63
-#define LR35902_PREFIX_CB_BIT_4_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E_FLAG_MASK                           0xe
@@ -903,7 +903,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H                                    0x64
-#define LR35902_PREFIX_CB_BIT_4_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H_FLAG_MASK                           0xe
@@ -912,7 +912,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L                                    0x65
-#define LR35902_PREFIX_CB_BIT_4_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L_FLAG_MASK                           0xe
@@ -921,7 +921,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16                          0x66
-#define LR35902_PREFIX_CB_BIT_4_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -930,7 +930,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A                                    0x67
-#define LR35902_PREFIX_CB_BIT_4_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_4_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A_FLAG_MASK                           0xe
@@ -939,7 +939,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_4_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B                                    0x68
-#define LR35902_PREFIX_CB_BIT_5_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B_FLAG_MASK                           0xe
@@ -948,7 +948,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C                                    0x69
-#define LR35902_PREFIX_CB_BIT_5_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C_FLAG_MASK                           0xe
@@ -957,7 +957,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D                                    0x6a
-#define LR35902_PREFIX_CB_BIT_5_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D_FLAG_MASK                           0xe
@@ -966,7 +966,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E                                    0x6b
-#define LR35902_PREFIX_CB_BIT_5_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E_FLAG_MASK                           0xe
@@ -975,7 +975,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H                                    0x6c
-#define LR35902_PREFIX_CB_BIT_5_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H_FLAG_MASK                           0xe
@@ -984,7 +984,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L                                    0x6d
-#define LR35902_PREFIX_CB_BIT_5_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L_FLAG_MASK                           0xe
@@ -993,7 +993,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16                          0x6e
-#define LR35902_PREFIX_CB_BIT_5_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -1002,7 +1002,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A                                    0x6f
-#define LR35902_PREFIX_CB_BIT_5_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_5_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A_FLAG_MASK                           0xe
@@ -1011,7 +1011,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_5_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B                                    0x70
-#define LR35902_PREFIX_CB_BIT_6_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B_FLAG_MASK                           0xe
@@ -1020,7 +1020,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C                                    0x71
-#define LR35902_PREFIX_CB_BIT_6_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C_FLAG_MASK                           0xe
@@ -1029,7 +1029,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D                                    0x72
-#define LR35902_PREFIX_CB_BIT_6_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D_FLAG_MASK                           0xe
@@ -1038,7 +1038,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E                                    0x73
-#define LR35902_PREFIX_CB_BIT_6_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E_FLAG_MASK                           0xe
@@ -1047,7 +1047,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H                                    0x74
-#define LR35902_PREFIX_CB_BIT_6_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H_FLAG_MASK                           0xe
@@ -1056,7 +1056,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L                                    0x75
-#define LR35902_PREFIX_CB_BIT_6_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L_FLAG_MASK                           0xe
@@ -1065,7 +1065,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16                          0x76
-#define LR35902_PREFIX_CB_BIT_6_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -1074,7 +1074,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A                                    0x77
-#define LR35902_PREFIX_CB_BIT_6_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_6_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A_FLAG_MASK                           0xe
@@ -1083,7 +1083,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_6_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B                                    0x78
-#define LR35902_PREFIX_CB_BIT_7_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B_FLAG_MASK                           0xe
@@ -1092,7 +1092,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C                                    0x79
-#define LR35902_PREFIX_CB_BIT_7_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C_FLAG_MASK                           0xe
@@ -1101,7 +1101,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D                                    0x7a
-#define LR35902_PREFIX_CB_BIT_7_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D_FLAG_MASK                           0xe
@@ -1110,7 +1110,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E                                    0x7b
-#define LR35902_PREFIX_CB_BIT_7_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E_FLAG_MASK                           0xe
@@ -1119,7 +1119,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H                                    0x7c
-#define LR35902_PREFIX_CB_BIT_7_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H_FLAG_MASK                           0xe
@@ -1128,7 +1128,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L                                    0x7d
-#define LR35902_PREFIX_CB_BIT_7_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L_FLAG_MASK                           0xe
@@ -1137,7 +1137,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16                          0x7e
-#define LR35902_PREFIX_CB_BIT_7_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_FLAG_MASK                 0xe
@@ -1146,7 +1146,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_FLAG_H                      1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A                                    0x7f
-#define LR35902_PREFIX_CB_BIT_7_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_BIT_7_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A_FLAG_MASK                           0xe
@@ -1155,7 +1155,7 @@
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A_FLAG_H                                1
 #define LR35902_PREFIX_CB_OPCODE_BIT_7_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B                                    0x80
-#define LR35902_PREFIX_CB_RES_0_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B_FLAG_MASK                           0x0
@@ -1164,7 +1164,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C                                    0x81
-#define LR35902_PREFIX_CB_RES_0_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C_FLAG_MASK                           0x0
@@ -1173,7 +1173,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D                                    0x82
-#define LR35902_PREFIX_CB_RES_0_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D_FLAG_MASK                           0x0
@@ -1182,7 +1182,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E                                    0x83
-#define LR35902_PREFIX_CB_RES_0_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E_FLAG_MASK                           0x0
@@ -1191,7 +1191,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H                                    0x84
-#define LR35902_PREFIX_CB_RES_0_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H_FLAG_MASK                           0x0
@@ -1200,7 +1200,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L                                    0x85
-#define LR35902_PREFIX_CB_RES_0_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L_FLAG_MASK                           0x0
@@ -1209,7 +1209,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16                          0x86
-#define LR35902_PREFIX_CB_RES_0_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1218,7 +1218,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A                                    0x87
-#define LR35902_PREFIX_CB_RES_0_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_0_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A_FLAG_MASK                           0x0
@@ -1227,7 +1227,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_0_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B                                    0x88
-#define LR35902_PREFIX_CB_RES_1_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B_FLAG_MASK                           0x0
@@ -1236,7 +1236,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C                                    0x89
-#define LR35902_PREFIX_CB_RES_1_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C_FLAG_MASK                           0x0
@@ -1245,7 +1245,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D                                    0x8a
-#define LR35902_PREFIX_CB_RES_1_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D_FLAG_MASK                           0x0
@@ -1254,7 +1254,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E                                    0x8b
-#define LR35902_PREFIX_CB_RES_1_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E_FLAG_MASK                           0x0
@@ -1263,7 +1263,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H                                    0x8c
-#define LR35902_PREFIX_CB_RES_1_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H_FLAG_MASK                           0x0
@@ -1272,7 +1272,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L                                    0x8d
-#define LR35902_PREFIX_CB_RES_1_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L_FLAG_MASK                           0x0
@@ -1281,7 +1281,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16                          0x8e
-#define LR35902_PREFIX_CB_RES_1_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1290,7 +1290,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A                                    0x8f
-#define LR35902_PREFIX_CB_RES_1_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_1_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A_FLAG_MASK                           0x0
@@ -1299,7 +1299,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_1_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B                                    0x90
-#define LR35902_PREFIX_CB_RES_2_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B_FLAG_MASK                           0x0
@@ -1308,7 +1308,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C                                    0x91
-#define LR35902_PREFIX_CB_RES_2_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C_FLAG_MASK                           0x0
@@ -1317,7 +1317,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D                                    0x92
-#define LR35902_PREFIX_CB_RES_2_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D_FLAG_MASK                           0x0
@@ -1326,7 +1326,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E                                    0x93
-#define LR35902_PREFIX_CB_RES_2_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E_FLAG_MASK                           0x0
@@ -1335,7 +1335,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H                                    0x94
-#define LR35902_PREFIX_CB_RES_2_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H_FLAG_MASK                           0x0
@@ -1344,7 +1344,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L                                    0x95
-#define LR35902_PREFIX_CB_RES_2_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L_FLAG_MASK                           0x0
@@ -1353,7 +1353,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16                          0x96
-#define LR35902_PREFIX_CB_RES_2_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1362,7 +1362,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A                                    0x97
-#define LR35902_PREFIX_CB_RES_2_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_2_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A_FLAG_MASK                           0x0
@@ -1371,7 +1371,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_2_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B                                    0x98
-#define LR35902_PREFIX_CB_RES_3_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B_FLAG_MASK                           0x0
@@ -1380,7 +1380,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C                                    0x99
-#define LR35902_PREFIX_CB_RES_3_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C_FLAG_MASK                           0x0
@@ -1389,7 +1389,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D                                    0x9a
-#define LR35902_PREFIX_CB_RES_3_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D_FLAG_MASK                           0x0
@@ -1398,7 +1398,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E                                    0x9b
-#define LR35902_PREFIX_CB_RES_3_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E_FLAG_MASK                           0x0
@@ -1407,7 +1407,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H                                    0x9c
-#define LR35902_PREFIX_CB_RES_3_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H_FLAG_MASK                           0x0
@@ -1416,7 +1416,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L                                    0x9d
-#define LR35902_PREFIX_CB_RES_3_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L_FLAG_MASK                           0x0
@@ -1425,7 +1425,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16                          0x9e
-#define LR35902_PREFIX_CB_RES_3_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1434,7 +1434,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A                                    0x9f
-#define LR35902_PREFIX_CB_RES_3_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_3_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A_FLAG_MASK                           0x0
@@ -1443,7 +1443,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_3_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B                                    0xa0
-#define LR35902_PREFIX_CB_RES_4_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B_FLAG_MASK                           0x0
@@ -1452,7 +1452,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C                                    0xa1
-#define LR35902_PREFIX_CB_RES_4_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C_FLAG_MASK                           0x0
@@ -1461,7 +1461,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D                                    0xa2
-#define LR35902_PREFIX_CB_RES_4_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D_FLAG_MASK                           0x0
@@ -1470,7 +1470,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E                                    0xa3
-#define LR35902_PREFIX_CB_RES_4_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E_FLAG_MASK                           0x0
@@ -1479,7 +1479,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H                                    0xa4
-#define LR35902_PREFIX_CB_RES_4_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H_FLAG_MASK                           0x0
@@ -1488,7 +1488,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L                                    0xa5
-#define LR35902_PREFIX_CB_RES_4_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L_FLAG_MASK                           0x0
@@ -1497,7 +1497,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16                          0xa6
-#define LR35902_PREFIX_CB_RES_4_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1506,7 +1506,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A                                    0xa7
-#define LR35902_PREFIX_CB_RES_4_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_4_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A_FLAG_MASK                           0x0
@@ -1515,7 +1515,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_4_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B                                    0xa8
-#define LR35902_PREFIX_CB_RES_5_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B_FLAG_MASK                           0x0
@@ -1524,7 +1524,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C                                    0xa9
-#define LR35902_PREFIX_CB_RES_5_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C_FLAG_MASK                           0x0
@@ -1533,7 +1533,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D                                    0xaa
-#define LR35902_PREFIX_CB_RES_5_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D_FLAG_MASK                           0x0
@@ -1542,7 +1542,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E                                    0xab
-#define LR35902_PREFIX_CB_RES_5_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E_FLAG_MASK                           0x0
@@ -1551,7 +1551,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H                                    0xac
-#define LR35902_PREFIX_CB_RES_5_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H_FLAG_MASK                           0x0
@@ -1560,7 +1560,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L                                    0xad
-#define LR35902_PREFIX_CB_RES_5_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L_FLAG_MASK                           0x0
@@ -1569,7 +1569,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16                          0xae
-#define LR35902_PREFIX_CB_RES_5_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1578,7 +1578,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A                                    0xaf
-#define LR35902_PREFIX_CB_RES_5_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_5_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A_FLAG_MASK                           0x0
@@ -1587,7 +1587,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_5_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B                                    0xb0
-#define LR35902_PREFIX_CB_RES_6_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B_FLAG_MASK                           0x0
@@ -1596,7 +1596,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C                                    0xb1
-#define LR35902_PREFIX_CB_RES_6_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C_FLAG_MASK                           0x0
@@ -1605,7 +1605,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D                                    0xb2
-#define LR35902_PREFIX_CB_RES_6_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D_FLAG_MASK                           0x0
@@ -1614,7 +1614,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E                                    0xb3
-#define LR35902_PREFIX_CB_RES_6_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E_FLAG_MASK                           0x0
@@ -1623,7 +1623,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H                                    0xb4
-#define LR35902_PREFIX_CB_RES_6_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H_FLAG_MASK                           0x0
@@ -1632,7 +1632,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L                                    0xb5
-#define LR35902_PREFIX_CB_RES_6_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L_FLAG_MASK                           0x0
@@ -1641,7 +1641,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16                          0xb6
-#define LR35902_PREFIX_CB_RES_6_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1650,7 +1650,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A                                    0xb7
-#define LR35902_PREFIX_CB_RES_6_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_6_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A_FLAG_MASK                           0x0
@@ -1659,7 +1659,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_6_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B                                    0xb8
-#define LR35902_PREFIX_CB_RES_7_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B_FLAG_MASK                           0x0
@@ -1668,7 +1668,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C                                    0xb9
-#define LR35902_PREFIX_CB_RES_7_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C_FLAG_MASK                           0x0
@@ -1677,7 +1677,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D                                    0xba
-#define LR35902_PREFIX_CB_RES_7_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D_FLAG_MASK                           0x0
@@ -1686,7 +1686,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E                                    0xbb
-#define LR35902_PREFIX_CB_RES_7_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E_FLAG_MASK                           0x0
@@ -1695,7 +1695,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H                                    0xbc
-#define LR35902_PREFIX_CB_RES_7_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H_FLAG_MASK                           0x0
@@ -1704,7 +1704,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L                                    0xbd
-#define LR35902_PREFIX_CB_RES_7_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L_FLAG_MASK                           0x0
@@ -1713,7 +1713,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16                          0xbe
-#define LR35902_PREFIX_CB_RES_7_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1722,7 +1722,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A                                    0xbf
-#define LR35902_PREFIX_CB_RES_7_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_RES_7_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A_FLAG_MASK                           0x0
@@ -1731,7 +1731,7 @@
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_RES_7_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B                                    0xc0
-#define LR35902_PREFIX_CB_SET_0_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B_FLAG_MASK                           0x0
@@ -1740,7 +1740,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C                                    0xc1
-#define LR35902_PREFIX_CB_SET_0_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C_FLAG_MASK                           0x0
@@ -1749,7 +1749,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D                                    0xc2
-#define LR35902_PREFIX_CB_SET_0_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D_FLAG_MASK                           0x0
@@ -1758,7 +1758,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E                                    0xc3
-#define LR35902_PREFIX_CB_SET_0_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E_FLAG_MASK                           0x0
@@ -1767,7 +1767,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H                                    0xc4
-#define LR35902_PREFIX_CB_SET_0_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H_FLAG_MASK                           0x0
@@ -1776,7 +1776,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L                                    0xc5
-#define LR35902_PREFIX_CB_SET_0_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L_FLAG_MASK                           0x0
@@ -1785,7 +1785,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16                          0xc6
-#define LR35902_PREFIX_CB_SET_0_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1794,7 +1794,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A                                    0xc7
-#define LR35902_PREFIX_CB_SET_0_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_0_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A_FLAG_MASK                           0x0
@@ -1803,7 +1803,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_0_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B                                    0xc8
-#define LR35902_PREFIX_CB_SET_1_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B_FLAG_MASK                           0x0
@@ -1812,7 +1812,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C                                    0xc9
-#define LR35902_PREFIX_CB_SET_1_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C_FLAG_MASK                           0x0
@@ -1821,7 +1821,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D                                    0xca
-#define LR35902_PREFIX_CB_SET_1_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D_FLAG_MASK                           0x0
@@ -1830,7 +1830,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E                                    0xcb
-#define LR35902_PREFIX_CB_SET_1_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E_FLAG_MASK                           0x0
@@ -1839,7 +1839,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H                                    0xcc
-#define LR35902_PREFIX_CB_SET_1_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H_FLAG_MASK                           0x0
@@ -1848,7 +1848,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L                                    0xcd
-#define LR35902_PREFIX_CB_SET_1_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L_FLAG_MASK                           0x0
@@ -1857,7 +1857,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16                          0xce
-#define LR35902_PREFIX_CB_SET_1_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1866,7 +1866,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A                                    0xcf
-#define LR35902_PREFIX_CB_SET_1_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_1_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A_FLAG_MASK                           0x0
@@ -1875,7 +1875,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_1_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B                                    0xd0
-#define LR35902_PREFIX_CB_SET_2_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B_FLAG_MASK                           0x0
@@ -1884,7 +1884,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C                                    0xd1
-#define LR35902_PREFIX_CB_SET_2_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C_FLAG_MASK                           0x0
@@ -1893,7 +1893,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D                                    0xd2
-#define LR35902_PREFIX_CB_SET_2_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D_FLAG_MASK                           0x0
@@ -1902,7 +1902,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E                                    0xd3
-#define LR35902_PREFIX_CB_SET_2_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E_FLAG_MASK                           0x0
@@ -1911,7 +1911,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H                                    0xd4
-#define LR35902_PREFIX_CB_SET_2_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H_FLAG_MASK                           0x0
@@ -1920,7 +1920,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L                                    0xd5
-#define LR35902_PREFIX_CB_SET_2_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L_FLAG_MASK                           0x0
@@ -1929,7 +1929,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16                          0xd6
-#define LR35902_PREFIX_CB_SET_2_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -1938,7 +1938,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A                                    0xd7
-#define LR35902_PREFIX_CB_SET_2_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_2_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A_FLAG_MASK                           0x0
@@ -1947,7 +1947,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_2_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B                                    0xd8
-#define LR35902_PREFIX_CB_SET_3_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B_FLAG_MASK                           0x0
@@ -1956,7 +1956,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C                                    0xd9
-#define LR35902_PREFIX_CB_SET_3_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C_FLAG_MASK                           0x0
@@ -1965,7 +1965,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D                                    0xda
-#define LR35902_PREFIX_CB_SET_3_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D_FLAG_MASK                           0x0
@@ -1974,7 +1974,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E                                    0xdb
-#define LR35902_PREFIX_CB_SET_3_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E_FLAG_MASK                           0x0
@@ -1983,7 +1983,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H                                    0xdc
-#define LR35902_PREFIX_CB_SET_3_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H_FLAG_MASK                           0x0
@@ -1992,7 +1992,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L                                    0xdd
-#define LR35902_PREFIX_CB_SET_3_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L_FLAG_MASK                           0x0
@@ -2001,7 +2001,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16                          0xde
-#define LR35902_PREFIX_CB_SET_3_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -2010,7 +2010,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A                                    0xdf
-#define LR35902_PREFIX_CB_SET_3_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_3_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A_FLAG_MASK                           0x0
@@ -2019,7 +2019,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_3_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B                                    0xe0
-#define LR35902_PREFIX_CB_SET_4_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B_FLAG_MASK                           0x0
@@ -2028,7 +2028,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C                                    0xe1
-#define LR35902_PREFIX_CB_SET_4_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C_FLAG_MASK                           0x0
@@ -2037,7 +2037,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D                                    0xe2
-#define LR35902_PREFIX_CB_SET_4_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D_FLAG_MASK                           0x0
@@ -2046,7 +2046,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E                                    0xe3
-#define LR35902_PREFIX_CB_SET_4_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E_FLAG_MASK                           0x0
@@ -2055,7 +2055,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H                                    0xe4
-#define LR35902_PREFIX_CB_SET_4_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H_FLAG_MASK                           0x0
@@ -2064,7 +2064,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L                                    0xe5
-#define LR35902_PREFIX_CB_SET_4_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L_FLAG_MASK                           0x0
@@ -2073,7 +2073,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16                          0xe6
-#define LR35902_PREFIX_CB_SET_4_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -2082,7 +2082,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A                                    0xe7
-#define LR35902_PREFIX_CB_SET_4_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_4_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A_FLAG_MASK                           0x0
@@ -2091,7 +2091,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_4_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B                                    0xe8
-#define LR35902_PREFIX_CB_SET_5_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B_FLAG_MASK                           0x0
@@ -2100,7 +2100,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C                                    0xe9
-#define LR35902_PREFIX_CB_SET_5_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C_FLAG_MASK                           0x0
@@ -2109,7 +2109,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D                                    0xea
-#define LR35902_PREFIX_CB_SET_5_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D_FLAG_MASK                           0x0
@@ -2118,7 +2118,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E                                    0xeb
-#define LR35902_PREFIX_CB_SET_5_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E_FLAG_MASK                           0x0
@@ -2127,7 +2127,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H                                    0xec
-#define LR35902_PREFIX_CB_SET_5_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H_FLAG_MASK                           0x0
@@ -2136,7 +2136,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L                                    0xed
-#define LR35902_PREFIX_CB_SET_5_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L_FLAG_MASK                           0x0
@@ -2145,7 +2145,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16                          0xee
-#define LR35902_PREFIX_CB_SET_5_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -2154,7 +2154,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A                                    0xef
-#define LR35902_PREFIX_CB_SET_5_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_5_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A_FLAG_MASK                           0x0
@@ -2163,7 +2163,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_5_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B                                    0xf0
-#define LR35902_PREFIX_CB_SET_6_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B_FLAG_MASK                           0x0
@@ -2172,7 +2172,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C                                    0xf1
-#define LR35902_PREFIX_CB_SET_6_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C_FLAG_MASK                           0x0
@@ -2181,7 +2181,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D                                    0xf2
-#define LR35902_PREFIX_CB_SET_6_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D_FLAG_MASK                           0x0
@@ -2190,7 +2190,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E                                    0xf3
-#define LR35902_PREFIX_CB_SET_6_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E_FLAG_MASK                           0x0
@@ -2199,7 +2199,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H                                    0xf4
-#define LR35902_PREFIX_CB_SET_6_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H_FLAG_MASK                           0x0
@@ -2208,7 +2208,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L                                    0xf5
-#define LR35902_PREFIX_CB_SET_6_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L_FLAG_MASK                           0x0
@@ -2217,7 +2217,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16                          0xf6
-#define LR35902_PREFIX_CB_SET_6_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -2226,7 +2226,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A                                    0xf7
-#define LR35902_PREFIX_CB_SET_6_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_6_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A_FLAG_MASK                           0x0
@@ -2235,7 +2235,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_6_A_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B                                    0xf8
-#define LR35902_PREFIX_CB_SET_7_B_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_B_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B_FLAG_MASK                           0x0
@@ -2244,7 +2244,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_B_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C                                    0xf9
-#define LR35902_PREFIX_CB_SET_7_C_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_C_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C_FLAG_MASK                           0x0
@@ -2253,7 +2253,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_C_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D                                    0xfa
-#define LR35902_PREFIX_CB_SET_7_D_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_D_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D_FLAG_MASK                           0x0
@@ -2262,7 +2262,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_D_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E                                    0xfb
-#define LR35902_PREFIX_CB_SET_7_E_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_E_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E_FLAG_MASK                           0x0
@@ -2271,7 +2271,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_E_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H                                    0xfc
-#define LR35902_PREFIX_CB_SET_7_H_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_H_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H_FLAG_MASK                           0x0
@@ -2280,7 +2280,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_H_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L                                    0xfd
-#define LR35902_PREFIX_CB_SET_7_L_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_L_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L_FLAG_MASK                           0x0
@@ -2289,7 +2289,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L_FLAG_H                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_L_FLAG_C                                3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16                          0xfe
-#define LR35902_PREFIX_CB_SET_7_HL_MEM_R_16_NUM_BYTES                          2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_NUM_BYTES                   2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_NUM_CYCLES_C0              16
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_NUM_CYCLES_C1               0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_FLAG_MASK                 0x0
@@ -2298,7 +2298,7 @@
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_FLAG_H                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_HL_MEM_R_16_FLAG_C                      3
 #define LR35902_PREFIX_CB_OPCODE_SET_7_A                                    0xff
-#define LR35902_PREFIX_CB_SET_7_A_NUM_BYTES                                    2
+#define LR35902_PREFIX_CB_OPCODE_SET_7_A_NUM_BYTES                             2
 #define LR35902_PREFIX_CB_OPCODE_SET_7_A_NUM_CYCLES_C0                         8
 #define LR35902_PREFIX_CB_OPCODE_SET_7_A_NUM_CYCLES_C1                         0
 #define LR35902_PREFIX_CB_OPCODE_SET_7_A_FLAG_MASK                           0x0

@@ -30,7 +30,8 @@ struct isa_instruction {
 	struct timing timing;
 	struct flag_modifiers flag_modifiers;
 	bool is_prefix;
-	int (*isa_instruction)(struct registers *registers, uint8_t *data);
+	int (*isa_instruction_implementation)(struct isa_instruction *instruction,
+					      struct registers *registers, uint8_t *data);
 };
 
 int isa_get_instruction(uint8_t opcode, struct isa_instruction **instruction);

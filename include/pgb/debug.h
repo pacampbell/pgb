@@ -1,6 +1,8 @@
 #ifndef PGD_DEBUG_H
 #define PGD_DEBUG_H
 
+#include <stdio.h>
+
 #ifdef DEBUG
 #define IS_DEBUG() 1
 #else

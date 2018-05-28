@@ -6,12 +6,13 @@ BINARY = pgb
 INCLUDE = include
 
 SRC = \
-	src/pgb/main.c			\
-	src/pgb/cpu/clock.c		\
-	src/pgb/cpu/cpu.c		\
-	src/pgb/cpu/isa.c		\
+	src/pgb/main.c				\
+	src/pgb/cpu/clock.c			\
+	src/pgb/cpu/cpu.c			\
+	src/pgb/cpu/isa.c			\
 	src/pgb/cpu/prefix_cb.c		\
-	src/pgb/cpu/registers.c
+	src/pgb/cpu/registers.c		\
+	src/pgb/mmu/mmu.c
 
 .PHONY: all debug clean
 

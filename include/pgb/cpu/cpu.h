@@ -26,8 +26,8 @@ struct cpu {
 int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size);
 int cpu_load_rom_from_file(struct cpu *cpu, const char *path);
 int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped);
-void cpu_init(struct cpu *cpu);
-void cpu_destroy(struct cpu *cpu);
+int cpu_init(struct cpu *cpu);
+int cpu_destroy(struct cpu *cpu);
 bool cpu_is_halted(struct cpu *cpu);
 void cpu_dump_register_state(struct cpu *cpu);
 

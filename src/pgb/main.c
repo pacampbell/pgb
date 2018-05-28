@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 #include <pgb/cpu/cpu.h>
+#include <pgb/mmu/mmu.h>
 #include <pgb/debug.h>
 
 const char *help_text = \
@@ -23,15 +24,19 @@ static
 int start_emulating(const char *rom_path)
 {
 	int ret;
-	size_t stepped_instructions, num_instructions;
+	size_t stepped_instructions, num_instructions = 0;
 	struct cpu cpu;
+	struct mmu mmu;
 
-	cpu_init(&cpu);
-
-	ret = cpu_load_rom_from_file(&cpu, rom_path);
+	ret = cpu_init(&cpu);
 	OK_OR_RETURN(ret == 0, ret);
 
-	num_instructions = 0;
+	ret = mmu_init(&mmu);
+	OK_OR_GOTO(ret == 0, cleanup_and_exit);
+
+	ret = cpu_load_rom_from_file(&cpu, rom_path);
+	OK_OR_GOTO(ret == 0, cleanup_and_exit);
+
 	do {
 		ret = cpu_step(&cpu, 1, &stepped_instructions);
 		OK_OR_BREAK(ret == 0);
@@ -39,7 +44,9 @@ int start_emulating(const char *rom_path)
 		num_instructions += stepped_instructions;
 	} while (!cpu_is_halted(&cpu));
 
+cleanup_and_exit:
 	cpu_destroy(&cpu);
+	mmu_destroy(&mmu);
 
 	printf("Stepped %zu instructions\n", num_instructions);
 
