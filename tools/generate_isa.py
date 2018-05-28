@@ -115,7 +115,7 @@ def generate_c_header(name, prefix, parsed_instructions):
 
     define_formats = [
         {'string': '#define {}_OPCODE_{{}}'.format(prefix), 'value': '0x{:02x}'},
-        {'string': '#define {}_{{}}_NUM_BYTES'.format(prefix), 'value': '{:d}'},
+        {'string': '#define {}_OPCODE_{{}}_NUM_BYTES'.format(prefix), 'value': '{:d}'},
         {'string': '#define {}_OPCODE_{{}}_NUM_CYCLES_C0'.format(prefix), 'value': '{:d}'},
         {'string': '#define {}_OPCODE_{{}}_NUM_CYCLES_C1'.format(prefix), 'value': '{:d}'},
         {'string': '#define {}_OPCODE_{{}}_FLAG_MASK'.format(prefix), 'value': '0x{:x}'},
@@ -162,7 +162,7 @@ def generate_c_def(is_prefix_cb, parsed_instructions):
 
 def generate_c_functions(parsed_instructions):
     for instruction in parsed_instructions:
-        print 'int isa_instruction_{}(struct registers *registers, uint8_t *data)\n{{\n\treturn 0;\n}}'.format(instruction['mnemonic'].lower())
+        print 'int isa_instruction_{}(struct isa_instruction *instruction, struct registers *registers, uint8_t *data)\n{{\n\treturn 0;\n}}\n'.format(instruction['mnemonic'].lower())
 
 def parse_input_file(source_path):
     with open(source_path, 'r') as source_file:
