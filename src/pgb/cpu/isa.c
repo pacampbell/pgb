@@ -1,7 +1,11 @@
+#include <errno.h>
 #include <stddef.h>
+
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/registers.h>
+#include <pgb/debug.h>
+#include <pgb/utils.h>
 
 int isa_instruction_nop(struct registers *registers, uint8_t *data)
 {
@@ -984,9 +988,25 @@ int isa_instruction_rst_38h(struct registers *registers, uint8_t *data)
 	return 0;
 }
 
-struct isa_instruction instructions[] = {
-#define SET(MNEMONIC, OPCODE, NUM_BYTES, C0, C1, FLAG_MASK, FLAG_Z, FLAG_N, FLAG_H, FLAG_C, ISA_FUNCTION) \
-	{#MNEMONIC, NULL},
+static
+struct isa_instruction isa_instruction_set[] = {
+#define SET(MNEMONIC, OPCODE, NUM_BYTES, C0, C1, FLAG_MASK, FLAG_Z, FLAG_N, FLAG_H, FLAG_C, IS_PREFIX, ISA_FUNCTION) \
+	{#MNEMONIC, OPCODE, NUM_BYTES, {C0, C1}, {FLAG_MASK, FLAG_Z, FLAG_N, FLAG_H, FLAG_C}, IS_PREFIX, ISA_FUNCTION},
 #include <pgb/cpu/private/isa.def>
 #undef SET
 };
+
+int isa_get_instruction(uint8_t opcode, struct isa_instruction **instruction)
+{
+	unsigned i;
+
+	// XXX: Make lookup faster
+	for (i = 0; i < ARRAY_SIZE(isa_instruction_set); i++) {
+		if (opcode == isa_instruction_set[i].opcode) {
+			*instruction = &isa_instruction_set[i];
+			return 0;
+		}
+	}
+
+	return -EINVAL;
+}

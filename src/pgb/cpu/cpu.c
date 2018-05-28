@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <string.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -9,7 +10,9 @@
 
 #include <pgb/cpu/cpu.h>
 #include <pgb/debug.h>
+#include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/isa.h>
+#include <pgb/cpu/private/prefix_cb.h>
 
 void cpu_init(struct cpu *cpu)
 {
@@ -132,8 +135,66 @@ int fetch(struct cpu *cpu, uint8_t *opcode)
 }
 
 static
-int decode(struct cpu *cpu, uint8_t opcode)
+int decode(struct cpu *cpu, uint8_t opcode, struct isa_instruction **__isa_instruction,
+	   uint8_t *instruction_buffer, size_t size)
 {
+	int ret;
+	struct isa_instruction *isa_instruction;
+	struct registers *registers;
+	struct rom_image *rom_image;
+	size_t num_bytes;
+
+	registers = &cpu->registers;
+	rom_image = &cpu->rom_image;
+
+	if (opcode != LR35902_OPCODE_PREFIX_CB) {
+		ret = isa_get_instruction(opcode, &isa_instruction);
+		OK_OR_RETURN(ret == 0, ret);
+
+		num_bytes = isa_instruction->num_bytes;
+	} else {
+		registers->pc += LR35902_OPCODE_PREFIX_CB_NUM_BYTES;
+		ret = fetch(cpu, &opcode);
+		OK_OR_RETURN(ret == 0, ret);
+
+		ret = isa_prefix_cb_get_instruction(opcode, &isa_instruction);
+		OK_OR_RETURN(ret == 0, ret);
+
+		// XXX: The isa defines this instruction as 2 bytes wide, but that includes the prefix opcode we
+		// XXX: already accounted for.
+		num_bytes = isa_instruction->num_bytes - 1;
+	}
+
+	OK_OR_RETURN(registers->pc + (num_bytes - 1) < rom_image->size, -EINVAL);
+	OK_OR_RETURN(num_bytes <= size, -EINVAL);
+
+	memcpy(instruction_buffer, rom_image->data + registers->pc, num_bytes);
+	registers->pc += num_bytes;
+
+	*__isa_instruction = isa_instruction;
+
+	return 0;
+}
+
+static
+int execute(struct cpu *cpu, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
+{
+	unsigned i;
+	uint16_t immediate = 0;
+	size_t actual_size;
+
+	actual_size = isa_instruction->is_prefix ? size - 1 : size;
+
+	printf("\t%s ", isa_instruction->name);
+	for (i = 1; i < actual_size; i++) {
+		immediate |= instruction_buffer[i] << ((i - 1) * 8);
+	}
+
+	if (actual_size > 1)
+		printf("$%x", immediate);
+
+	printf("\t; %04x \n", cpu->registers.pc - (uint16_t)actual_size);
+
 	return 0;
 }
 
@@ -142,6 +203,8 @@ int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped)
 	int ret;
 	size_t i;
 	uint8_t opcode;
+	uint8_t instruction_buffer[4];
+	struct isa_instruction *isa_instruction;
 
 	OK_OR_RETURN(!cpu_is_halted(cpu), -EINVAL);
 
@@ -149,12 +212,14 @@ int cpu_step(struct cpu *cpu, size_t step, size_t *instructions_stepped)
 		ret = fetch(cpu, &opcode);
 		OK_OR_BREAK(ret == 0);
 
-		ret = decode(cpu, opcode);
+		ret = decode(cpu, opcode, &isa_instruction, instruction_buffer, sizeof(instruction_buffer));
 		OK_OR_BREAK(ret == 0);
 
-		// TODO: EXECUTE
-		// TODO: UPDATE
+		execute(cpu, isa_instruction, instruction_buffer, isa_instruction->num_bytes);
+		OK_OR_BREAK(ret == 0);
 	}
+
+	*instructions_stepped = i;
 
 	return ret;
 }

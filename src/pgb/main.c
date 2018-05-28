@@ -31,10 +31,6 @@ int start_emulating(const char *rom_path)
 	ret = cpu_load_rom_from_file(&cpu, rom_path);
 	OK_OR_RETURN(ret == 0, ret);
 
-	if (IS_DEBUG()) {
-		cpu_dump_register_state(&cpu);
-	}
-
 	num_instructions = 0;
 	do {
 		ret = cpu_step(&cpu, 1, &stepped_instructions);
