@@ -40,6 +40,7 @@ def _parse_operand(mnemonic, operand, position):
         raw_operand = 'NONE'
     if mnemonic == 'PREFIX':
         raw_operand = 'NONE'
+        operand_modifier = 'CB'
     elif raw_operand.isdigit() or is_hex_literal(raw_operand):
         if raw_operand[-1] == 'h':
             if raw_operand[:-1].isdigit():
@@ -50,6 +51,7 @@ def _parse_operand(mnemonic, operand, position):
             if value >= 0 and value <= 7:
                 raw_operand = 'U3'
         else:
+            operand_modifier = raw_operand
             raw_operand = 'VEC'
     elif 'a8' in raw_operand or 'd8' in raw_operand:
         raw_operand = 'N8'
@@ -59,8 +61,6 @@ def _parse_operand(mnemonic, operand, position):
         raw_operand = 'N16'
 
     return raw_operand, operand_modifier
-
-
 
 def parse_operands(mnemonic, operands):
     parts = operands.split(',')
@@ -78,6 +78,37 @@ def parse_operands(mnemonic, operands):
 
 def parse_mnemonic(mnemonic, parts):
     return mnemonic
+
+def create_unique_define(mnemonic, operand_a, operand_b, modifier_a, modifier_b):
+    define_name = mnemonic
+
+    if modifier_a == 'MEM_WRITE_8':
+        memory_modifier = 'W8'
+    elif modifier_a == 'MEM_WRITE_16':
+        memory_modifier = 'W16'
+    elif modifier_b == 'MEM_READ_8':
+        memory_modifier = 'R8'
+    elif modifier_b == 'MEM_READ_16':
+        memory_modifier = 'R16'
+    else:
+        memory_modifier = None
+
+    if memory_modifier is not None:
+        define_name = '{}_{}'.format(define_name, memory_modifier)
+
+    if mnemonic == 'PREFIX':
+        define_name = '{}_{}'.format(define_name, modifier_a)
+
+    if operand_a != 'NONE':
+        if operand_a == 'VEC':
+            define_name = '{}_{}'.format(define_name, modifier_a)
+        else:
+            define_name = '{}_{}'.format(define_name, operand_a)
+
+    if operand_b != 'NONE':
+        define_name = '{}_{}'.format(define_name, operand_b)
+
+    return define_name
 
 def parse_flags(flags_data):
     '''
@@ -126,7 +157,7 @@ def generate_c_header(name, prefix, parsed_instructions):
 
     for instruction in parsed_instructions:
         values = [
-            instruction['mnemonic'],
+            instruction['define_name'],
             instruction['opcode'],
             instruction['num_bytes'],
             instruction['c0'],
@@ -204,9 +235,12 @@ def parse_input_file(source_path):
             c0, c1 = parse_cycle(parts[3])
             flag_z, flag_n, flag_h, flag_c, flag_mask = parse_flags(parts[4:])
 
+        define_name = create_unique_define(mnemonic, operand_a, operand_b, modifier_a, modifier_b)
+
         instruction = {
             'assembly': assembly,
             'mnemonic': mnemonic,
+            'define_name': define_name,
             'opcode': opcode,
             'operand_a': operand_a,
             'operand_b': operand_b,
