@@ -9,7 +9,7 @@ def parse_cycle(cycle_data):
     if len(parts) == 2:
         return int(parts[0]), int(parts[1])
     else:
-        return int(parts[0]), 0
+        return int(parts[0]), int(parts[0])
 
 def is_hex_literal(value):
     if (value[-1] == 'h' or value[-1] == 'H') and value[:-1].isdigit():

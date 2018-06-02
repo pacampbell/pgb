@@ -5,7 +5,7 @@
 #define LR35902_OPCODE_NOP                                                  0x00
 #define LR35902_OPCODE_NOP_NUM_BYTES                                           1
 #define LR35902_OPCODE_NOP_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_NOP_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_NOP_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_NOP_FLAG_MASK                                         0x0
 #define LR35902_OPCODE_NOP_FLAG_Z                                              3
 #define LR35902_OPCODE_NOP_FLAG_N                                              3
@@ -14,7 +14,7 @@
 #define LR35902_OPCODE_LD_BC_N16                                            0x01
 #define LR35902_OPCODE_LD_BC_N16_NUM_BYTES                                     3
 #define LR35902_OPCODE_LD_BC_N16_NUM_CYCLES_C0                                12
-#define LR35902_OPCODE_LD_BC_N16_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_BC_N16_NUM_CYCLES_C1                                12
 #define LR35902_OPCODE_LD_BC_N16_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_BC_N16_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_BC_N16_FLAG_N                                        3
@@ -23,7 +23,7 @@
 #define LR35902_OPCODE_LD_W16_BC_A                                          0x02
 #define LR35902_OPCODE_LD_W16_BC_A_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_BC_A_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_BC_A_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_BC_A_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_BC_A_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_BC_A_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_BC_A_FLAG_N                                      3
@@ -32,7 +32,7 @@
 #define LR35902_OPCODE_INC_BC                                               0x03
 #define LR35902_OPCODE_INC_BC_NUM_BYTES                                        1
 #define LR35902_OPCODE_INC_BC_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_INC_BC_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_INC_BC_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_INC_BC_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_INC_BC_FLAG_Z                                           3
 #define LR35902_OPCODE_INC_BC_FLAG_N                                           3
@@ -41,7 +41,7 @@
 #define LR35902_OPCODE_INC_B                                                0x04
 #define LR35902_OPCODE_INC_B_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_B_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_B_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_B_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_B_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_B_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_B_FLAG_N                                            0
@@ -50,7 +50,7 @@
 #define LR35902_OPCODE_DEC_B                                                0x05
 #define LR35902_OPCODE_DEC_B_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_B_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_B_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_B_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_B_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_B_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_B_FLAG_N                                            1
@@ -59,7 +59,7 @@
 #define LR35902_OPCODE_LD_B_N8                                              0x06
 #define LR35902_OPCODE_LD_B_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_B_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_B_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_B_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_B_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_B_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_B_N8_FLAG_N                                          3
@@ -68,7 +68,7 @@
 #define LR35902_OPCODE_RLCA                                                 0x07
 #define LR35902_OPCODE_RLCA_NUM_BYTES                                          1
 #define LR35902_OPCODE_RLCA_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_RLCA_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_RLCA_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_RLCA_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_RLCA_FLAG_Z                                             0
 #define LR35902_OPCODE_RLCA_FLAG_N                                             0
@@ -77,7 +77,7 @@
 #define LR35902_OPCODE_LD_W16_N16_SP                                        0x08
 #define LR35902_OPCODE_LD_W16_N16_SP_NUM_BYTES                                 3
 #define LR35902_OPCODE_LD_W16_N16_SP_NUM_CYCLES_C0                            20
-#define LR35902_OPCODE_LD_W16_N16_SP_NUM_CYCLES_C1                             0
+#define LR35902_OPCODE_LD_W16_N16_SP_NUM_CYCLES_C1                            20
 #define LR35902_OPCODE_LD_W16_N16_SP_FLAG_MASK                               0x0
 #define LR35902_OPCODE_LD_W16_N16_SP_FLAG_Z                                    3
 #define LR35902_OPCODE_LD_W16_N16_SP_FLAG_N                                    3
@@ -86,7 +86,7 @@
 #define LR35902_OPCODE_ADD_HL_BC                                            0x09
 #define LR35902_OPCODE_ADD_HL_BC_NUM_BYTES                                     1
 #define LR35902_OPCODE_ADD_HL_BC_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_ADD_HL_BC_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_ADD_HL_BC_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_ADD_HL_BC_FLAG_MASK                                   0x7
 #define LR35902_OPCODE_ADD_HL_BC_FLAG_Z                                        3
 #define LR35902_OPCODE_ADD_HL_BC_FLAG_N                                        0
@@ -95,7 +95,7 @@
 #define LR35902_OPCODE_LD_R16_A_BC                                          0x0a
 #define LR35902_OPCODE_LD_R16_A_BC_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_A_BC_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_A_BC_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_A_BC_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_A_BC_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_A_BC_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_A_BC_FLAG_N                                      3
@@ -104,7 +104,7 @@
 #define LR35902_OPCODE_DEC_BC                                               0x0b
 #define LR35902_OPCODE_DEC_BC_NUM_BYTES                                        1
 #define LR35902_OPCODE_DEC_BC_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_DEC_BC_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_DEC_BC_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_DEC_BC_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_DEC_BC_FLAG_Z                                           3
 #define LR35902_OPCODE_DEC_BC_FLAG_N                                           3
@@ -113,7 +113,7 @@
 #define LR35902_OPCODE_INC_C                                                0x0c
 #define LR35902_OPCODE_INC_C_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_C_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_C_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_C_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_C_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_C_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_C_FLAG_N                                            0
@@ -122,7 +122,7 @@
 #define LR35902_OPCODE_DEC_C                                                0x0d
 #define LR35902_OPCODE_DEC_C_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_C_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_C_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_C_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_C_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_C_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_C_FLAG_N                                            1
@@ -131,7 +131,7 @@
 #define LR35902_OPCODE_LD_C_N8                                              0x0e
 #define LR35902_OPCODE_LD_C_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_C_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_C_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_C_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_C_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_C_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_C_N8_FLAG_N                                          3
@@ -140,7 +140,7 @@
 #define LR35902_OPCODE_RRCA                                                 0x0f
 #define LR35902_OPCODE_RRCA_NUM_BYTES                                          1
 #define LR35902_OPCODE_RRCA_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_RRCA_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_RRCA_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_RRCA_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_RRCA_FLAG_Z                                             0
 #define LR35902_OPCODE_RRCA_FLAG_N                                             0
@@ -149,7 +149,7 @@
 #define LR35902_OPCODE_STOP                                                 0x10
 #define LR35902_OPCODE_STOP_NUM_BYTES                                          2
 #define LR35902_OPCODE_STOP_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_STOP_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_STOP_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_STOP_FLAG_MASK                                        0x0
 #define LR35902_OPCODE_STOP_FLAG_Z                                             3
 #define LR35902_OPCODE_STOP_FLAG_N                                             3
@@ -158,7 +158,7 @@
 #define LR35902_OPCODE_LD_DE_N16                                            0x11
 #define LR35902_OPCODE_LD_DE_N16_NUM_BYTES                                     3
 #define LR35902_OPCODE_LD_DE_N16_NUM_CYCLES_C0                                12
-#define LR35902_OPCODE_LD_DE_N16_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_DE_N16_NUM_CYCLES_C1                                12
 #define LR35902_OPCODE_LD_DE_N16_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_DE_N16_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_DE_N16_FLAG_N                                        3
@@ -167,7 +167,7 @@
 #define LR35902_OPCODE_LD_W16_DE_A                                          0x12
 #define LR35902_OPCODE_LD_W16_DE_A_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_DE_A_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_DE_A_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_DE_A_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_DE_A_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_DE_A_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_DE_A_FLAG_N                                      3
@@ -176,7 +176,7 @@
 #define LR35902_OPCODE_INC_DE                                               0x13
 #define LR35902_OPCODE_INC_DE_NUM_BYTES                                        1
 #define LR35902_OPCODE_INC_DE_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_INC_DE_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_INC_DE_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_INC_DE_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_INC_DE_FLAG_Z                                           3
 #define LR35902_OPCODE_INC_DE_FLAG_N                                           3
@@ -185,7 +185,7 @@
 #define LR35902_OPCODE_INC_D                                                0x14
 #define LR35902_OPCODE_INC_D_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_D_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_D_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_D_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_D_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_D_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_D_FLAG_N                                            0
@@ -194,7 +194,7 @@
 #define LR35902_OPCODE_DEC_D                                                0x15
 #define LR35902_OPCODE_DEC_D_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_D_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_D_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_D_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_D_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_D_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_D_FLAG_N                                            1
@@ -203,7 +203,7 @@
 #define LR35902_OPCODE_LD_D_N8                                              0x16
 #define LR35902_OPCODE_LD_D_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_D_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_D_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_D_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_D_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_D_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_D_N8_FLAG_N                                          3
@@ -212,7 +212,7 @@
 #define LR35902_OPCODE_RLA                                                  0x17
 #define LR35902_OPCODE_RLA_NUM_BYTES                                           1
 #define LR35902_OPCODE_RLA_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_RLA_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_RLA_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_RLA_FLAG_MASK                                         0xf
 #define LR35902_OPCODE_RLA_FLAG_Z                                              0
 #define LR35902_OPCODE_RLA_FLAG_N                                              0
@@ -221,7 +221,7 @@
 #define LR35902_OPCODE_JR_E8                                                0x18
 #define LR35902_OPCODE_JR_E8_NUM_BYTES                                         2
 #define LR35902_OPCODE_JR_E8_NUM_CYCLES_C0                                    12
-#define LR35902_OPCODE_JR_E8_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_JR_E8_NUM_CYCLES_C1                                    12
 #define LR35902_OPCODE_JR_E8_FLAG_MASK                                       0x0
 #define LR35902_OPCODE_JR_E8_FLAG_Z                                            3
 #define LR35902_OPCODE_JR_E8_FLAG_N                                            3
@@ -230,7 +230,7 @@
 #define LR35902_OPCODE_ADD_HL_DE                                            0x19
 #define LR35902_OPCODE_ADD_HL_DE_NUM_BYTES                                     1
 #define LR35902_OPCODE_ADD_HL_DE_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_ADD_HL_DE_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_ADD_HL_DE_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_ADD_HL_DE_FLAG_MASK                                   0x7
 #define LR35902_OPCODE_ADD_HL_DE_FLAG_Z                                        3
 #define LR35902_OPCODE_ADD_HL_DE_FLAG_N                                        0
@@ -239,7 +239,7 @@
 #define LR35902_OPCODE_LD_R16_A_DE                                          0x1a
 #define LR35902_OPCODE_LD_R16_A_DE_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_A_DE_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_A_DE_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_A_DE_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_A_DE_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_A_DE_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_A_DE_FLAG_N                                      3
@@ -248,7 +248,7 @@
 #define LR35902_OPCODE_DEC_DE                                               0x1b
 #define LR35902_OPCODE_DEC_DE_NUM_BYTES                                        1
 #define LR35902_OPCODE_DEC_DE_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_DEC_DE_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_DEC_DE_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_DEC_DE_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_DEC_DE_FLAG_Z                                           3
 #define LR35902_OPCODE_DEC_DE_FLAG_N                                           3
@@ -257,7 +257,7 @@
 #define LR35902_OPCODE_INC_E                                                0x1c
 #define LR35902_OPCODE_INC_E_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_E_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_E_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_E_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_E_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_E_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_E_FLAG_N                                            0
@@ -266,7 +266,7 @@
 #define LR35902_OPCODE_DEC_E                                                0x1d
 #define LR35902_OPCODE_DEC_E_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_E_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_E_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_E_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_E_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_E_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_E_FLAG_N                                            1
@@ -275,7 +275,7 @@
 #define LR35902_OPCODE_LD_E_N8                                              0x1e
 #define LR35902_OPCODE_LD_E_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_E_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_E_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_E_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_E_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_E_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_E_N8_FLAG_N                                          3
@@ -284,7 +284,7 @@
 #define LR35902_OPCODE_RRA                                                  0x1f
 #define LR35902_OPCODE_RRA_NUM_BYTES                                           1
 #define LR35902_OPCODE_RRA_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_RRA_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_RRA_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_RRA_FLAG_MASK                                         0xf
 #define LR35902_OPCODE_RRA_FLAG_Z                                              0
 #define LR35902_OPCODE_RRA_FLAG_N                                              0
@@ -302,7 +302,7 @@
 #define LR35902_OPCODE_LD_HL_N16                                            0x21
 #define LR35902_OPCODE_LD_HL_N16_NUM_BYTES                                     3
 #define LR35902_OPCODE_LD_HL_N16_NUM_CYCLES_C0                                12
-#define LR35902_OPCODE_LD_HL_N16_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_HL_N16_NUM_CYCLES_C1                                12
 #define LR35902_OPCODE_LD_HL_N16_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_HL_N16_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_HL_N16_FLAG_N                                        3
@@ -311,7 +311,7 @@
 #define LR35902_OPCODE_LDI_W16_HL_A                                         0x22
 #define LR35902_OPCODE_LDI_W16_HL_A_NUM_BYTES                                  1
 #define LR35902_OPCODE_LDI_W16_HL_A_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_LDI_W16_HL_A_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LDI_W16_HL_A_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_LDI_W16_HL_A_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LDI_W16_HL_A_FLAG_Z                                     3
 #define LR35902_OPCODE_LDI_W16_HL_A_FLAG_N                                     3
@@ -320,7 +320,7 @@
 #define LR35902_OPCODE_INC_HL                                               0x23
 #define LR35902_OPCODE_INC_HL_NUM_BYTES                                        1
 #define LR35902_OPCODE_INC_HL_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_INC_HL_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_INC_HL_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_INC_HL_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_INC_HL_FLAG_Z                                           3
 #define LR35902_OPCODE_INC_HL_FLAG_N                                           3
@@ -329,7 +329,7 @@
 #define LR35902_OPCODE_INC_H                                                0x24
 #define LR35902_OPCODE_INC_H_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_H_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_H_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_H_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_H_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_H_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_H_FLAG_N                                            0
@@ -338,7 +338,7 @@
 #define LR35902_OPCODE_DEC_H                                                0x25
 #define LR35902_OPCODE_DEC_H_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_H_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_H_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_H_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_H_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_H_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_H_FLAG_N                                            1
@@ -347,7 +347,7 @@
 #define LR35902_OPCODE_LD_H_N8                                              0x26
 #define LR35902_OPCODE_LD_H_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_H_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_H_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_H_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_H_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_H_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_H_N8_FLAG_N                                          3
@@ -356,7 +356,7 @@
 #define LR35902_OPCODE_DAA                                                  0x27
 #define LR35902_OPCODE_DAA_NUM_BYTES                                           1
 #define LR35902_OPCODE_DAA_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_DAA_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_DAA_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_DAA_FLAG_MASK                                         0xb
 #define LR35902_OPCODE_DAA_FLAG_Z                                              2
 #define LR35902_OPCODE_DAA_FLAG_N                                              3
@@ -374,7 +374,7 @@
 #define LR35902_OPCODE_ADD_HL_HL                                            0x29
 #define LR35902_OPCODE_ADD_HL_HL_NUM_BYTES                                     1
 #define LR35902_OPCODE_ADD_HL_HL_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_ADD_HL_HL_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_ADD_HL_HL_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_ADD_HL_HL_FLAG_MASK                                   0x7
 #define LR35902_OPCODE_ADD_HL_HL_FLAG_Z                                        3
 #define LR35902_OPCODE_ADD_HL_HL_FLAG_N                                        0
@@ -383,7 +383,7 @@
 #define LR35902_OPCODE_LDI_R16_A_HL                                         0x2a
 #define LR35902_OPCODE_LDI_R16_A_HL_NUM_BYTES                                  1
 #define LR35902_OPCODE_LDI_R16_A_HL_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_LDI_R16_A_HL_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LDI_R16_A_HL_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_LDI_R16_A_HL_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LDI_R16_A_HL_FLAG_Z                                     3
 #define LR35902_OPCODE_LDI_R16_A_HL_FLAG_N                                     3
@@ -392,7 +392,7 @@
 #define LR35902_OPCODE_DEC_HL                                               0x2b
 #define LR35902_OPCODE_DEC_HL_NUM_BYTES                                        1
 #define LR35902_OPCODE_DEC_HL_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_DEC_HL_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_DEC_HL_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_DEC_HL_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_DEC_HL_FLAG_Z                                           3
 #define LR35902_OPCODE_DEC_HL_FLAG_N                                           3
@@ -401,7 +401,7 @@
 #define LR35902_OPCODE_INC_L                                                0x2c
 #define LR35902_OPCODE_INC_L_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_L_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_L_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_L_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_L_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_L_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_L_FLAG_N                                            0
@@ -410,7 +410,7 @@
 #define LR35902_OPCODE_DEC_L                                                0x2d
 #define LR35902_OPCODE_DEC_L_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_L_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_L_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_L_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_L_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_L_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_L_FLAG_N                                            1
@@ -419,7 +419,7 @@
 #define LR35902_OPCODE_LD_L_N8                                              0x2e
 #define LR35902_OPCODE_LD_L_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_L_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_L_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_L_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_L_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_L_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_L_N8_FLAG_N                                          3
@@ -428,7 +428,7 @@
 #define LR35902_OPCODE_CPL                                                  0x2f
 #define LR35902_OPCODE_CPL_NUM_BYTES                                           1
 #define LR35902_OPCODE_CPL_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_CPL_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_CPL_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_CPL_FLAG_MASK                                         0x6
 #define LR35902_OPCODE_CPL_FLAG_Z                                              3
 #define LR35902_OPCODE_CPL_FLAG_N                                              1
@@ -446,7 +446,7 @@
 #define LR35902_OPCODE_LD_SP_N16                                            0x31
 #define LR35902_OPCODE_LD_SP_N16_NUM_BYTES                                     3
 #define LR35902_OPCODE_LD_SP_N16_NUM_CYCLES_C0                                12
-#define LR35902_OPCODE_LD_SP_N16_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_SP_N16_NUM_CYCLES_C1                                12
 #define LR35902_OPCODE_LD_SP_N16_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_SP_N16_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_SP_N16_FLAG_N                                        3
@@ -455,7 +455,7 @@
 #define LR35902_OPCODE_LDD_W16_HL_A                                         0x32
 #define LR35902_OPCODE_LDD_W16_HL_A_NUM_BYTES                                  1
 #define LR35902_OPCODE_LDD_W16_HL_A_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_LDD_W16_HL_A_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LDD_W16_HL_A_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_LDD_W16_HL_A_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LDD_W16_HL_A_FLAG_Z                                     3
 #define LR35902_OPCODE_LDD_W16_HL_A_FLAG_N                                     3
@@ -464,7 +464,7 @@
 #define LR35902_OPCODE_INC_SP                                               0x33
 #define LR35902_OPCODE_INC_SP_NUM_BYTES                                        1
 #define LR35902_OPCODE_INC_SP_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_INC_SP_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_INC_SP_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_INC_SP_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_INC_SP_FLAG_Z                                           3
 #define LR35902_OPCODE_INC_SP_FLAG_N                                           3
@@ -473,7 +473,7 @@
 #define LR35902_OPCODE_INC_W16_HL                                           0x34
 #define LR35902_OPCODE_INC_W16_HL_NUM_BYTES                                    1
 #define LR35902_OPCODE_INC_W16_HL_NUM_CYCLES_C0                               12
-#define LR35902_OPCODE_INC_W16_HL_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_INC_W16_HL_NUM_CYCLES_C1                               12
 #define LR35902_OPCODE_INC_W16_HL_FLAG_MASK                                  0xe
 #define LR35902_OPCODE_INC_W16_HL_FLAG_Z                                       2
 #define LR35902_OPCODE_INC_W16_HL_FLAG_N                                       0
@@ -482,7 +482,7 @@
 #define LR35902_OPCODE_DEC_W16_HL                                           0x35
 #define LR35902_OPCODE_DEC_W16_HL_NUM_BYTES                                    1
 #define LR35902_OPCODE_DEC_W16_HL_NUM_CYCLES_C0                               12
-#define LR35902_OPCODE_DEC_W16_HL_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_DEC_W16_HL_NUM_CYCLES_C1                               12
 #define LR35902_OPCODE_DEC_W16_HL_FLAG_MASK                                  0xe
 #define LR35902_OPCODE_DEC_W16_HL_FLAG_Z                                       2
 #define LR35902_OPCODE_DEC_W16_HL_FLAG_N                                       1
@@ -491,7 +491,7 @@
 #define LR35902_OPCODE_LD_W16_HL_N8                                         0x36
 #define LR35902_OPCODE_LD_W16_HL_N8_NUM_BYTES                                  2
 #define LR35902_OPCODE_LD_W16_HL_N8_NUM_CYCLES_C0                             12
-#define LR35902_OPCODE_LD_W16_HL_N8_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LD_W16_HL_N8_NUM_CYCLES_C1                             12
 #define LR35902_OPCODE_LD_W16_HL_N8_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LD_W16_HL_N8_FLAG_Z                                     3
 #define LR35902_OPCODE_LD_W16_HL_N8_FLAG_N                                     3
@@ -500,7 +500,7 @@
 #define LR35902_OPCODE_SCF                                                  0x37
 #define LR35902_OPCODE_SCF_NUM_BYTES                                           1
 #define LR35902_OPCODE_SCF_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_SCF_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_SCF_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_SCF_FLAG_MASK                                         0x7
 #define LR35902_OPCODE_SCF_FLAG_Z                                              3
 #define LR35902_OPCODE_SCF_FLAG_N                                              0
@@ -518,7 +518,7 @@
 #define LR35902_OPCODE_ADD_HL_SP                                            0x39
 #define LR35902_OPCODE_ADD_HL_SP_NUM_BYTES                                     1
 #define LR35902_OPCODE_ADD_HL_SP_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_ADD_HL_SP_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_ADD_HL_SP_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_ADD_HL_SP_FLAG_MASK                                   0x7
 #define LR35902_OPCODE_ADD_HL_SP_FLAG_Z                                        3
 #define LR35902_OPCODE_ADD_HL_SP_FLAG_N                                        0
@@ -527,7 +527,7 @@
 #define LR35902_OPCODE_LDD_R16_A_HL                                         0x3a
 #define LR35902_OPCODE_LDD_R16_A_HL_NUM_BYTES                                  1
 #define LR35902_OPCODE_LDD_R16_A_HL_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_LDD_R16_A_HL_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LDD_R16_A_HL_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_LDD_R16_A_HL_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LDD_R16_A_HL_FLAG_Z                                     3
 #define LR35902_OPCODE_LDD_R16_A_HL_FLAG_N                                     3
@@ -536,7 +536,7 @@
 #define LR35902_OPCODE_DEC_SP                                               0x3b
 #define LR35902_OPCODE_DEC_SP_NUM_BYTES                                        1
 #define LR35902_OPCODE_DEC_SP_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_DEC_SP_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_DEC_SP_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_DEC_SP_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_DEC_SP_FLAG_Z                                           3
 #define LR35902_OPCODE_DEC_SP_FLAG_N                                           3
@@ -545,7 +545,7 @@
 #define LR35902_OPCODE_INC_A                                                0x3c
 #define LR35902_OPCODE_INC_A_NUM_BYTES                                         1
 #define LR35902_OPCODE_INC_A_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_INC_A_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_INC_A_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_INC_A_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_INC_A_FLAG_Z                                            2
 #define LR35902_OPCODE_INC_A_FLAG_N                                            0
@@ -554,7 +554,7 @@
 #define LR35902_OPCODE_DEC_A                                                0x3d
 #define LR35902_OPCODE_DEC_A_NUM_BYTES                                         1
 #define LR35902_OPCODE_DEC_A_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_DEC_A_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_DEC_A_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_DEC_A_FLAG_MASK                                       0xe
 #define LR35902_OPCODE_DEC_A_FLAG_Z                                            2
 #define LR35902_OPCODE_DEC_A_FLAG_N                                            1
@@ -563,7 +563,7 @@
 #define LR35902_OPCODE_LD_A_N8                                              0x3e
 #define LR35902_OPCODE_LD_A_N8_NUM_BYTES                                       2
 #define LR35902_OPCODE_LD_A_N8_NUM_CYCLES_C0                                   8
-#define LR35902_OPCODE_LD_A_N8_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_LD_A_N8_NUM_CYCLES_C1                                   8
 #define LR35902_OPCODE_LD_A_N8_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_LD_A_N8_FLAG_Z                                          3
 #define LR35902_OPCODE_LD_A_N8_FLAG_N                                          3
@@ -572,7 +572,7 @@
 #define LR35902_OPCODE_CCF                                                  0x3f
 #define LR35902_OPCODE_CCF_NUM_BYTES                                           1
 #define LR35902_OPCODE_CCF_NUM_CYCLES_C0                                       4
-#define LR35902_OPCODE_CCF_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_CCF_NUM_CYCLES_C1                                       4
 #define LR35902_OPCODE_CCF_FLAG_MASK                                         0x7
 #define LR35902_OPCODE_CCF_FLAG_Z                                              3
 #define LR35902_OPCODE_CCF_FLAG_N                                              0
@@ -581,7 +581,7 @@
 #define LR35902_OPCODE_LD_B_B                                               0x40
 #define LR35902_OPCODE_LD_B_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_B_FLAG_N                                           3
@@ -590,7 +590,7 @@
 #define LR35902_OPCODE_LD_B_C                                               0x41
 #define LR35902_OPCODE_LD_B_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_C_FLAG_N                                           3
@@ -599,7 +599,7 @@
 #define LR35902_OPCODE_LD_B_D                                               0x42
 #define LR35902_OPCODE_LD_B_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_D_FLAG_N                                           3
@@ -608,7 +608,7 @@
 #define LR35902_OPCODE_LD_B_E                                               0x43
 #define LR35902_OPCODE_LD_B_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_E_FLAG_N                                           3
@@ -617,7 +617,7 @@
 #define LR35902_OPCODE_LD_B_H                                               0x44
 #define LR35902_OPCODE_LD_B_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_H_FLAG_N                                           3
@@ -626,7 +626,7 @@
 #define LR35902_OPCODE_LD_B_L                                               0x45
 #define LR35902_OPCODE_LD_B_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_L_FLAG_N                                           3
@@ -635,7 +635,7 @@
 #define LR35902_OPCODE_LD_R16_B_HL                                          0x46
 #define LR35902_OPCODE_LD_R16_B_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_B_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_B_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_B_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_B_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_B_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_B_HL_FLAG_N                                      3
@@ -644,7 +644,7 @@
 #define LR35902_OPCODE_LD_B_A                                               0x47
 #define LR35902_OPCODE_LD_B_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_B_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_B_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_B_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_B_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_B_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_B_A_FLAG_N                                           3
@@ -653,7 +653,7 @@
 #define LR35902_OPCODE_LD_C_B                                               0x48
 #define LR35902_OPCODE_LD_C_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_B_FLAG_N                                           3
@@ -662,7 +662,7 @@
 #define LR35902_OPCODE_LD_C_C                                               0x49
 #define LR35902_OPCODE_LD_C_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_C_FLAG_N                                           3
@@ -671,7 +671,7 @@
 #define LR35902_OPCODE_LD_C_D                                               0x4a
 #define LR35902_OPCODE_LD_C_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_D_FLAG_N                                           3
@@ -680,7 +680,7 @@
 #define LR35902_OPCODE_LD_C_E                                               0x4b
 #define LR35902_OPCODE_LD_C_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_E_FLAG_N                                           3
@@ -689,7 +689,7 @@
 #define LR35902_OPCODE_LD_C_H                                               0x4c
 #define LR35902_OPCODE_LD_C_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_H_FLAG_N                                           3
@@ -698,7 +698,7 @@
 #define LR35902_OPCODE_LD_C_L                                               0x4d
 #define LR35902_OPCODE_LD_C_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_L_FLAG_N                                           3
@@ -707,7 +707,7 @@
 #define LR35902_OPCODE_LD_R16_C_HL                                          0x4e
 #define LR35902_OPCODE_LD_R16_C_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_C_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_C_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_C_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_C_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_C_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_C_HL_FLAG_N                                      3
@@ -716,7 +716,7 @@
 #define LR35902_OPCODE_LD_C_A                                               0x4f
 #define LR35902_OPCODE_LD_C_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_C_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_C_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_C_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_C_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_C_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_C_A_FLAG_N                                           3
@@ -725,7 +725,7 @@
 #define LR35902_OPCODE_LD_D_B                                               0x50
 #define LR35902_OPCODE_LD_D_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_B_FLAG_N                                           3
@@ -734,7 +734,7 @@
 #define LR35902_OPCODE_LD_D_C                                               0x51
 #define LR35902_OPCODE_LD_D_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_C_FLAG_N                                           3
@@ -743,7 +743,7 @@
 #define LR35902_OPCODE_LD_D_D                                               0x52
 #define LR35902_OPCODE_LD_D_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_D_FLAG_N                                           3
@@ -752,7 +752,7 @@
 #define LR35902_OPCODE_LD_D_E                                               0x53
 #define LR35902_OPCODE_LD_D_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_E_FLAG_N                                           3
@@ -761,7 +761,7 @@
 #define LR35902_OPCODE_LD_D_H                                               0x54
 #define LR35902_OPCODE_LD_D_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_H_FLAG_N                                           3
@@ -770,7 +770,7 @@
 #define LR35902_OPCODE_LD_D_L                                               0x55
 #define LR35902_OPCODE_LD_D_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_L_FLAG_N                                           3
@@ -779,7 +779,7 @@
 #define LR35902_OPCODE_LD_R16_D_HL                                          0x56
 #define LR35902_OPCODE_LD_R16_D_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_D_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_D_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_D_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_D_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_D_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_D_HL_FLAG_N                                      3
@@ -788,7 +788,7 @@
 #define LR35902_OPCODE_LD_D_A                                               0x57
 #define LR35902_OPCODE_LD_D_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_D_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_D_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_D_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_D_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_D_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_D_A_FLAG_N                                           3
@@ -797,7 +797,7 @@
 #define LR35902_OPCODE_LD_E_B                                               0x58
 #define LR35902_OPCODE_LD_E_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_B_FLAG_N                                           3
@@ -806,7 +806,7 @@
 #define LR35902_OPCODE_LD_E_C                                               0x59
 #define LR35902_OPCODE_LD_E_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_C_FLAG_N                                           3
@@ -815,7 +815,7 @@
 #define LR35902_OPCODE_LD_E_D                                               0x5a
 #define LR35902_OPCODE_LD_E_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_D_FLAG_N                                           3
@@ -824,7 +824,7 @@
 #define LR35902_OPCODE_LD_E_E                                               0x5b
 #define LR35902_OPCODE_LD_E_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_E_FLAG_N                                           3
@@ -833,7 +833,7 @@
 #define LR35902_OPCODE_LD_E_H                                               0x5c
 #define LR35902_OPCODE_LD_E_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_H_FLAG_N                                           3
@@ -842,7 +842,7 @@
 #define LR35902_OPCODE_LD_E_L                                               0x5d
 #define LR35902_OPCODE_LD_E_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_L_FLAG_N                                           3
@@ -851,7 +851,7 @@
 #define LR35902_OPCODE_LD_R16_E_HL                                          0x5e
 #define LR35902_OPCODE_LD_R16_E_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_E_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_E_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_E_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_E_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_E_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_E_HL_FLAG_N                                      3
@@ -860,7 +860,7 @@
 #define LR35902_OPCODE_LD_E_A                                               0x5f
 #define LR35902_OPCODE_LD_E_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_E_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_E_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_E_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_E_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_E_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_E_A_FLAG_N                                           3
@@ -869,7 +869,7 @@
 #define LR35902_OPCODE_LD_H_B                                               0x60
 #define LR35902_OPCODE_LD_H_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_B_FLAG_N                                           3
@@ -878,7 +878,7 @@
 #define LR35902_OPCODE_LD_H_C                                               0x61
 #define LR35902_OPCODE_LD_H_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_C_FLAG_N                                           3
@@ -887,7 +887,7 @@
 #define LR35902_OPCODE_LD_H_D                                               0x62
 #define LR35902_OPCODE_LD_H_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_D_FLAG_N                                           3
@@ -896,7 +896,7 @@
 #define LR35902_OPCODE_LD_H_E                                               0x63
 #define LR35902_OPCODE_LD_H_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_E_FLAG_N                                           3
@@ -905,7 +905,7 @@
 #define LR35902_OPCODE_LD_H_H                                               0x64
 #define LR35902_OPCODE_LD_H_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_H_FLAG_N                                           3
@@ -914,7 +914,7 @@
 #define LR35902_OPCODE_LD_H_L                                               0x65
 #define LR35902_OPCODE_LD_H_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_L_FLAG_N                                           3
@@ -923,7 +923,7 @@
 #define LR35902_OPCODE_LD_R16_H_HL                                          0x66
 #define LR35902_OPCODE_LD_R16_H_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_H_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_H_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_H_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_H_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_H_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_H_HL_FLAG_N                                      3
@@ -932,7 +932,7 @@
 #define LR35902_OPCODE_LD_H_A                                               0x67
 #define LR35902_OPCODE_LD_H_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_H_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_H_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_H_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_H_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_H_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_H_A_FLAG_N                                           3
@@ -941,7 +941,7 @@
 #define LR35902_OPCODE_LD_L_B                                               0x68
 #define LR35902_OPCODE_LD_L_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_B_FLAG_N                                           3
@@ -950,7 +950,7 @@
 #define LR35902_OPCODE_LD_L_C                                               0x69
 #define LR35902_OPCODE_LD_L_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_C_FLAG_N                                           3
@@ -959,7 +959,7 @@
 #define LR35902_OPCODE_LD_L_D                                               0x6a
 #define LR35902_OPCODE_LD_L_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_D_FLAG_N                                           3
@@ -968,7 +968,7 @@
 #define LR35902_OPCODE_LD_L_E                                               0x6b
 #define LR35902_OPCODE_LD_L_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_E_FLAG_N                                           3
@@ -977,7 +977,7 @@
 #define LR35902_OPCODE_LD_L_H                                               0x6c
 #define LR35902_OPCODE_LD_L_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_H_FLAG_N                                           3
@@ -986,7 +986,7 @@
 #define LR35902_OPCODE_LD_L_L                                               0x6d
 #define LR35902_OPCODE_LD_L_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_L_FLAG_N                                           3
@@ -995,7 +995,7 @@
 #define LR35902_OPCODE_LD_R16_L_HL                                          0x6e
 #define LR35902_OPCODE_LD_R16_L_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_L_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_L_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_L_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_L_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_L_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_L_HL_FLAG_N                                      3
@@ -1004,7 +1004,7 @@
 #define LR35902_OPCODE_LD_L_A                                               0x6f
 #define LR35902_OPCODE_LD_L_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_L_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_L_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_L_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_L_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_L_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_L_A_FLAG_N                                           3
@@ -1013,7 +1013,7 @@
 #define LR35902_OPCODE_LD_W16_HL_B                                          0x70
 #define LR35902_OPCODE_LD_W16_HL_B_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_B_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_B_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_B_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_B_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_B_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_B_FLAG_N                                      3
@@ -1022,7 +1022,7 @@
 #define LR35902_OPCODE_LD_W16_HL_C                                          0x71
 #define LR35902_OPCODE_LD_W16_HL_C_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_C_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_C_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_C_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_C_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_C_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_C_FLAG_N                                      3
@@ -1031,7 +1031,7 @@
 #define LR35902_OPCODE_LD_W16_HL_D                                          0x72
 #define LR35902_OPCODE_LD_W16_HL_D_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_D_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_D_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_D_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_D_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_D_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_D_FLAG_N                                      3
@@ -1040,7 +1040,7 @@
 #define LR35902_OPCODE_LD_W16_HL_E                                          0x73
 #define LR35902_OPCODE_LD_W16_HL_E_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_E_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_E_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_E_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_E_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_E_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_E_FLAG_N                                      3
@@ -1049,7 +1049,7 @@
 #define LR35902_OPCODE_LD_W16_HL_H                                          0x74
 #define LR35902_OPCODE_LD_W16_HL_H_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_H_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_H_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_H_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_H_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_H_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_H_FLAG_N                                      3
@@ -1058,7 +1058,7 @@
 #define LR35902_OPCODE_LD_W16_HL_L                                          0x75
 #define LR35902_OPCODE_LD_W16_HL_L_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_L_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_L_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_L_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_L_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_L_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_L_FLAG_N                                      3
@@ -1067,7 +1067,7 @@
 #define LR35902_OPCODE_HALT                                                 0x76
 #define LR35902_OPCODE_HALT_NUM_BYTES                                          1
 #define LR35902_OPCODE_HALT_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_HALT_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_HALT_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_HALT_FLAG_MASK                                        0x0
 #define LR35902_OPCODE_HALT_FLAG_Z                                             3
 #define LR35902_OPCODE_HALT_FLAG_N                                             3
@@ -1076,7 +1076,7 @@
 #define LR35902_OPCODE_LD_W16_HL_A                                          0x77
 #define LR35902_OPCODE_LD_W16_HL_A_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_W16_HL_A_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_W16_HL_A_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_W16_HL_A_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_W16_HL_A_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_W16_HL_A_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_W16_HL_A_FLAG_N                                      3
@@ -1085,7 +1085,7 @@
 #define LR35902_OPCODE_LD_A_B                                               0x78
 #define LR35902_OPCODE_LD_A_B_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_B_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_B_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_B_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_B_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_B_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_B_FLAG_N                                           3
@@ -1094,7 +1094,7 @@
 #define LR35902_OPCODE_LD_A_C                                               0x79
 #define LR35902_OPCODE_LD_A_C_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_C_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_C_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_C_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_C_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_C_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_C_FLAG_N                                           3
@@ -1103,7 +1103,7 @@
 #define LR35902_OPCODE_LD_A_D                                               0x7a
 #define LR35902_OPCODE_LD_A_D_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_D_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_D_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_D_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_D_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_D_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_D_FLAG_N                                           3
@@ -1112,7 +1112,7 @@
 #define LR35902_OPCODE_LD_A_E                                               0x7b
 #define LR35902_OPCODE_LD_A_E_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_E_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_E_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_E_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_E_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_E_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_E_FLAG_N                                           3
@@ -1121,7 +1121,7 @@
 #define LR35902_OPCODE_LD_A_H                                               0x7c
 #define LR35902_OPCODE_LD_A_H_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_H_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_H_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_H_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_H_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_H_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_H_FLAG_N                                           3
@@ -1130,7 +1130,7 @@
 #define LR35902_OPCODE_LD_A_L                                               0x7d
 #define LR35902_OPCODE_LD_A_L_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_L_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_L_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_L_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_L_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_L_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_L_FLAG_N                                           3
@@ -1139,7 +1139,7 @@
 #define LR35902_OPCODE_LD_R16_A_HL                                          0x7e
 #define LR35902_OPCODE_LD_R16_A_HL_NUM_BYTES                                   1
 #define LR35902_OPCODE_LD_R16_A_HL_NUM_CYCLES_C0                               8
-#define LR35902_OPCODE_LD_R16_A_HL_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LD_R16_A_HL_NUM_CYCLES_C1                               8
 #define LR35902_OPCODE_LD_R16_A_HL_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LD_R16_A_HL_FLAG_Z                                      3
 #define LR35902_OPCODE_LD_R16_A_HL_FLAG_N                                      3
@@ -1148,7 +1148,7 @@
 #define LR35902_OPCODE_LD_A_A                                               0x7f
 #define LR35902_OPCODE_LD_A_A_NUM_BYTES                                        1
 #define LR35902_OPCODE_LD_A_A_NUM_CYCLES_C0                                    4
-#define LR35902_OPCODE_LD_A_A_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_LD_A_A_NUM_CYCLES_C1                                    4
 #define LR35902_OPCODE_LD_A_A_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_LD_A_A_FLAG_Z                                           3
 #define LR35902_OPCODE_LD_A_A_FLAG_N                                           3
@@ -1157,7 +1157,7 @@
 #define LR35902_OPCODE_ADD_A_B                                              0x80
 #define LR35902_OPCODE_ADD_A_B_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_B_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_B_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_B_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_B_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_B_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_B_FLAG_N                                          0
@@ -1166,7 +1166,7 @@
 #define LR35902_OPCODE_ADD_A_C                                              0x81
 #define LR35902_OPCODE_ADD_A_C_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_C_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_C_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_C_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_C_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_C_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_C_FLAG_N                                          0
@@ -1175,7 +1175,7 @@
 #define LR35902_OPCODE_ADD_A_D                                              0x82
 #define LR35902_OPCODE_ADD_A_D_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_D_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_D_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_D_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_D_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_D_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_D_FLAG_N                                          0
@@ -1184,7 +1184,7 @@
 #define LR35902_OPCODE_ADD_A_E                                              0x83
 #define LR35902_OPCODE_ADD_A_E_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_E_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_E_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_E_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_E_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_E_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_E_FLAG_N                                          0
@@ -1193,7 +1193,7 @@
 #define LR35902_OPCODE_ADD_A_H                                              0x84
 #define LR35902_OPCODE_ADD_A_H_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_H_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_H_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_H_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_H_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_H_FLAG_N                                          0
@@ -1202,7 +1202,7 @@
 #define LR35902_OPCODE_ADD_A_L                                              0x85
 #define LR35902_OPCODE_ADD_A_L_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_L_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_L_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_L_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_L_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_L_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_L_FLAG_N                                          0
@@ -1211,7 +1211,7 @@
 #define LR35902_OPCODE_ADD_R16_A_HL                                         0x86
 #define LR35902_OPCODE_ADD_R16_A_HL_NUM_BYTES                                  1
 #define LR35902_OPCODE_ADD_R16_A_HL_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_ADD_R16_A_HL_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_ADD_R16_A_HL_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_ADD_R16_A_HL_FLAG_MASK                                0xf
 #define LR35902_OPCODE_ADD_R16_A_HL_FLAG_Z                                     2
 #define LR35902_OPCODE_ADD_R16_A_HL_FLAG_N                                     0
@@ -1220,7 +1220,7 @@
 #define LR35902_OPCODE_ADD_A_A                                              0x87
 #define LR35902_OPCODE_ADD_A_A_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADD_A_A_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADD_A_A_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADD_A_A_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADD_A_A_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADD_A_A_FLAG_Z                                          2
 #define LR35902_OPCODE_ADD_A_A_FLAG_N                                          0
@@ -1229,7 +1229,7 @@
 #define LR35902_OPCODE_ADC_A_B                                              0x88
 #define LR35902_OPCODE_ADC_A_B_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_B_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_B_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_B_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_B_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_B_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_B_FLAG_N                                          0
@@ -1238,7 +1238,7 @@
 #define LR35902_OPCODE_ADC_A_C                                              0x89
 #define LR35902_OPCODE_ADC_A_C_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_C_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_C_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_C_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_C_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_C_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_C_FLAG_N                                          0
@@ -1247,7 +1247,7 @@
 #define LR35902_OPCODE_ADC_A_D                                              0x8a
 #define LR35902_OPCODE_ADC_A_D_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_D_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_D_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_D_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_D_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_D_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_D_FLAG_N                                          0
@@ -1256,7 +1256,7 @@
 #define LR35902_OPCODE_ADC_A_E                                              0x8b
 #define LR35902_OPCODE_ADC_A_E_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_E_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_E_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_E_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_E_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_E_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_E_FLAG_N                                          0
@@ -1265,7 +1265,7 @@
 #define LR35902_OPCODE_ADC_A_H                                              0x8c
 #define LR35902_OPCODE_ADC_A_H_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_H_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_H_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_H_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_H_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_H_FLAG_N                                          0
@@ -1274,7 +1274,7 @@
 #define LR35902_OPCODE_ADC_A_L                                              0x8d
 #define LR35902_OPCODE_ADC_A_L_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_L_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_L_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_L_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_L_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_L_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_L_FLAG_N                                          0
@@ -1283,7 +1283,7 @@
 #define LR35902_OPCODE_ADC_R16_A_HL                                         0x8e
 #define LR35902_OPCODE_ADC_R16_A_HL_NUM_BYTES                                  1
 #define LR35902_OPCODE_ADC_R16_A_HL_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_ADC_R16_A_HL_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_ADC_R16_A_HL_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_ADC_R16_A_HL_FLAG_MASK                                0xf
 #define LR35902_OPCODE_ADC_R16_A_HL_FLAG_Z                                     2
 #define LR35902_OPCODE_ADC_R16_A_HL_FLAG_N                                     0
@@ -1292,7 +1292,7 @@
 #define LR35902_OPCODE_ADC_A_A                                              0x8f
 #define LR35902_OPCODE_ADC_A_A_NUM_BYTES                                       1
 #define LR35902_OPCODE_ADC_A_A_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_ADC_A_A_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_ADC_A_A_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_ADC_A_A_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_ADC_A_A_FLAG_Z                                          2
 #define LR35902_OPCODE_ADC_A_A_FLAG_N                                          0
@@ -1301,7 +1301,7 @@
 #define LR35902_OPCODE_SUB_B                                                0x90
 #define LR35902_OPCODE_SUB_B_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_B_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_B_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_B_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_B_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_B_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_B_FLAG_N                                            1
@@ -1310,7 +1310,7 @@
 #define LR35902_OPCODE_SUB_C                                                0x91
 #define LR35902_OPCODE_SUB_C_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_C_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_C_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_C_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_C_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_C_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_C_FLAG_N                                            1
@@ -1319,7 +1319,7 @@
 #define LR35902_OPCODE_SUB_D                                                0x92
 #define LR35902_OPCODE_SUB_D_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_D_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_D_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_D_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_D_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_D_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_D_FLAG_N                                            1
@@ -1328,7 +1328,7 @@
 #define LR35902_OPCODE_SUB_E                                                0x93
 #define LR35902_OPCODE_SUB_E_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_E_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_E_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_E_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_E_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_E_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_E_FLAG_N                                            1
@@ -1337,7 +1337,7 @@
 #define LR35902_OPCODE_SUB_H                                                0x94
 #define LR35902_OPCODE_SUB_H_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_H_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_H_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_H_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_H_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_H_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_H_FLAG_N                                            1
@@ -1346,7 +1346,7 @@
 #define LR35902_OPCODE_SUB_L                                                0x95
 #define LR35902_OPCODE_SUB_L_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_L_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_L_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_L_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_L_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_L_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_L_FLAG_N                                            1
@@ -1355,7 +1355,7 @@
 #define LR35902_OPCODE_SUB_W16_HL                                           0x96
 #define LR35902_OPCODE_SUB_W16_HL_NUM_BYTES                                    1
 #define LR35902_OPCODE_SUB_W16_HL_NUM_CYCLES_C0                                8
-#define LR35902_OPCODE_SUB_W16_HL_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_SUB_W16_HL_NUM_CYCLES_C1                                8
 #define LR35902_OPCODE_SUB_W16_HL_FLAG_MASK                                  0xf
 #define LR35902_OPCODE_SUB_W16_HL_FLAG_Z                                       2
 #define LR35902_OPCODE_SUB_W16_HL_FLAG_N                                       1
@@ -1364,7 +1364,7 @@
 #define LR35902_OPCODE_SUB_A                                                0x97
 #define LR35902_OPCODE_SUB_A_NUM_BYTES                                         1
 #define LR35902_OPCODE_SUB_A_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_SUB_A_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_SUB_A_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_SUB_A_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_SUB_A_FLAG_Z                                            2
 #define LR35902_OPCODE_SUB_A_FLAG_N                                            1
@@ -1373,7 +1373,7 @@
 #define LR35902_OPCODE_SBC_A_B                                              0x98
 #define LR35902_OPCODE_SBC_A_B_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_B_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_B_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_B_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_B_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_B_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_B_FLAG_N                                          1
@@ -1382,7 +1382,7 @@
 #define LR35902_OPCODE_SBC_A_C                                              0x99
 #define LR35902_OPCODE_SBC_A_C_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_C_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_C_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_C_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_C_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_C_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_C_FLAG_N                                          1
@@ -1391,7 +1391,7 @@
 #define LR35902_OPCODE_SBC_A_D                                              0x9a
 #define LR35902_OPCODE_SBC_A_D_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_D_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_D_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_D_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_D_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_D_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_D_FLAG_N                                          1
@@ -1400,7 +1400,7 @@
 #define LR35902_OPCODE_SBC_A_E                                              0x9b
 #define LR35902_OPCODE_SBC_A_E_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_E_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_E_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_E_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_E_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_E_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_E_FLAG_N                                          1
@@ -1409,7 +1409,7 @@
 #define LR35902_OPCODE_SBC_A_H                                              0x9c
 #define LR35902_OPCODE_SBC_A_H_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_H_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_H_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_H_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_H_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_H_FLAG_N                                          1
@@ -1418,7 +1418,7 @@
 #define LR35902_OPCODE_SBC_A_L                                              0x9d
 #define LR35902_OPCODE_SBC_A_L_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_L_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_L_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_L_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_L_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_L_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_L_FLAG_N                                          1
@@ -1427,7 +1427,7 @@
 #define LR35902_OPCODE_SBC_R16_A_HL                                         0x9e
 #define LR35902_OPCODE_SBC_R16_A_HL_NUM_BYTES                                  1
 #define LR35902_OPCODE_SBC_R16_A_HL_NUM_CYCLES_C0                              8
-#define LR35902_OPCODE_SBC_R16_A_HL_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_SBC_R16_A_HL_NUM_CYCLES_C1                              8
 #define LR35902_OPCODE_SBC_R16_A_HL_FLAG_MASK                                0xf
 #define LR35902_OPCODE_SBC_R16_A_HL_FLAG_Z                                     2
 #define LR35902_OPCODE_SBC_R16_A_HL_FLAG_N                                     1
@@ -1436,7 +1436,7 @@
 #define LR35902_OPCODE_SBC_A_A                                              0x9f
 #define LR35902_OPCODE_SBC_A_A_NUM_BYTES                                       1
 #define LR35902_OPCODE_SBC_A_A_NUM_CYCLES_C0                                   4
-#define LR35902_OPCODE_SBC_A_A_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_SBC_A_A_NUM_CYCLES_C1                                   4
 #define LR35902_OPCODE_SBC_A_A_FLAG_MASK                                     0xf
 #define LR35902_OPCODE_SBC_A_A_FLAG_Z                                          2
 #define LR35902_OPCODE_SBC_A_A_FLAG_N                                          1
@@ -1445,7 +1445,7 @@
 #define LR35902_OPCODE_AND_B                                                0xa0
 #define LR35902_OPCODE_AND_B_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_B_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_B_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_B_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_B_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_B_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_B_FLAG_N                                            0
@@ -1454,7 +1454,7 @@
 #define LR35902_OPCODE_AND_C                                                0xa1
 #define LR35902_OPCODE_AND_C_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_C_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_C_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_C_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_C_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_C_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_C_FLAG_N                                            0
@@ -1463,7 +1463,7 @@
 #define LR35902_OPCODE_AND_D                                                0xa2
 #define LR35902_OPCODE_AND_D_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_D_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_D_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_D_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_D_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_D_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_D_FLAG_N                                            0
@@ -1472,7 +1472,7 @@
 #define LR35902_OPCODE_AND_E                                                0xa3
 #define LR35902_OPCODE_AND_E_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_E_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_E_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_E_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_E_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_E_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_E_FLAG_N                                            0
@@ -1481,7 +1481,7 @@
 #define LR35902_OPCODE_AND_H                                                0xa4
 #define LR35902_OPCODE_AND_H_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_H_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_H_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_H_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_H_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_H_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_H_FLAG_N                                            0
@@ -1490,7 +1490,7 @@
 #define LR35902_OPCODE_AND_L                                                0xa5
 #define LR35902_OPCODE_AND_L_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_L_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_L_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_L_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_L_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_L_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_L_FLAG_N                                            0
@@ -1499,7 +1499,7 @@
 #define LR35902_OPCODE_AND_W16_HL                                           0xa6
 #define LR35902_OPCODE_AND_W16_HL_NUM_BYTES                                    1
 #define LR35902_OPCODE_AND_W16_HL_NUM_CYCLES_C0                                8
-#define LR35902_OPCODE_AND_W16_HL_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_AND_W16_HL_NUM_CYCLES_C1                                8
 #define LR35902_OPCODE_AND_W16_HL_FLAG_MASK                                  0xf
 #define LR35902_OPCODE_AND_W16_HL_FLAG_Z                                       2
 #define LR35902_OPCODE_AND_W16_HL_FLAG_N                                       0
@@ -1508,7 +1508,7 @@
 #define LR35902_OPCODE_AND_A                                                0xa7
 #define LR35902_OPCODE_AND_A_NUM_BYTES                                         1
 #define LR35902_OPCODE_AND_A_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_AND_A_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_AND_A_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_AND_A_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_AND_A_FLAG_Z                                            2
 #define LR35902_OPCODE_AND_A_FLAG_N                                            0
@@ -1517,7 +1517,7 @@
 #define LR35902_OPCODE_XOR_B                                                0xa8
 #define LR35902_OPCODE_XOR_B_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_B_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_B_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_B_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_B_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_B_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_B_FLAG_N                                            0
@@ -1526,7 +1526,7 @@
 #define LR35902_OPCODE_XOR_C                                                0xa9
 #define LR35902_OPCODE_XOR_C_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_C_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_C_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_C_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_C_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_C_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_C_FLAG_N                                            0
@@ -1535,7 +1535,7 @@
 #define LR35902_OPCODE_XOR_D                                                0xaa
 #define LR35902_OPCODE_XOR_D_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_D_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_D_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_D_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_D_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_D_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_D_FLAG_N                                            0
@@ -1544,7 +1544,7 @@
 #define LR35902_OPCODE_XOR_E                                                0xab
 #define LR35902_OPCODE_XOR_E_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_E_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_E_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_E_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_E_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_E_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_E_FLAG_N                                            0
@@ -1553,7 +1553,7 @@
 #define LR35902_OPCODE_XOR_H                                                0xac
 #define LR35902_OPCODE_XOR_H_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_H_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_H_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_H_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_H_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_H_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_H_FLAG_N                                            0
@@ -1562,7 +1562,7 @@
 #define LR35902_OPCODE_XOR_L                                                0xad
 #define LR35902_OPCODE_XOR_L_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_L_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_L_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_L_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_L_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_L_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_L_FLAG_N                                            0
@@ -1571,7 +1571,7 @@
 #define LR35902_OPCODE_XOR_W16_HL                                           0xae
 #define LR35902_OPCODE_XOR_W16_HL_NUM_BYTES                                    1
 #define LR35902_OPCODE_XOR_W16_HL_NUM_CYCLES_C0                                8
-#define LR35902_OPCODE_XOR_W16_HL_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_XOR_W16_HL_NUM_CYCLES_C1                                8
 #define LR35902_OPCODE_XOR_W16_HL_FLAG_MASK                                  0xf
 #define LR35902_OPCODE_XOR_W16_HL_FLAG_Z                                       2
 #define LR35902_OPCODE_XOR_W16_HL_FLAG_N                                       0
@@ -1580,7 +1580,7 @@
 #define LR35902_OPCODE_XOR_A                                                0xaf
 #define LR35902_OPCODE_XOR_A_NUM_BYTES                                         1
 #define LR35902_OPCODE_XOR_A_NUM_CYCLES_C0                                     4
-#define LR35902_OPCODE_XOR_A_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_XOR_A_NUM_CYCLES_C1                                     4
 #define LR35902_OPCODE_XOR_A_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_XOR_A_FLAG_Z                                            2
 #define LR35902_OPCODE_XOR_A_FLAG_N                                            0
@@ -1589,7 +1589,7 @@
 #define LR35902_OPCODE_OR_B                                                 0xb0
 #define LR35902_OPCODE_OR_B_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_B_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_B_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_B_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_B_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_B_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_B_FLAG_N                                             0
@@ -1598,7 +1598,7 @@
 #define LR35902_OPCODE_OR_C                                                 0xb1
 #define LR35902_OPCODE_OR_C_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_C_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_C_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_C_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_C_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_C_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_C_FLAG_N                                             0
@@ -1607,7 +1607,7 @@
 #define LR35902_OPCODE_OR_D                                                 0xb2
 #define LR35902_OPCODE_OR_D_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_D_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_D_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_D_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_D_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_D_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_D_FLAG_N                                             0
@@ -1616,7 +1616,7 @@
 #define LR35902_OPCODE_OR_E                                                 0xb3
 #define LR35902_OPCODE_OR_E_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_E_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_E_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_E_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_E_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_E_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_E_FLAG_N                                             0
@@ -1625,7 +1625,7 @@
 #define LR35902_OPCODE_OR_H                                                 0xb4
 #define LR35902_OPCODE_OR_H_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_H_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_H_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_H_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_H_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_H_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_H_FLAG_N                                             0
@@ -1634,7 +1634,7 @@
 #define LR35902_OPCODE_OR_L                                                 0xb5
 #define LR35902_OPCODE_OR_L_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_L_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_L_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_L_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_L_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_L_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_L_FLAG_N                                             0
@@ -1643,7 +1643,7 @@
 #define LR35902_OPCODE_OR_W16_HL                                            0xb6
 #define LR35902_OPCODE_OR_W16_HL_NUM_BYTES                                     1
 #define LR35902_OPCODE_OR_W16_HL_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_OR_W16_HL_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_OR_W16_HL_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_OR_W16_HL_FLAG_MASK                                   0xf
 #define LR35902_OPCODE_OR_W16_HL_FLAG_Z                                        2
 #define LR35902_OPCODE_OR_W16_HL_FLAG_N                                        0
@@ -1652,7 +1652,7 @@
 #define LR35902_OPCODE_OR_A                                                 0xb7
 #define LR35902_OPCODE_OR_A_NUM_BYTES                                          1
 #define LR35902_OPCODE_OR_A_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_OR_A_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_OR_A_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_OR_A_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_OR_A_FLAG_Z                                             2
 #define LR35902_OPCODE_OR_A_FLAG_N                                             0
@@ -1661,7 +1661,7 @@
 #define LR35902_OPCODE_CP_B                                                 0xb8
 #define LR35902_OPCODE_CP_B_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_B_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_B_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_B_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_B_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_B_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_B_FLAG_N                                             1
@@ -1670,7 +1670,7 @@
 #define LR35902_OPCODE_CP_C                                                 0xb9
 #define LR35902_OPCODE_CP_C_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_C_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_C_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_C_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_C_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_C_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_C_FLAG_N                                             1
@@ -1679,7 +1679,7 @@
 #define LR35902_OPCODE_CP_D                                                 0xba
 #define LR35902_OPCODE_CP_D_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_D_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_D_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_D_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_D_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_D_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_D_FLAG_N                                             1
@@ -1688,7 +1688,7 @@
 #define LR35902_OPCODE_CP_E                                                 0xbb
 #define LR35902_OPCODE_CP_E_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_E_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_E_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_E_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_E_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_E_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_E_FLAG_N                                             1
@@ -1697,7 +1697,7 @@
 #define LR35902_OPCODE_CP_H                                                 0xbc
 #define LR35902_OPCODE_CP_H_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_H_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_H_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_H_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_H_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_H_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_H_FLAG_N                                             1
@@ -1706,7 +1706,7 @@
 #define LR35902_OPCODE_CP_L                                                 0xbd
 #define LR35902_OPCODE_CP_L_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_L_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_L_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_L_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_L_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_L_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_L_FLAG_N                                             1
@@ -1715,7 +1715,7 @@
 #define LR35902_OPCODE_CP_W16_HL                                            0xbe
 #define LR35902_OPCODE_CP_W16_HL_NUM_BYTES                                     1
 #define LR35902_OPCODE_CP_W16_HL_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_CP_W16_HL_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_CP_W16_HL_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_CP_W16_HL_FLAG_MASK                                   0xf
 #define LR35902_OPCODE_CP_W16_HL_FLAG_Z                                        2
 #define LR35902_OPCODE_CP_W16_HL_FLAG_N                                        1
@@ -1724,7 +1724,7 @@
 #define LR35902_OPCODE_CP_A                                                 0xbf
 #define LR35902_OPCODE_CP_A_NUM_BYTES                                          1
 #define LR35902_OPCODE_CP_A_NUM_CYCLES_C0                                      4
-#define LR35902_OPCODE_CP_A_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_CP_A_NUM_CYCLES_C1                                      4
 #define LR35902_OPCODE_CP_A_FLAG_MASK                                        0xf
 #define LR35902_OPCODE_CP_A_FLAG_Z                                             2
 #define LR35902_OPCODE_CP_A_FLAG_N                                             1
@@ -1742,7 +1742,7 @@
 #define LR35902_OPCODE_POP_BC                                               0xc1
 #define LR35902_OPCODE_POP_BC_NUM_BYTES                                        1
 #define LR35902_OPCODE_POP_BC_NUM_CYCLES_C0                                   12
-#define LR35902_OPCODE_POP_BC_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_POP_BC_NUM_CYCLES_C1                                   12
 #define LR35902_OPCODE_POP_BC_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_POP_BC_FLAG_Z                                           3
 #define LR35902_OPCODE_POP_BC_FLAG_N                                           3
@@ -1760,7 +1760,7 @@
 #define LR35902_OPCODE_JP_N16                                               0xc3
 #define LR35902_OPCODE_JP_N16_NUM_BYTES                                        3
 #define LR35902_OPCODE_JP_N16_NUM_CYCLES_C0                                   16
-#define LR35902_OPCODE_JP_N16_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_JP_N16_NUM_CYCLES_C1                                   16
 #define LR35902_OPCODE_JP_N16_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_JP_N16_FLAG_Z                                           3
 #define LR35902_OPCODE_JP_N16_FLAG_N                                           3
@@ -1778,7 +1778,7 @@
 #define LR35902_OPCODE_PUSH_BC                                              0xc5
 #define LR35902_OPCODE_PUSH_BC_NUM_BYTES                                       1
 #define LR35902_OPCODE_PUSH_BC_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_PUSH_BC_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_PUSH_BC_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_PUSH_BC_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_PUSH_BC_FLAG_Z                                          3
 #define LR35902_OPCODE_PUSH_BC_FLAG_N                                          3
@@ -1787,7 +1787,7 @@
 #define LR35902_OPCODE_ADD_A_N8                                             0xc6
 #define LR35902_OPCODE_ADD_A_N8_NUM_BYTES                                      2
 #define LR35902_OPCODE_ADD_A_N8_NUM_CYCLES_C0                                  8
-#define LR35902_OPCODE_ADD_A_N8_NUM_CYCLES_C1                                  0
+#define LR35902_OPCODE_ADD_A_N8_NUM_CYCLES_C1                                  8
 #define LR35902_OPCODE_ADD_A_N8_FLAG_MASK                                    0xf
 #define LR35902_OPCODE_ADD_A_N8_FLAG_Z                                         2
 #define LR35902_OPCODE_ADD_A_N8_FLAG_N                                         0
@@ -1796,7 +1796,7 @@
 #define LR35902_OPCODE_RST_00H                                              0xc7
 #define LR35902_OPCODE_RST_00H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_00H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_00H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_00H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_00H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_00H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_00H_FLAG_N                                          3
@@ -1814,7 +1814,7 @@
 #define LR35902_OPCODE_RET                                                  0xc9
 #define LR35902_OPCODE_RET_NUM_BYTES                                           1
 #define LR35902_OPCODE_RET_NUM_CYCLES_C0                                      16
-#define LR35902_OPCODE_RET_NUM_CYCLES_C1                                       0
+#define LR35902_OPCODE_RET_NUM_CYCLES_C1                                      16
 #define LR35902_OPCODE_RET_FLAG_MASK                                         0x0
 #define LR35902_OPCODE_RET_FLAG_Z                                              3
 #define LR35902_OPCODE_RET_FLAG_N                                              3
@@ -1832,7 +1832,7 @@
 #define LR35902_OPCODE_PREFIX_CB                                            0xcb
 #define LR35902_OPCODE_PREFIX_CB_NUM_BYTES                                     1
 #define LR35902_OPCODE_PREFIX_CB_NUM_CYCLES_C0                                 4
-#define LR35902_OPCODE_PREFIX_CB_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_PREFIX_CB_NUM_CYCLES_C1                                 4
 #define LR35902_OPCODE_PREFIX_CB_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_PREFIX_CB_FLAG_Z                                        3
 #define LR35902_OPCODE_PREFIX_CB_FLAG_N                                        3
@@ -1850,7 +1850,7 @@
 #define LR35902_OPCODE_CALL_N16                                             0xcd
 #define LR35902_OPCODE_CALL_N16_NUM_BYTES                                      3
 #define LR35902_OPCODE_CALL_N16_NUM_CYCLES_C0                                 24
-#define LR35902_OPCODE_CALL_N16_NUM_CYCLES_C1                                  0
+#define LR35902_OPCODE_CALL_N16_NUM_CYCLES_C1                                 24
 #define LR35902_OPCODE_CALL_N16_FLAG_MASK                                    0x0
 #define LR35902_OPCODE_CALL_N16_FLAG_Z                                         3
 #define LR35902_OPCODE_CALL_N16_FLAG_N                                         3
@@ -1859,7 +1859,7 @@
 #define LR35902_OPCODE_ADC_A_N8                                             0xce
 #define LR35902_OPCODE_ADC_A_N8_NUM_BYTES                                      2
 #define LR35902_OPCODE_ADC_A_N8_NUM_CYCLES_C0                                  8
-#define LR35902_OPCODE_ADC_A_N8_NUM_CYCLES_C1                                  0
+#define LR35902_OPCODE_ADC_A_N8_NUM_CYCLES_C1                                  8
 #define LR35902_OPCODE_ADC_A_N8_FLAG_MASK                                    0xf
 #define LR35902_OPCODE_ADC_A_N8_FLAG_Z                                         2
 #define LR35902_OPCODE_ADC_A_N8_FLAG_N                                         0
@@ -1868,7 +1868,7 @@
 #define LR35902_OPCODE_RST_08H                                              0xcf
 #define LR35902_OPCODE_RST_08H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_08H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_08H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_08H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_08H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_08H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_08H_FLAG_N                                          3
@@ -1886,7 +1886,7 @@
 #define LR35902_OPCODE_POP_DE                                               0xd1
 #define LR35902_OPCODE_POP_DE_NUM_BYTES                                        1
 #define LR35902_OPCODE_POP_DE_NUM_CYCLES_C0                                   12
-#define LR35902_OPCODE_POP_DE_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_POP_DE_NUM_CYCLES_C1                                   12
 #define LR35902_OPCODE_POP_DE_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_POP_DE_FLAG_Z                                           3
 #define LR35902_OPCODE_POP_DE_FLAG_N                                           3
@@ -1913,7 +1913,7 @@
 #define LR35902_OPCODE_PUSH_DE                                              0xd5
 #define LR35902_OPCODE_PUSH_DE_NUM_BYTES                                       1
 #define LR35902_OPCODE_PUSH_DE_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_PUSH_DE_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_PUSH_DE_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_PUSH_DE_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_PUSH_DE_FLAG_Z                                          3
 #define LR35902_OPCODE_PUSH_DE_FLAG_N                                          3
@@ -1922,7 +1922,7 @@
 #define LR35902_OPCODE_SUB_N8                                               0xd6
 #define LR35902_OPCODE_SUB_N8_NUM_BYTES                                        2
 #define LR35902_OPCODE_SUB_N8_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_SUB_N8_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_SUB_N8_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_SUB_N8_FLAG_MASK                                      0xf
 #define LR35902_OPCODE_SUB_N8_FLAG_Z                                           2
 #define LR35902_OPCODE_SUB_N8_FLAG_N                                           1
@@ -1931,7 +1931,7 @@
 #define LR35902_OPCODE_RST_10H                                              0xd7
 #define LR35902_OPCODE_RST_10H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_10H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_10H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_10H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_10H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_10H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_10H_FLAG_N                                          3
@@ -1949,7 +1949,7 @@
 #define LR35902_OPCODE_RETI                                                 0xd9
 #define LR35902_OPCODE_RETI_NUM_BYTES                                          1
 #define LR35902_OPCODE_RETI_NUM_CYCLES_C0                                     16
-#define LR35902_OPCODE_RETI_NUM_CYCLES_C1                                      0
+#define LR35902_OPCODE_RETI_NUM_CYCLES_C1                                     16
 #define LR35902_OPCODE_RETI_FLAG_MASK                                        0x0
 #define LR35902_OPCODE_RETI_FLAG_Z                                             3
 #define LR35902_OPCODE_RETI_FLAG_N                                             3
@@ -1976,7 +1976,7 @@
 #define LR35902_OPCODE_SBC_A_N8                                             0xde
 #define LR35902_OPCODE_SBC_A_N8_NUM_BYTES                                      2
 #define LR35902_OPCODE_SBC_A_N8_NUM_CYCLES_C0                                  8
-#define LR35902_OPCODE_SBC_A_N8_NUM_CYCLES_C1                                  0
+#define LR35902_OPCODE_SBC_A_N8_NUM_CYCLES_C1                                  8
 #define LR35902_OPCODE_SBC_A_N8_FLAG_MASK                                    0xf
 #define LR35902_OPCODE_SBC_A_N8_FLAG_Z                                         2
 #define LR35902_OPCODE_SBC_A_N8_FLAG_N                                         1
@@ -1985,7 +1985,7 @@
 #define LR35902_OPCODE_RST_18H                                              0xdf
 #define LR35902_OPCODE_RST_18H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_18H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_18H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_18H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_18H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_18H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_18H_FLAG_N                                          3
@@ -1994,7 +1994,7 @@
 #define LR35902_OPCODE_LDH_W8_N8_A                                          0xe0
 #define LR35902_OPCODE_LDH_W8_N8_A_NUM_BYTES                                   2
 #define LR35902_OPCODE_LDH_W8_N8_A_NUM_CYCLES_C0                              12
-#define LR35902_OPCODE_LDH_W8_N8_A_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LDH_W8_N8_A_NUM_CYCLES_C1                              12
 #define LR35902_OPCODE_LDH_W8_N8_A_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LDH_W8_N8_A_FLAG_Z                                      3
 #define LR35902_OPCODE_LDH_W8_N8_A_FLAG_N                                      3
@@ -2003,7 +2003,7 @@
 #define LR35902_OPCODE_POP_HL                                               0xe1
 #define LR35902_OPCODE_POP_HL_NUM_BYTES                                        1
 #define LR35902_OPCODE_POP_HL_NUM_CYCLES_C0                                   12
-#define LR35902_OPCODE_POP_HL_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_POP_HL_NUM_CYCLES_C1                                   12
 #define LR35902_OPCODE_POP_HL_FLAG_MASK                                      0x0
 #define LR35902_OPCODE_POP_HL_FLAG_Z                                           3
 #define LR35902_OPCODE_POP_HL_FLAG_N                                           3
@@ -2012,7 +2012,7 @@
 #define LR35902_OPCODE_LD_W8_C_A                                            0xe2
 #define LR35902_OPCODE_LD_W8_C_A_NUM_BYTES                                     1
 #define LR35902_OPCODE_LD_W8_C_A_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_LD_W8_C_A_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_W8_C_A_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_LD_W8_C_A_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_W8_C_A_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_W8_C_A_FLAG_N                                        3
@@ -2021,7 +2021,7 @@
 #define LR35902_OPCODE_PUSH_HL                                              0xe5
 #define LR35902_OPCODE_PUSH_HL_NUM_BYTES                                       1
 #define LR35902_OPCODE_PUSH_HL_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_PUSH_HL_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_PUSH_HL_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_PUSH_HL_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_PUSH_HL_FLAG_Z                                          3
 #define LR35902_OPCODE_PUSH_HL_FLAG_N                                          3
@@ -2030,7 +2030,7 @@
 #define LR35902_OPCODE_AND_N8                                               0xe6
 #define LR35902_OPCODE_AND_N8_NUM_BYTES                                        2
 #define LR35902_OPCODE_AND_N8_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_AND_N8_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_AND_N8_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_AND_N8_FLAG_MASK                                      0xf
 #define LR35902_OPCODE_AND_N8_FLAG_Z                                           2
 #define LR35902_OPCODE_AND_N8_FLAG_N                                           0
@@ -2039,7 +2039,7 @@
 #define LR35902_OPCODE_RST_20H                                              0xe7
 #define LR35902_OPCODE_RST_20H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_20H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_20H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_20H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_20H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_20H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_20H_FLAG_N                                          3
@@ -2048,7 +2048,7 @@
 #define LR35902_OPCODE_ADD_SP_E8                                            0xe8
 #define LR35902_OPCODE_ADD_SP_E8_NUM_BYTES                                     2
 #define LR35902_OPCODE_ADD_SP_E8_NUM_CYCLES_C0                                16
-#define LR35902_OPCODE_ADD_SP_E8_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_ADD_SP_E8_NUM_CYCLES_C1                                16
 #define LR35902_OPCODE_ADD_SP_E8_FLAG_MASK                                   0xf
 #define LR35902_OPCODE_ADD_SP_E8_FLAG_Z                                        0
 #define LR35902_OPCODE_ADD_SP_E8_FLAG_N                                        0
@@ -2057,7 +2057,7 @@
 #define LR35902_OPCODE_JP_W16_HL                                            0xe9
 #define LR35902_OPCODE_JP_W16_HL_NUM_BYTES                                     1
 #define LR35902_OPCODE_JP_W16_HL_NUM_CYCLES_C0                                 4
-#define LR35902_OPCODE_JP_W16_HL_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_JP_W16_HL_NUM_CYCLES_C1                                 4
 #define LR35902_OPCODE_JP_W16_HL_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_JP_W16_HL_FLAG_Z                                        3
 #define LR35902_OPCODE_JP_W16_HL_FLAG_N                                        3
@@ -2066,7 +2066,7 @@
 #define LR35902_OPCODE_LD_W16_N16_A                                         0xea
 #define LR35902_OPCODE_LD_W16_N16_A_NUM_BYTES                                  3
 #define LR35902_OPCODE_LD_W16_N16_A_NUM_CYCLES_C0                             16
-#define LR35902_OPCODE_LD_W16_N16_A_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LD_W16_N16_A_NUM_CYCLES_C1                             16
 #define LR35902_OPCODE_LD_W16_N16_A_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LD_W16_N16_A_FLAG_Z                                     3
 #define LR35902_OPCODE_LD_W16_N16_A_FLAG_N                                     3
@@ -2075,7 +2075,7 @@
 #define LR35902_OPCODE_XOR_N8                                               0xee
 #define LR35902_OPCODE_XOR_N8_NUM_BYTES                                        2
 #define LR35902_OPCODE_XOR_N8_NUM_CYCLES_C0                                    8
-#define LR35902_OPCODE_XOR_N8_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_XOR_N8_NUM_CYCLES_C1                                    8
 #define LR35902_OPCODE_XOR_N8_FLAG_MASK                                      0xf
 #define LR35902_OPCODE_XOR_N8_FLAG_Z                                           2
 #define LR35902_OPCODE_XOR_N8_FLAG_N                                           0
@@ -2084,7 +2084,7 @@
 #define LR35902_OPCODE_RST_28H                                              0xef
 #define LR35902_OPCODE_RST_28H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_28H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_28H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_28H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_28H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_28H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_28H_FLAG_N                                          3
@@ -2093,7 +2093,7 @@
 #define LR35902_OPCODE_LDH_R8_A_N8                                          0xf0
 #define LR35902_OPCODE_LDH_R8_A_N8_NUM_BYTES                                   2
 #define LR35902_OPCODE_LDH_R8_A_N8_NUM_CYCLES_C0                              12
-#define LR35902_OPCODE_LDH_R8_A_N8_NUM_CYCLES_C1                               0
+#define LR35902_OPCODE_LDH_R8_A_N8_NUM_CYCLES_C1                              12
 #define LR35902_OPCODE_LDH_R8_A_N8_FLAG_MASK                                 0x0
 #define LR35902_OPCODE_LDH_R8_A_N8_FLAG_Z                                      3
 #define LR35902_OPCODE_LDH_R8_A_N8_FLAG_N                                      3
@@ -2102,7 +2102,7 @@
 #define LR35902_OPCODE_POP_AF                                               0xf1
 #define LR35902_OPCODE_POP_AF_NUM_BYTES                                        1
 #define LR35902_OPCODE_POP_AF_NUM_CYCLES_C0                                   12
-#define LR35902_OPCODE_POP_AF_NUM_CYCLES_C1                                    0
+#define LR35902_OPCODE_POP_AF_NUM_CYCLES_C1                                   12
 #define LR35902_OPCODE_POP_AF_FLAG_MASK                                      0xf
 #define LR35902_OPCODE_POP_AF_FLAG_Z                                           2
 #define LR35902_OPCODE_POP_AF_FLAG_N                                           2
@@ -2111,7 +2111,7 @@
 #define LR35902_OPCODE_LD_R8_A_C                                            0xf2
 #define LR35902_OPCODE_LD_R8_A_C_NUM_BYTES                                     1
 #define LR35902_OPCODE_LD_R8_A_C_NUM_CYCLES_C0                                 8
-#define LR35902_OPCODE_LD_R8_A_C_NUM_CYCLES_C1                                 0
+#define LR35902_OPCODE_LD_R8_A_C_NUM_CYCLES_C1                                 8
 #define LR35902_OPCODE_LD_R8_A_C_FLAG_MASK                                   0x0
 #define LR35902_OPCODE_LD_R8_A_C_FLAG_Z                                        3
 #define LR35902_OPCODE_LD_R8_A_C_FLAG_N                                        3
@@ -2120,7 +2120,7 @@
 #define LR35902_OPCODE_DI                                                   0xf3
 #define LR35902_OPCODE_DI_NUM_BYTES                                            1
 #define LR35902_OPCODE_DI_NUM_CYCLES_C0                                        4
-#define LR35902_OPCODE_DI_NUM_CYCLES_C1                                        0
+#define LR35902_OPCODE_DI_NUM_CYCLES_C1                                        4
 #define LR35902_OPCODE_DI_FLAG_MASK                                          0x0
 #define LR35902_OPCODE_DI_FLAG_Z                                               3
 #define LR35902_OPCODE_DI_FLAG_N                                               3
@@ -2129,7 +2129,7 @@
 #define LR35902_OPCODE_PUSH_AF                                              0xf5
 #define LR35902_OPCODE_PUSH_AF_NUM_BYTES                                       1
 #define LR35902_OPCODE_PUSH_AF_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_PUSH_AF_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_PUSH_AF_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_PUSH_AF_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_PUSH_AF_FLAG_Z                                          3
 #define LR35902_OPCODE_PUSH_AF_FLAG_N                                          3
@@ -2138,7 +2138,7 @@
 #define LR35902_OPCODE_OR_N8                                                0xf6
 #define LR35902_OPCODE_OR_N8_NUM_BYTES                                         2
 #define LR35902_OPCODE_OR_N8_NUM_CYCLES_C0                                     8
-#define LR35902_OPCODE_OR_N8_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_OR_N8_NUM_CYCLES_C1                                     8
 #define LR35902_OPCODE_OR_N8_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_OR_N8_FLAG_Z                                            2
 #define LR35902_OPCODE_OR_N8_FLAG_N                                            0
@@ -2147,7 +2147,7 @@
 #define LR35902_OPCODE_RST_30H                                              0xf7
 #define LR35902_OPCODE_RST_30H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_30H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_30H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_30H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_30H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_30H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_30H_FLAG_N                                          3
@@ -2156,7 +2156,7 @@
 #define LR35902_OPCODE_LDHL_SP_E8                                           0xf8
 #define LR35902_OPCODE_LDHL_SP_E8_NUM_BYTES                                    2
 #define LR35902_OPCODE_LDHL_SP_E8_NUM_CYCLES_C0                               12
-#define LR35902_OPCODE_LDHL_SP_E8_NUM_CYCLES_C1                                0
+#define LR35902_OPCODE_LDHL_SP_E8_NUM_CYCLES_C1                               12
 #define LR35902_OPCODE_LDHL_SP_E8_FLAG_MASK                                  0xf
 #define LR35902_OPCODE_LDHL_SP_E8_FLAG_Z                                       0
 #define LR35902_OPCODE_LDHL_SP_E8_FLAG_N                                       0
@@ -2165,7 +2165,7 @@
 #define LR35902_OPCODE_LD_SP_HL                                             0xf9
 #define LR35902_OPCODE_LD_SP_HL_NUM_BYTES                                      1
 #define LR35902_OPCODE_LD_SP_HL_NUM_CYCLES_C0                                  8
-#define LR35902_OPCODE_LD_SP_HL_NUM_CYCLES_C1                                  0
+#define LR35902_OPCODE_LD_SP_HL_NUM_CYCLES_C1                                  8
 #define LR35902_OPCODE_LD_SP_HL_FLAG_MASK                                    0x0
 #define LR35902_OPCODE_LD_SP_HL_FLAG_Z                                         3
 #define LR35902_OPCODE_LD_SP_HL_FLAG_N                                         3
@@ -2174,7 +2174,7 @@
 #define LR35902_OPCODE_LD_R16_A_N16                                         0xfa
 #define LR35902_OPCODE_LD_R16_A_N16_NUM_BYTES                                  3
 #define LR35902_OPCODE_LD_R16_A_N16_NUM_CYCLES_C0                             16
-#define LR35902_OPCODE_LD_R16_A_N16_NUM_CYCLES_C1                              0
+#define LR35902_OPCODE_LD_R16_A_N16_NUM_CYCLES_C1                             16
 #define LR35902_OPCODE_LD_R16_A_N16_FLAG_MASK                                0x0
 #define LR35902_OPCODE_LD_R16_A_N16_FLAG_Z                                     3
 #define LR35902_OPCODE_LD_R16_A_N16_FLAG_N                                     3
@@ -2183,7 +2183,7 @@
 #define LR35902_OPCODE_EI                                                   0xfb
 #define LR35902_OPCODE_EI_NUM_BYTES                                            1
 #define LR35902_OPCODE_EI_NUM_CYCLES_C0                                        4
-#define LR35902_OPCODE_EI_NUM_CYCLES_C1                                        0
+#define LR35902_OPCODE_EI_NUM_CYCLES_C1                                        4
 #define LR35902_OPCODE_EI_FLAG_MASK                                          0x0
 #define LR35902_OPCODE_EI_FLAG_Z                                               3
 #define LR35902_OPCODE_EI_FLAG_N                                               3
@@ -2192,7 +2192,7 @@
 #define LR35902_OPCODE_CP_N8                                                0xfe
 #define LR35902_OPCODE_CP_N8_NUM_BYTES                                         2
 #define LR35902_OPCODE_CP_N8_NUM_CYCLES_C0                                     8
-#define LR35902_OPCODE_CP_N8_NUM_CYCLES_C1                                     0
+#define LR35902_OPCODE_CP_N8_NUM_CYCLES_C1                                     8
 #define LR35902_OPCODE_CP_N8_FLAG_MASK                                       0xf
 #define LR35902_OPCODE_CP_N8_FLAG_Z                                            2
 #define LR35902_OPCODE_CP_N8_FLAG_N                                            1
@@ -2201,7 +2201,7 @@
 #define LR35902_OPCODE_RST_38H                                              0xff
 #define LR35902_OPCODE_RST_38H_NUM_BYTES                                       1
 #define LR35902_OPCODE_RST_38H_NUM_CYCLES_C0                                  16
-#define LR35902_OPCODE_RST_38H_NUM_CYCLES_C1                                   0
+#define LR35902_OPCODE_RST_38H_NUM_CYCLES_C1                                  16
 #define LR35902_OPCODE_RST_38H_FLAG_MASK                                     0x0
 #define LR35902_OPCODE_RST_38H_FLAG_Z                                          3
 #define LR35902_OPCODE_RST_38H_FLAG_N                                          3
