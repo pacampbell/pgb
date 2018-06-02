@@ -15,14 +15,24 @@
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
 
-int cpu_init(struct cpu *cpu)
+int cpu_init(struct cpu *cpu, const char *decoder_str)
 {
+	int ret;
+	enum decoder_type decoder_type;
+
 	cpu->rom_image.data = NULL;
 	cpu->status.halted = false;
 
-	registers_init(&cpu->registers);
+	ret = registers_init(&cpu->registers);
+	OK_OR_RETURN(ret == 0, ret);
 
-	return 0;
+	ret = string_to_decoder_type(decoder_str, &decoder_type);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = cpu_decoder_configure_decoder(decoder_type, &cpu->decoder);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 int cpu_destroy(struct cpu *cpu)
@@ -196,8 +206,8 @@ int decode(struct device *device, uint8_t opcode, struct decoded_instruction *de
 	dump_instruction(device, isa_instruction, instruction_buffer, num_bytes);
 
 	decoded_instruction->info = isa_instruction;
-	ret = cpu_decoder_decode_instruction(isa_instruction, instruction_buffer, decoded_instruction);
-	OK_OR_WARN(ret == 0);
+	// ret = cpu_decoder_decode_instruction(isa_instruction, instruction_buffer, decoded_instruction);
+	// OK_OR_WARN(ret == 0);
 
 	return ret;
 }

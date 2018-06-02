@@ -10,7 +10,7 @@ struct device {
 	struct mmu mmu;
 };
 
-int device_init(struct device *device);
+int device_init(struct device *device, const char *decoder_type);
 int device_destroy(struct device *device);
 int device_emulate(struct device *device, const char *rom_path);
 

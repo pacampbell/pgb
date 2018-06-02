@@ -3,11 +3,11 @@
 #include <pgb/device/device.h>
 
 
-int device_init(struct device *device)
+int device_init(struct device *device, const char *decoder_type)
 {
 	int ret;
 
-	ret = cpu_init(&device->cpu);
+	ret = cpu_init(&device->cpu, decoder_type);
 	OK_OR_RETURN(ret == 0, ret);
 
 	ret = mmu_init(&device->mmu);

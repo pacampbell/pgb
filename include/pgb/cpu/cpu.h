@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <pgb/cpu/clock.h>
+#include <pgb/cpu/decoder.h>
 #include <pgb/cpu/registers.h>
 
 struct device;
@@ -24,12 +25,13 @@ struct cpu {
 	struct clock clock;
 	struct cpu_status status;
 	struct rom_image rom_image;
+	struct decoder decoder;
 };
 
 int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size);
 int cpu_load_rom_from_file(struct cpu *cpu, const char *path);
 int cpu_step(struct device *device, size_t step, size_t *instructions_stepped);
-int cpu_init(struct cpu *cpu);
+int cpu_init(struct cpu *cpu, const char *decoder_str);
 int cpu_destroy(struct cpu *cpu);
 bool cpu_is_halted(struct cpu *cpu);
 void cpu_dump_register_state(struct cpu *cpu);
