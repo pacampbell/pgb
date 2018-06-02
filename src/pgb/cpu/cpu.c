@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <pgb/cpu/decoder.h>
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/registers.h>
@@ -117,8 +118,44 @@ int fetch(struct device *device, uint8_t *opcode)
 }
 
 static
-int decode(struct device *device, uint8_t opcode, struct isa_instruction **__isa_instruction,
-	   uint8_t *instruction_buffer, size_t size)
+void dump_instruction(struct device *device, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
+{
+	if (!IS_DEBUG())
+		return;
+
+	unsigned i, j;
+	uint16_t immediate = 0;
+
+	for (i = 1; i < size; i++) {
+		immediate |= instruction_buffer[i] << ((i - 1) * 8);
+	}
+
+	if (isa_instruction->is_prefix)
+		printf("%04x ", device->cpu.registers.pc - (uint16_t)(size + 1));
+	else
+		printf("%04x ", device->cpu.registers.pc - (uint16_t)size);
+
+	for (j = 0; j < 3 - size; j++) {
+		printf("  ");
+	}
+
+	if (isa_instruction->is_prefix) {
+		printf("%02x", LR35902_OPCODE_PREFIX_CB);
+	}
+
+	for (j = 0; j < size; j++) {
+		printf("%02x", instruction_buffer[j]);
+	}
+
+	printf(" %s", isa_instruction->assembly);
+	if (size > 1) {
+		printf("\t; ($%x)", immediate);
+	}
+	printf("\n");
+}
+
+static
+int decode(struct device *device, uint8_t opcode, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 	struct isa_instruction *isa_instruction;
@@ -126,6 +163,7 @@ int decode(struct device *device, uint8_t opcode, struct isa_instruction **__isa
 	struct registers *registers;
 	struct rom_image *rom_image;
 	size_t num_bytes;
+	uint8_t instruction_buffer[4];
 
 	cpu = &device->cpu;
 	registers = &cpu->registers;
@@ -150,53 +188,26 @@ int decode(struct device *device, uint8_t opcode, struct isa_instruction **__isa
 	}
 
 	OK_OR_RETURN(registers->pc + (num_bytes - 1) < rom_image->size, -EINVAL);
-	OK_OR_RETURN(num_bytes <= size, -EINVAL);
+	OK_OR_RETURN(num_bytes <= sizeof(instruction_buffer), -EINVAL);
 
 	memcpy(instruction_buffer, rom_image->data + registers->pc, num_bytes);
 	registers->pc += num_bytes;
 
-	*__isa_instruction = isa_instruction;
+	dump_instruction(device, isa_instruction, instruction_buffer, num_bytes);
 
-	return 0;
+	decoded_instruction->info = isa_instruction;
+	ret = cpu_decoder_decode_instruction(isa_instruction, instruction_buffer, decoded_instruction);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 static
-int execute(struct device *device, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
+int execute(struct device *device, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 
-	if (IS_DEBUG()) {
-		unsigned i, j;
-		uint16_t immediate = 0;
-		size_t actual_size;
-
-		actual_size = isa_instruction->is_prefix ? size - 1 : size;
-		for (i = 1; i < actual_size; i++) {
-			immediate |= instruction_buffer[i] << ((i - 1) * 8);
-		}
-
-		printf("%04x ", device->cpu.registers.pc - (uint16_t)size);
-
-		for (j = 0; j < 3 - size; j++) {
-			printf("  ");
-		}
-
-		if (isa_instruction->is_prefix) {
-			printf("%02x", LR35902_OPCODE_PREFIX_CB);
-		}
-
-		for (j = 0; j < actual_size; j++) {
-			printf("%02x", instruction_buffer[j]);
-		}
-
-		printf(" %s", isa_instruction->assembly);
-		if (actual_size > 1) {
-			printf("\t; ($%x)", immediate);
-		}
-		printf("\n");
-	}
-
-	ret = isa_execute_instruction(device, isa_instruction, instruction_buffer);
+	ret = isa_execute_instruction(device, decoded_instruction);
 	OK_OR_WARN(ret == 0);
 
 	return ret;
@@ -207,8 +218,7 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 	int ret;
 	size_t i;
 	uint8_t opcode;
-	uint8_t instruction_buffer[4];
-	struct isa_instruction *isa_instruction;
+	struct decoded_instruction decoded_instruction;
 
 	OK_OR_RETURN(!cpu_is_halted(&device->cpu), -EINVAL);
 
@@ -216,14 +226,149 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 		ret = fetch(device, &opcode);
 		OK_OR_BREAK(ret == 0);
 
-		ret = decode(device, opcode, &isa_instruction, instruction_buffer, sizeof(instruction_buffer));
+		ret = decode(device, opcode, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
 
-		execute(device, isa_instruction, instruction_buffer, isa_instruction->num_bytes);
+		execute(device, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
 	}
 
 	*instructions_stepped = i;
+
+	return ret;
+}
+
+int cpu_register_read8(struct cpu *cpu, enum isa_operand reg, uint8_t *value)
+{
+	int ret = 0;
+
+	switch (reg) {
+	case ISA_OPERAND_A:
+		*value = cpu->registers.a;
+		break;
+	case ISA_OPERAND_B:
+		*value = cpu->registers.b;
+		break;
+	case ISA_OPERAND_C:
+		*value = cpu->registers.c;
+		break;
+	case ISA_OPERAND_D:
+		*value = cpu->registers.d;
+		break;
+	case ISA_OPERAND_E:
+		*value = cpu->registers.e;
+		break;
+	case ISA_OPERAND_H:
+		*value = cpu->registers.h;
+		break;
+	case ISA_OPERAND_L:
+		*value = cpu->registers.l;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+int cpu_register_write8(struct cpu *cpu, enum isa_operand reg, uint8_t value)
+{
+	int ret = 0;
+
+	switch (reg) {
+	case ISA_OPERAND_A:
+		cpu->registers.a = value;
+		break;
+	case ISA_OPERAND_B:
+		cpu->registers.b = value;
+		break;
+	case ISA_OPERAND_C:
+		cpu->registers.c = value;
+		break;
+	case ISA_OPERAND_D:
+		cpu->registers.d = value;
+		break;
+	case ISA_OPERAND_E:
+		cpu->registers.e = value;
+		break;
+	case ISA_OPERAND_H:
+		cpu->registers.h = value;
+		break;
+	case ISA_OPERAND_L:
+		cpu->registers.l = value;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+int cpu_register_read16(struct cpu *cpu, enum isa_operand reg, uint16_t *value)
+{
+	int ret = 0;
+
+	switch (reg) {
+	case ISA_OPERAND_AF:
+		ret = -EINVAL;
+		break;
+	case ISA_OPERAND_BC:
+		*value = ((cpu->registers.c << 8) | cpu->registers.b);
+		break;
+	case ISA_OPERAND_DE:
+		*value = ((cpu->registers.e << 8) | cpu->registers.d);
+		break;
+	case ISA_OPERAND_HL:
+		*value = ((cpu->registers.l << 8) | cpu->registers.h);
+		break;
+	case ISA_OPERAND_SP:
+		*value = cpu->registers.sp;
+		break;
+	case ISA_OPERAND_PC:
+		*value = cpu->registers.pc;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+
+	return ret;
+}
+
+int cpu_register_write16(struct cpu *cpu, enum isa_operand reg, uint16_t value)
+{
+	int ret = 0;
+
+	switch (reg) {
+	case ISA_OPERAND_AF:
+		ret = -EINVAL;
+		break;
+	case ISA_OPERAND_BC:
+		cpu->registers.c = (value & 0xff);
+		cpu->registers.b = ((value >> 8) & 0xff);
+		break;
+	case ISA_OPERAND_DE:
+		cpu->registers.e = (value & 0xff);
+		cpu->registers.d = ((value >> 8) & 0xff);
+		break;
+	case ISA_OPERAND_HL:
+		cpu->registers.l = (value & 0xff);
+		cpu->registers.h = ((value >> 8) & 0xff);
+		break;
+	case ISA_OPERAND_SP:
+		cpu->registers.sp = value;
+		break;
+	case ISA_OPERAND_PC:
+		cpu->registers.pc = value;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
 
 	return ret;
 }

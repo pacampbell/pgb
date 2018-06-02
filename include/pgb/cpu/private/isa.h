@@ -84,6 +84,7 @@ enum isa_operand {
 	ISA_OPERAND_C,
 	ISA_OPERAND_D,
 	ISA_OPERAND_E,
+	ISA_OPERAND_F,
 	ISA_OPERAND_H,
 	ISA_OPERAND_L,
 	ISA_OPERAND_AF,
@@ -102,6 +103,7 @@ enum isa_operand {
 	ISA_OPERAND_Z,
 	ISA_OPERAND_NZ,
 	ISA_OPERAND_NC
+	/* There is a seperate operand for C I think... */
 };
 
 enum isa_operand_modifier {
@@ -124,13 +126,14 @@ enum isa_operand_modifier {
 };
 
 enum isa_register {
-	ISA_REGISTER_A = 0x7,
 	ISA_REGISTER_B = 0x0,
 	ISA_REGISTER_C = 0x1,
 	ISA_REGISTER_D = 0x2,
 	ISA_REGISTER_E = 0x3,
 	ISA_REGISTER_H = 0x4,
-	ISA_REGISTER_L = 0x5
+	ISA_REGISTER_L = 0x5,
+	ISA_REGISTER_F = 0x6,
+	ISA_REGISTER_A = 0x7
 };
 
 struct isa_instruction {
@@ -150,8 +153,51 @@ struct isa_instruction {
 	enum isa_operation isa_operation;
 };
 
+enum instruction_operand_type {
+	INSTRUCTION_OPERAND_TYPE_NONE,
+	INSTRUCTION_OPERAND_TYPE_REGISTER8,
+	INSTRUCTION_OPERAND_TYPE_REGISTER16,
+	INSTRUCTION_OPERAND_TYPE_INT8,
+	INSTRUCTION_OPERAND_TYPE_INT16,
+	INSTRUCTION_OPERAND_TYPE_UINT3,
+	INSTRUCTION_OPERAND_TYPE_UINT8,
+	INSTRUCTION_OPERAND_TYPE_UINT16
+};
+
+enum instruction_register {
+	INSTRUCTION_REGISTER_A,
+	INSTRUCTION_REGISTER_B,
+	INSTRUCTION_REGISTER_C,
+	INSTRUCTION_REGISTER_D,
+	INSTRUCTION_REGISTER_E,
+	INSTRUCTION_REGISTER_F,
+	INSTRUCTION_REGISTER_H,
+	INSTRUCTION_REGISTER_L,
+	INSTRUCTION_REGISTER_AF,
+	INSTRUCTION_REGISTER_BC,
+	INSTRUCTION_REGISTER_DE,
+	INSTRUCTION_REGISTER_HL,
+	INSTRUCTION_REGISTER_SP,
+	INSTRUCTION_REGISTER_PC,
+};
+
+struct decoded_instruction {
+	struct {
+		enum instruction_operand_type type;
+		uint16_t value;
+		enum instruction_register reg;
+
+	} a;
+	struct {
+		enum instruction_operand_type type;
+		uint16_t value;
+		enum instruction_register reg;
+	} b;
+	struct isa_instruction *info;
+};
+
 int isa_get_instruction(uint8_t opcode, struct isa_instruction **instruction);
 int isa_prefix_cb_get_instruction(uint8_t opcode, struct isa_instruction **instruction);
-int isa_execute_instruction(struct device *device, struct isa_instruction *instruction, uint8_t *data);
+int isa_execute_instruction(struct device *device, struct decoded_instruction *instruction);
 
 #endif /* PGB_CPU_PRIVATE_ISA_H */
