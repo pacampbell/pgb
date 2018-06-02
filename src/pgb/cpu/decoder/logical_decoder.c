@@ -2,11 +2,12 @@
 #include <stdint.h>
 
 #include <pgb/cpu/decoder.h>
-#include <pgb/debug.h>
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/decoder.h>
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/private/isa_appendix.h>
+#include <pgb/debug.h>
+#include <pgb/device/device.h>
 
 static
 int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
@@ -200,16 +201,18 @@ int cpu_logical_decoder_decode_core_instr(uint8_t opcode, uint8_t *instruction_b
 	return 0;
 }
 
-int cpu_logical_decoder_decode(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode(struct device *device, uint8_t opcode, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 
+	return -EINVAL;
+
 	switch (opcode) {
 	case LR35902_OPCODE_PREFIX_CB:
-		ret = cpu_logical_decoder_prefix_cb_instr(opcode, instruction_buffer, decoded_instruction);
+		ret = cpu_logical_decoder_prefix_cb_instr(opcode, NULL, decoded_instruction);
 		break;
 	default:
-		ret = cpu_logical_decoder_decode_core_instr(opcode, instruction_buffer, decoded_instruction);
+		ret = cpu_logical_decoder_decode_core_instr(opcode, NULL, decoded_instruction);
 		break;
 	}
 	OK_OR_WARN(ret == 0);

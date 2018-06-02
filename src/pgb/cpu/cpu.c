@@ -110,7 +110,7 @@ void cpu_dump_register_state(struct cpu *cpu)
 }
 
 static
-int fetch(struct device *device, uint8_t *opcode)
+int fetch(struct device *device, uint8_t *opcode, bool *found_prefix)
 {
 	struct cpu *cpu;
 	struct registers *registers;
@@ -122,92 +122,27 @@ int fetch(struct device *device, uint8_t *opcode)
 
 	OK_OR_RETURN(registers->pc < rom_image->size, -EINVAL);
 
+	*found_prefix = false;
 	*opcode = rom_image->data[registers->pc];
+
+	if (*opcode == LR35902_OPCODE_PREFIX_CB) {
+		*found_prefix = true;
+
+		OK_OR_RETURN((registers->pc + 1) < rom_image->size, -EINVAL);
+
+		*opcode = rom_image->data[registers->pc + 1];
+	}
 
 	return 0;
 }
 
 static
-void dump_instruction(struct device *device, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
-{
-	if (!IS_DEBUG())
-		return;
-
-	unsigned i, j;
-	uint16_t immediate = 0;
-
-	for (i = 1; i < size; i++) {
-		immediate |= instruction_buffer[i] << ((i - 1) * 8);
-	}
-
-	if (isa_instruction->is_prefix)
-		printf("%04x ", device->cpu.registers.pc - (uint16_t)(size + 1));
-	else
-		printf("%04x ", device->cpu.registers.pc - (uint16_t)size);
-
-	for (j = 0; j < 3 - size; j++) {
-		printf("  ");
-	}
-
-	if (isa_instruction->is_prefix) {
-		printf("%02x", LR35902_OPCODE_PREFIX_CB);
-	}
-
-	for (j = 0; j < size; j++) {
-		printf("%02x", instruction_buffer[j]);
-	}
-
-	printf(" %s", isa_instruction->assembly);
-	if (size > 1) {
-		printf("\t; ($%x)", immediate);
-	}
-	printf("\n");
-}
-
-static
-int decode(struct device *device, uint8_t opcode, struct decoded_instruction *decoded_instruction)
+int decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
-	struct isa_instruction *isa_instruction;
-	struct cpu *cpu;
-	struct registers *registers;
-	struct rom_image *rom_image;
-	size_t num_bytes;
-	uint8_t instruction_buffer[4];
 
-	cpu = &device->cpu;
-	registers = &cpu->registers;
-	rom_image = &cpu->rom_image;
-
-	if (opcode != LR35902_OPCODE_PREFIX_CB) {
-		ret = isa_get_instruction(opcode, &isa_instruction);
-		OK_OR_RETURN(ret == 0, ret);
-
-		num_bytes = isa_instruction->num_bytes;
-	} else {
-		registers->pc += LR35902_OPCODE_PREFIX_CB_NUM_BYTES;
-		ret = fetch(device, &opcode);
-		OK_OR_RETURN(ret == 0, ret);
-
-		ret = isa_prefix_cb_get_instruction(opcode, &isa_instruction);
-		OK_OR_RETURN(ret == 0, ret);
-
-		// XXX: The isa defines this instruction as 2 bytes wide, but that includes the prefix opcode we
-		// XXX: already accounted for.
-		num_bytes = isa_instruction->num_bytes - 1;
-	}
-
-	OK_OR_RETURN(registers->pc + (num_bytes - 1) < rom_image->size, -EINVAL);
-	OK_OR_RETURN(num_bytes <= sizeof(instruction_buffer), -EINVAL);
-
-	memcpy(instruction_buffer, rom_image->data + registers->pc, num_bytes);
-	registers->pc += num_bytes;
-
-	dump_instruction(device, isa_instruction, instruction_buffer, num_bytes);
-
-	decoded_instruction->info = isa_instruction;
-	// ret = cpu_decoder_decode_instruction(isa_instruction, instruction_buffer, decoded_instruction);
-	// OK_OR_WARN(ret == 0);
+	ret = device->cpu.decoder.decode(device, opcode, is_prefix, decoded_instruction);
+	OK_OR_WARN(ret == 0);
 
 	return ret;
 }
@@ -229,14 +164,15 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 	size_t i;
 	uint8_t opcode;
 	struct decoded_instruction decoded_instruction;
+	bool found_prefix;
 
 	OK_OR_RETURN(!cpu_is_halted(&device->cpu), -EINVAL);
 
 	for (i = 0; i < step; i++) {
-		ret = fetch(device, &opcode);
+		ret = fetch(device, &opcode, &found_prefix);
 		OK_OR_BREAK(ret == 0);
 
-		ret = decode(device, opcode, &decoded_instruction);
+		ret = decode(device, opcode, found_prefix, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
 
 		execute(device, &decoded_instruction);

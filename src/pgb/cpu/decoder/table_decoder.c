@@ -1,12 +1,14 @@
 #include <errno.h>
 #include <stdint.h>
+#include <string.h>
 
 #include <pgb/cpu/decoder.h>
-#include <pgb/debug.h>
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/decoder.h>
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/private/isa_appendix.h>
+#include <pgb/debug.h>
+#include <pgb/device/device.h>
 
 static
 int isa_register_to_decoded_register(uint8_t isa_register, enum instruction_register *instruction_register)
@@ -151,20 +153,86 @@ int cpu_decoder_decode_core_instruction(struct isa_instruction *isa_instruction,
 	return ret;
 }
 
-int cpu_table_decoder_decode(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+static
+void dump_instruction(struct device *device, struct isa_instruction *isa_instruction, uint8_t *instruction_buffer, size_t size)
+{
+	unsigned i, j;
+	uint16_t immediate = 0;
+
+	if (!IS_DEBUG())
+		return;
+
+
+	for (i = 1; i < size; i++) {
+		immediate |= instruction_buffer[i] << ((i - 1) * 8);
+	}
+
+	printf("%04x ", device->cpu.registers.pc - (uint16_t)size);
+
+	for (j = 0; j < 3 - size; j++) {
+		printf("  ");
+	}
+
+	for (j = 0; j < size; j++) {
+		printf("%02x", instruction_buffer[j]);
+	}
+
+	printf(" %s", isa_instruction->assembly);
+	if (size > 1) {
+		printf("\t; ($%x)", immediate);
+	}
+	printf("\n");
+}
+
+static
+int fill_instruction_buffer(struct device *device, uint8_t opcode, struct isa_instruction *isa_instruction,
+			    uint8_t *instruction_buffer, size_t ib_size)
+{
+	struct cpu *cpu;
+	struct registers *registers;
+	struct rom_image *rom_image;
+	size_t num_bytes;
+
+	cpu = &device->cpu;
+	registers = &cpu->registers;
+	rom_image = &cpu->rom_image;
+	num_bytes = isa_instruction->num_bytes;
+
+	OK_OR_RETURN(registers->pc + (num_bytes - 1) < rom_image->size, -EINVAL);
+	OK_OR_RETURN(num_bytes <= ib_size, -EINVAL);
+
+	memcpy(instruction_buffer, rom_image->data + registers->pc, num_bytes);
+	registers->pc += num_bytes;
+
+	dump_instruction(device, isa_instruction, instruction_buffer, num_bytes);
+
+	return 0;
+}
+
+int cpu_table_decoder_decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 	struct isa_instruction *isa_instruction;
+	uint8_t instruction_buffer[4];
 
-	ret = isa_get_instruction(opcode, &isa_instruction);
+	if (is_prefix) {
+		ret = isa_prefix_cb_get_instruction(opcode, &isa_instruction);
+	} else {
+		ret = isa_get_instruction(opcode, &isa_instruction);
+	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	if (isa_instruction->is_prefix) {
+	ret = fill_instruction_buffer(device, opcode, isa_instruction, instruction_buffer, sizeof(instruction_buffer));
+	OK_OR_RETURN(ret == 0, ret);
+
+	if (is_prefix) {
 		ret = cpu_decoder_decode_prefix_instruction(isa_instruction, instruction_buffer, decoded_instruction);
 	} else {
 		ret = cpu_decoder_decode_core_instruction(isa_instruction, instruction_buffer, decoded_instruction);
 	}
-	OK_OR_WARN(ret == 0);
+	OK_OR_RETURN(ret == 0, ret);
 
-	return ret;
+	decoded_instruction->info = isa_instruction;
+
+	return 0;
 }

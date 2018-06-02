@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <errno.h>
 #include <stddef.h>
 
@@ -421,6 +422,8 @@ int isa_execute_instruction_swap(struct device *device, struct decoded_instructi
 int isa_execute_instruction(struct device *device, struct decoded_instruction *instruction)
 {
 	int ret = 0;
+
+	assert(instruction->info != NULL && "Instruction information should not be NULL");
 
 	switch (instruction->info->isa_operation) {
 	case ISA_OPERATION_ADC:
