@@ -1,28 +1,37 @@
-CC = gcc
-CFLAGS = -Wall -Werror -std=c11
-LIBS =
-BINARY = pgb
+CC := gcc
+CFLAGS := -Wall -Werror -std=c11
+LIBS :=
+TARGET := pgb
 
-INCLUDE = include
+INCLUDE := include
 
-SRC = \
-	src/pgb/main.c				\
-	src/pgb/cpu/clock.c			\
-	src/pgb/cpu/cpu.c			\
-	src/pgb/cpu/isa.c			\
-	src/pgb/cpu/registers.c		\
-	src/pgb/device/device.c		\
-	src/pgb/mmu/mmu.c
+OBJS := \
+	src/pgb/main.o				\
+	src/pgb/cpu/clock.o			\
+	src/pgb/cpu/cpu.o			\
+	src/pgb/cpu/decoder.o		\
+	src/pgb/cpu/isa.o			\
+	src/pgb/cpu/registers.o		\
+	src/pgb/device/device.o		\
+	src/pgb/mmu/mmu.o
 
-.PHONY: all debug clean
+.PHONY: all debug clean force
 
-all: $(BINARY)
+all: $(TARGET)
 
 debug: CFLAGS += -g -DDEBUG
-debug: $(BINARY)
+debug: $(TARGET)
 
-$(BINARY): $(SRC)
-	$(CC) $(CFLAGS) -o $@  $(SRC) -I$(INCLUDE) $(LIBS)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
+
+%.o: %.c .compiler_flags
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c -MMD -MP $< -o $@
+
+.compiler_flags: force
+	@echo '$(CFLAGS)' | cmp -s - $@ || echo '$(CFLAGS)' > $@
+
+-include $(OBJS:.o=.d)
 
 clean:
-	rm -rf *.o $(BINARY)
+	rm -f $(OBJS) $(patsubst %.o, %.d, $(OBJS)) $(TARGET) .compiler_flags

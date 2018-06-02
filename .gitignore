@@ -1,3 +1,5 @@
 *.o
 *.bin
+*.d
+.compiler_flags
 roms/
