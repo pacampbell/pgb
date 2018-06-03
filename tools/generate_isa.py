@@ -49,7 +49,7 @@ def _parse_operand(mnemonic, operand, position):
             value = int(raw_operand)
         if mnemonic != 'RST':
             if value >= 0 and value <= 7:
-                raw_operand = 'U3'
+                raw_operand = 'N3'
         else:
             operand_modifier = raw_operand
             raw_operand = 'VEC'

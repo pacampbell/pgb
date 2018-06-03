@@ -94,11 +94,11 @@ enum isa_operand {
 	ISA_OPERAND_SP,
 	ISA_OPERAND_PC,
 	/* Generic names for immediate values */
-	ISA_OPERAND_N8,   // 8-bit integer constant
-	ISA_OPERAND_N16,  // 16-bit integer constant
-	ISA_OPERAND_E8,   // 8-bit offset [-128, 127]
-	ISA_OPERAND_U3,   // 3-bit unsigned integer constant 0-7
-	ISA_OPERAND_VEC,   // Used by reset vectors
+	ISA_OPERAND_N3,   // uint3
+	ISA_OPERAND_N8,   // uint8
+	ISA_OPERAND_N16,  // uint16
+	ISA_OPERAND_E8,   // int8
+	ISA_OPERAND_VEC,  // Used by reset vectors
 	/* Special values for jump */
 	ISA_OPERAND_Z,
 	ISA_OPERAND_NZ,
