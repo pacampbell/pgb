@@ -2,8 +2,8 @@
 #include <string.h>
 
 #include <pgb/cpu/decoder.h>
-#include <pgb/cpu/private/logical_decoder.h>
-#include <pgb/cpu/private/table_decoder.h>
+#include <pgb/cpu/logical_decoder.h>
+#include <pgb/cpu/table_decoder.h>
 #include <pgb/debug.h>
 
 int string_to_decoder_type(const char *str, enum decoder_type *type)
