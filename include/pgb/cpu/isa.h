@@ -2209,4 +2209,3 @@
 #define LR35902_OPCODE_RST_38H_FLAG_C                                          3
 
 #endif /* PGB_CPU_ISA_H */
-

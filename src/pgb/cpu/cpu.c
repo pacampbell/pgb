@@ -10,6 +10,7 @@
 
 #include <pgb/cpu/decoder.h>
 #include <pgb/cpu/isa.h>
+#include <pgb/cpu/interpreter.h>
 #include <pgb/cpu/private/isa.h>
 #include <pgb/cpu/registers.h>
 #include <pgb/debug.h>
@@ -100,12 +101,12 @@ void cpu_dump_register_state(struct cpu *cpu)
 	printf("+------+---------+\n");
 	printf("| PC   | 0x%04x  |\n", cpu->registers.pc);
 	printf("| SP   | 0x%04x  |\n", cpu->registers.sp);
-	printf("| A    | 0x%02x    |\n", cpu->registers.a);
+	printf("| AF   | 0x%02x%02x  |\n", cpu->registers.a, cpu->registers.flags.value);
 	printf("| BC   | 0x%02x%02x  |\n", cpu->registers.b, cpu->registers.c);
 	printf("| DE   | 0x%02x%02x  |\n", cpu->registers.d, cpu->registers.e);
 	printf("| HL   | 0x%02x%02x  |\n", cpu->registers.h, cpu->registers.l);
 	printf("| CHNZ | %u %u %u %u |\n", cpu->registers.flags.c, cpu->registers.flags.h,
-				       cpu->registers.flags.n, cpu->registers.flags.z);
+					   cpu->registers.flags.n, cpu->registers.flags.z);
 	printf("+------+---------+\n");
 }
 
@@ -152,7 +153,7 @@ int execute(struct device *device, struct decoded_instruction *decoded_instructi
 {
 	int ret;
 
-	ret = isa_execute_instruction(device, decoded_instruction);
+	ret = interpreter_execute_instruction(device, decoded_instruction);
 	OK_OR_WARN(ret == 0);
 
 	return ret;
@@ -281,6 +282,7 @@ int cpu_register_read16(struct cpu *cpu, enum isa_operand reg, uint16_t *value)
 		ret = -EINVAL;
 		break;
 	}
+	OK_OR_WARN(ret == 0);
 
 	return ret;
 }
@@ -315,6 +317,7 @@ int cpu_register_write16(struct cpu *cpu, enum isa_operand reg, uint16_t value)
 		ret = -EINVAL;
 		break;
 	}
+	OK_OR_WARN(ret == 0);
 
 	return ret;
 }

@@ -13,7 +13,6 @@ int registers_init(struct registers *registers)
 	registers->pc = 0x0;
 	registers->sp = 0x0;
 
-	registers->flags.rsvd = 0;
 	registers->flags.c = 0;
 	registers->flags.h = 0;
 	registers->flags.n = 0;

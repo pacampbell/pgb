@@ -198,6 +198,5 @@ struct decoded_instruction {
 
 int isa_get_instruction(uint8_t opcode, struct isa_instruction **instruction);
 int isa_prefix_cb_get_instruction(uint8_t opcode, struct isa_instruction **instruction);
-int isa_execute_instruction(struct device *device, struct decoded_instruction *instruction);
 
 #endif /* PGB_CPU_PRIVATE_ISA_H */

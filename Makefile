@@ -6,15 +6,16 @@ TARGET := pgb
 INCLUDE := include
 
 OBJS := \
-	src/pgb/main.o							\
-	src/pgb/cpu/clock.o						\
-	src/pgb/cpu/cpu.o						\
-	src/pgb/cpu/decoder.o					\
+	src/pgb/main.o				\
+	src/pgb/cpu/clock.o			\
+	src/pgb/cpu/cpu.o			\
+	src/pgb/cpu/decoder.o			\
 	src/pgb/cpu/decoder/logical_decoder.o	\
-	src/pgb/cpu/decoder/table_decoder.o		\
-	src/pgb/cpu/isa.o						\
-	src/pgb/cpu/registers.o					\
-	src/pgb/device/device.o					\
+	src/pgb/cpu/decoder/table_decoder.o	\
+	src/pgb/cpu/isa.o			\
+	src/pgb/cpu/interpreter/interpreter.o	\
+	src/pgb/cpu/registers.o			\
+	src/pgb/device/device.o			\
 	src/pgb/mmu/mmu.o
 
 .PHONY: all debug clean force

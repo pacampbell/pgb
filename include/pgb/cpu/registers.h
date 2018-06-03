@@ -4,11 +4,13 @@
 #include <stdint.h>
 
 struct flags {
-	uint8_t rsvd : 4;
-	uint8_t c    : 1;
-	uint8_t h    : 1;
-	uint8_t n    : 1;
-	uint8_t z    : 1;
+	union {
+		uint8_t c     : 1;
+		uint8_t h     : 1;
+		uint8_t n     : 1;
+		uint8_t z     : 1;
+		uint8_t value : 4;
+	};
 };
 
 struct registers {
