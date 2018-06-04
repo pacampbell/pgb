@@ -94,10 +94,10 @@ enum isa_operand {
 	ISA_OPERAND_SP,
 	ISA_OPERAND_PC,
 	/* Generic names for immediate values */
-	ISA_OPERAND_N3,   // uint3
-	ISA_OPERAND_N8,   // uint8
-	ISA_OPERAND_N16,  // uint16
-	ISA_OPERAND_E8,   // int8
+	ISA_OPERAND_U3,   // uint3
+	ISA_OPERAND_U8,   // uint8
+	ISA_OPERAND_U16,  // uint16
+	ISA_OPERAND_I8,   // int8
 	ISA_OPERAND_VEC,  // Used by reset vectors
 	/* Special values for jump */
 	ISA_OPERAND_Z,
@@ -151,49 +151,6 @@ struct isa_instruction {
 		enum isa_operand_modifier modifier_b;
 	} operands;
 	enum isa_operation isa_operation;
-};
-
-enum instruction_operand_type {
-	INSTRUCTION_OPERAND_TYPE_NONE,
-	INSTRUCTION_OPERAND_TYPE_REGISTER8,
-	INSTRUCTION_OPERAND_TYPE_REGISTER16,
-	INSTRUCTION_OPERAND_TYPE_INT8,
-	INSTRUCTION_OPERAND_TYPE_INT16,
-	INSTRUCTION_OPERAND_TYPE_UINT3,
-	INSTRUCTION_OPERAND_TYPE_UINT8,
-	INSTRUCTION_OPERAND_TYPE_UINT16
-};
-
-enum instruction_register {
-	INSTRUCTION_REGISTER_A,
-	INSTRUCTION_REGISTER_B,
-	INSTRUCTION_REGISTER_C,
-	INSTRUCTION_REGISTER_D,
-	INSTRUCTION_REGISTER_E,
-	INSTRUCTION_REGISTER_F,
-	INSTRUCTION_REGISTER_H,
-	INSTRUCTION_REGISTER_L,
-	INSTRUCTION_REGISTER_AF,
-	INSTRUCTION_REGISTER_BC,
-	INSTRUCTION_REGISTER_DE,
-	INSTRUCTION_REGISTER_HL,
-	INSTRUCTION_REGISTER_SP,
-	INSTRUCTION_REGISTER_PC,
-};
-
-struct decoded_instruction {
-	struct {
-		enum instruction_operand_type type;
-		uint16_t value;
-		enum instruction_register reg;
-
-	} a;
-	struct {
-		enum instruction_operand_type type;
-		uint16_t value;
-		enum instruction_register reg;
-	} b;
-	struct isa_instruction *info;
 };
 
 int isa_get_instruction(uint8_t opcode, struct isa_instruction **instruction);

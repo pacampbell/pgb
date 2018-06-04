@@ -49,16 +49,16 @@ def _parse_operand(mnemonic, operand, position):
             value = int(raw_operand)
         if mnemonic != 'RST':
             if value >= 0 and value <= 7:
-                raw_operand = 'N3'
+                raw_operand = 'U3'
         else:
             operand_modifier = raw_operand
             raw_operand = 'VEC'
     elif 'a8' in raw_operand or 'd8' in raw_operand:
-        raw_operand = 'N8'
+        raw_operand = 'U8'
     elif 'r8' in raw_operand:
-        raw_operand = 'E8'
+        raw_operand = 'I8'
     elif 'a16' in raw_operand or 'd16' in raw_operand:
-        raw_operand = 'N16'
+        raw_operand = 'U16'
 
     return raw_operand, operand_modifier
 
