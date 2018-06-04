@@ -105,7 +105,7 @@ void cpu_dump_register_state(struct cpu *cpu)
 	printf("| BC   | 0x%02x%02x  |\n", cpu->registers.b, cpu->registers.c);
 	printf("| DE   | 0x%02x%02x  |\n", cpu->registers.d, cpu->registers.e);
 	printf("| HL   | 0x%02x%02x  |\n", cpu->registers.h, cpu->registers.l);
-	printf("| CHNZ | %u %u %u %u |\n", cpu->registers.flags.c, cpu->registers.flags.h,
+	printf("| CHNZ | 0b%u%u%u%u  |\n", cpu->registers.flags.c, cpu->registers.flags.h,
 					   cpu->registers.flags.n, cpu->registers.flags.z);
 	printf("+------+---------+\n");
 }
@@ -178,6 +178,11 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 
 		execute(device, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
+
+		if (IS_DEBUG()) {
+			cpu_dump_register_state(&device->cpu);
+			getchar();
+		}
 	}
 
 	*instructions_stepped = i;
@@ -185,30 +190,33 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 	return ret;
 }
 
-int cpu_register_read8(struct cpu *cpu, enum isa_operand reg, uint8_t *value)
+int cpu_register_read8(struct cpu *cpu, enum decoded_instruction_register reg, uint8_t *value)
 {
 	int ret = 0;
 
 	switch (reg) {
-	case ISA_OPERAND_A:
+	case DECODED_INSTRUCTION_REGISTER_A:
 		*value = cpu->registers.a;
 		break;
-	case ISA_OPERAND_B:
+	case DECODED_INSTRUCTION_REGISTER_B:
 		*value = cpu->registers.b;
 		break;
-	case ISA_OPERAND_C:
+	case DECODED_INSTRUCTION_REGISTER_C:
 		*value = cpu->registers.c;
 		break;
-	case ISA_OPERAND_D:
+	case DECODED_INSTRUCTION_REGISTER_D:
 		*value = cpu->registers.d;
 		break;
-	case ISA_OPERAND_E:
+	case DECODED_INSTRUCTION_REGISTER_E:
 		*value = cpu->registers.e;
 		break;
-	case ISA_OPERAND_H:
+	case DECODED_INSTRUCTION_REGISTER_F:
+		*value = cpu->registers.flags.value;
+		break;
+	case DECODED_INSTRUCTION_REGISTER_H:
 		*value = cpu->registers.h;
 		break;
-	case ISA_OPERAND_L:
+	case DECODED_INSTRUCTION_REGISTER_L:
 		*value = cpu->registers.l;
 		break;
 	default:
@@ -220,30 +228,33 @@ int cpu_register_read8(struct cpu *cpu, enum isa_operand reg, uint8_t *value)
 	return ret;
 }
 
-int cpu_register_write8(struct cpu *cpu, enum isa_operand reg, uint8_t value)
+int cpu_register_write8(struct cpu *cpu, enum decoded_instruction_register reg, uint8_t value)
 {
 	int ret = 0;
 
 	switch (reg) {
-	case ISA_OPERAND_A:
+	case DECODED_INSTRUCTION_REGISTER_A:
 		cpu->registers.a = value;
 		break;
-	case ISA_OPERAND_B:
+	case DECODED_INSTRUCTION_REGISTER_B:
 		cpu->registers.b = value;
 		break;
-	case ISA_OPERAND_C:
+	case DECODED_INSTRUCTION_REGISTER_C:
 		cpu->registers.c = value;
 		break;
-	case ISA_OPERAND_D:
+	case DECODED_INSTRUCTION_REGISTER_D:
 		cpu->registers.d = value;
 		break;
-	case ISA_OPERAND_E:
+	case DECODED_INSTRUCTION_REGISTER_E:
 		cpu->registers.e = value;
 		break;
-	case ISA_OPERAND_H:
+	case DECODED_INSTRUCTION_REGISTER_F:
+		cpu->registers.flags.value = value;
+		break;
+	case DECODED_INSTRUCTION_REGISTER_H:
 		cpu->registers.h = value;
 		break;
-	case ISA_OPERAND_L:
+	case DECODED_INSTRUCTION_REGISTER_L:
 		cpu->registers.l = value;
 		break;
 	default:
@@ -255,27 +266,31 @@ int cpu_register_write8(struct cpu *cpu, enum isa_operand reg, uint8_t value)
 	return ret;
 }
 
-int cpu_register_read16(struct cpu *cpu, enum isa_operand reg, uint16_t *value)
+#define FORMAT_REG_READ_VALUE16(high, low) ((((high) & 0xff) << 8) | ((low) & 0xff))
+#define FORMAT_REG_WRITE_VALUE_H16(value) (((value) >> 8) & 0xff)
+#define FORMAT_REG_WRITE_VALUE_L16(value) ((value) & 0xff)
+
+int cpu_register_read16(struct cpu *cpu, enum decoded_instruction_register reg, uint16_t *value)
 {
 	int ret = 0;
 
 	switch (reg) {
-	case ISA_OPERAND_AF:
-		ret = -EINVAL;
+	case DECODED_INSTRUCTION_REGISTER_AF:
+		*value = FORMAT_REG_READ_VALUE16(cpu->registers.a, cpu->registers.flags.value);
 		break;
-	case ISA_OPERAND_BC:
-		*value = ((cpu->registers.c << 8) | cpu->registers.b);
+	case DECODED_INSTRUCTION_REGISTER_BC:
+		*value = FORMAT_REG_READ_VALUE16(cpu->registers.b, cpu->registers.c);
 		break;
-	case ISA_OPERAND_DE:
-		*value = ((cpu->registers.e << 8) | cpu->registers.d);
+	case DECODED_INSTRUCTION_REGISTER_DE:
+		*value = FORMAT_REG_READ_VALUE16(cpu->registers.d, cpu->registers.e);
 		break;
-	case ISA_OPERAND_HL:
-		*value = ((cpu->registers.l << 8) | cpu->registers.h);
+	case DECODED_INSTRUCTION_REGISTER_HL:
+		*value = FORMAT_REG_READ_VALUE16(cpu->registers.h, cpu->registers.l);
 		break;
-	case ISA_OPERAND_SP:
+	case DECODED_INSTRUCTION_REGISTER_SP:
 		*value = cpu->registers.sp;
 		break;
-	case ISA_OPERAND_PC:
+	case DECODED_INSTRUCTION_REGISTER_PC:
 		*value = cpu->registers.pc;
 		break;
 	default:
@@ -287,30 +302,31 @@ int cpu_register_read16(struct cpu *cpu, enum isa_operand reg, uint16_t *value)
 	return ret;
 }
 
-int cpu_register_write16(struct cpu *cpu, enum isa_operand reg, uint16_t value)
+int cpu_register_write16(struct cpu *cpu, enum decoded_instruction_register reg, uint16_t value)
 {
 	int ret = 0;
 
 	switch (reg) {
-	case ISA_OPERAND_AF:
-		ret = -EINVAL;
+	case DECODED_INSTRUCTION_REGISTER_AF:
+		cpu->registers.a = FORMAT_REG_WRITE_VALUE_H16(value);
+		cpu->registers.flags.value = FORMAT_REG_WRITE_VALUE_L16(value);
 		break;
-	case ISA_OPERAND_BC:
-		cpu->registers.c = (value & 0xff);
-		cpu->registers.b = ((value >> 8) & 0xff);
+	case DECODED_INSTRUCTION_REGISTER_BC:
+		cpu->registers.b = FORMAT_REG_WRITE_VALUE_H16(value);
+		cpu->registers.c = FORMAT_REG_WRITE_VALUE_L16(value);
 		break;
-	case ISA_OPERAND_DE:
-		cpu->registers.e = (value & 0xff);
-		cpu->registers.d = ((value >> 8) & 0xff);
+	case DECODED_INSTRUCTION_REGISTER_DE:
+		cpu->registers.d = FORMAT_REG_WRITE_VALUE_H16(value);
+		cpu->registers.e = FORMAT_REG_WRITE_VALUE_L16(value);
 		break;
-	case ISA_OPERAND_HL:
-		cpu->registers.l = (value & 0xff);
-		cpu->registers.h = ((value >> 8) & 0xff);
+	case DECODED_INSTRUCTION_REGISTER_HL:
+		cpu->registers.h = FORMAT_REG_WRITE_VALUE_H16(value);
+		cpu->registers.l = FORMAT_REG_WRITE_VALUE_L16(value);
 		break;
-	case ISA_OPERAND_SP:
+	case DECODED_INSTRUCTION_REGISTER_SP:
 		cpu->registers.sp = value;
 		break;
-	case ISA_OPERAND_PC:
+	case DECODED_INSTRUCTION_REGISTER_PC:
 		cpu->registers.pc = value;
 		break;
 	default:

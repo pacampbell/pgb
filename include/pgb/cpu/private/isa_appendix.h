@@ -12,12 +12,12 @@
 #define LR35902_OPCODE_INVALID_FC                                           0xfc
 #define LR35902_OPCODE_INVALID_FD                                           0xfd
 
+#define LR35902_OPCODE_ADC_A_REG_FIELD_ADDEND                               2:0
 #define LR35902_OPCODE_LD_REG_REG_FIELD_SRC                                 2:0
 #define LR35902_OPCODE_LD_REG_REG_FIELD_DST                                 5:3
-#define LR35902_OPCODE_ADC_A_REG_FIELD_ADDEND                               2:0
+#define LR35902_OPCODE_LD_REG16_UINT16_DST                                  2:0
 
 #define LR35902_OPCODE_FIELD_X                                              7:6
-
 #define LR35902_OPCODE_FIELD_Y                                              5:3
 #define LR35902_OPCODE_FIELD_Z                                              2:0
 #define LR35902_OPCODE_FIELD_P                                              5:4

@@ -36,9 +36,9 @@ int cpu_destroy(struct cpu *cpu);
 bool cpu_is_halted(struct cpu *cpu);
 void cpu_dump_register_state(struct cpu *cpu);
 
-int cpu_register_read8(struct cpu *cpu, enum isa_operand reg, uint8_t *value);
-int cpu_register_write8(struct cpu *cpu, enum isa_operand reg, uint8_t value);
-int cpu_register_read16(struct cpu *cpu, enum isa_operand reg, uint16_t *value);
-int cpu_register_write16(struct cpu *cpu, enum isa_operand reg, uint16_t value);
+int cpu_register_read8(struct cpu *cpu, enum decoded_instruction_register reg, uint8_t *value);
+int cpu_register_write8(struct cpu *cpu, enum decoded_instruction_register reg, uint8_t value);
+int cpu_register_read16(struct cpu *cpu, enum decoded_instruction_register reg, uint16_t *value);
+int cpu_register_write16(struct cpu *cpu, enum decoded_instruction_register reg, uint16_t value);
 
 #endif /* PGBA_CPU_CPU_H */
