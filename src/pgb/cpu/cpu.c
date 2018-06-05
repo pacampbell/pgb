@@ -101,12 +101,12 @@ void cpu_dump_register_state(struct cpu *cpu)
 	printf("+------+---------+\n");
 	printf("| PC   | 0x%04x  |\n", cpu->registers.pc);
 	printf("| SP   | 0x%04x  |\n", cpu->registers.sp);
-	printf("| AF   | 0x%02x%02x  |\n", cpu->registers.a, cpu->registers.flags.value);
-	printf("| BC   | 0x%02x%02x  |\n", cpu->registers.b, cpu->registers.c);
-	printf("| DE   | 0x%02x%02x  |\n", cpu->registers.d, cpu->registers.e);
-	printf("| HL   | 0x%02x%02x  |\n", cpu->registers.h, cpu->registers.l);
-	printf("| CHNZ | 0b%u%u%u%u  |\n", cpu->registers.flags.c, cpu->registers.flags.h,
-					   cpu->registers.flags.n, cpu->registers.flags.z);
+	printf("| AF   | 0x%04x  |\n", cpu->registers.af);
+	printf("| BC   | 0x%04x  |\n", cpu->registers.bc);
+	printf("| DE   | 0x%04x  |\n", cpu->registers.de);
+	printf("| HL   | 0x%04x  |\n", cpu->registers.hl);
+	printf("| CHNZ | 0b%u%u%u%u  |\n", cpu->registers.flags.carry, cpu->registers.flags.half_carry,
+					   cpu->registers.flags.subtraction, cpu->registers.flags.zero);
 	printf("+------+---------+\n");
 }
 
@@ -211,7 +211,7 @@ int cpu_register_read8(struct cpu *cpu, enum decoded_instruction_register reg, u
 		*value = cpu->registers.e;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_F:
-		*value = cpu->registers.flags.value;
+		*value = cpu->registers.f;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_H:
 		*value = cpu->registers.h;
@@ -249,7 +249,7 @@ int cpu_register_write8(struct cpu *cpu, enum decoded_instruction_register reg, 
 		cpu->registers.e = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_F:
-		cpu->registers.flags.value = value;
+		cpu->registers.f = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_H:
 		cpu->registers.h = value;
@@ -266,26 +266,22 @@ int cpu_register_write8(struct cpu *cpu, enum decoded_instruction_register reg, 
 	return ret;
 }
 
-#define FORMAT_REG_READ_VALUE16(high, low) ((((high) & 0xff) << 8) | ((low) & 0xff))
-#define FORMAT_REG_WRITE_VALUE_H16(value) (((value) >> 8) & 0xff)
-#define FORMAT_REG_WRITE_VALUE_L16(value) ((value) & 0xff)
-
 int cpu_register_read16(struct cpu *cpu, enum decoded_instruction_register reg, uint16_t *value)
 {
 	int ret = 0;
 
 	switch (reg) {
 	case DECODED_INSTRUCTION_REGISTER_AF:
-		*value = FORMAT_REG_READ_VALUE16(cpu->registers.a, cpu->registers.flags.value);
+		*value = cpu->registers.af;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_BC:
-		*value = FORMAT_REG_READ_VALUE16(cpu->registers.b, cpu->registers.c);
+		*value = cpu->registers.bc;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_DE:
-		*value = FORMAT_REG_READ_VALUE16(cpu->registers.d, cpu->registers.e);
+		*value = cpu->registers.de;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_HL:
-		*value = FORMAT_REG_READ_VALUE16(cpu->registers.h, cpu->registers.l);
+		*value = cpu->registers.hl;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_SP:
 		*value = cpu->registers.sp;
@@ -308,20 +304,16 @@ int cpu_register_write16(struct cpu *cpu, enum decoded_instruction_register reg,
 
 	switch (reg) {
 	case DECODED_INSTRUCTION_REGISTER_AF:
-		cpu->registers.a = FORMAT_REG_WRITE_VALUE_H16(value);
-		cpu->registers.flags.value = FORMAT_REG_WRITE_VALUE_L16(value);
+		cpu->registers.af = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_BC:
-		cpu->registers.b = FORMAT_REG_WRITE_VALUE_H16(value);
-		cpu->registers.c = FORMAT_REG_WRITE_VALUE_L16(value);
+		cpu->registers.bc = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_DE:
-		cpu->registers.d = FORMAT_REG_WRITE_VALUE_H16(value);
-		cpu->registers.e = FORMAT_REG_WRITE_VALUE_L16(value);
+		cpu->registers.de = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_HL:
-		cpu->registers.h = FORMAT_REG_WRITE_VALUE_H16(value);
-		cpu->registers.l = FORMAT_REG_WRITE_VALUE_L16(value);
+		cpu->registers.hl = value;
 		break;
 	case DECODED_INSTRUCTION_REGISTER_SP:
 		cpu->registers.sp = value;
