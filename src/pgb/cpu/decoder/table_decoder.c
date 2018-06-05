@@ -229,12 +229,12 @@ int cpu_decoder_decode_ld_reg_reg(struct isa_instruction *isa_instruction, uint8
 	ret = isa_register_to_decoded_register(src, &translated_register);
 	OK_OR_RETURN(ret == 0, ret);
 
-	instruction->a.reg = translated_register;
+	instruction->b.reg = translated_register;
 
 	ret = isa_register_to_decoded_register(dst, &translated_register);
 	OK_OR_RETURN(ret == 0, ret);
 
-	instruction->b.reg = translated_register;
+	instruction->a.reg = translated_register;
 
 	return 0;
 }
