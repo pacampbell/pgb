@@ -39,17 +39,25 @@ enum decoded_instruction_register {
 	DECODED_INSTRUCTION_REGISTER_PC
 };
 
+enum decoded_modifier {
+	DECODED_MODIFIER_NONE,
+	DECODED_MODIFIER_W16,
+	DECODED_MODIFIER_R16
+};
+
 struct decoded_instruction {
 	struct {
 		enum decoded_instruction_operand_type type;
 		uint16_t value;
 		enum decoded_instruction_register reg;
+		enum decoded_modifier modifier;
 
 	} a;
 	struct {
 		enum decoded_instruction_operand_type type;
 		uint16_t value;
 		enum decoded_instruction_register reg;
+		enum decoded_modifier modifier;
 	} b;
 	struct isa_instruction *info;
 };

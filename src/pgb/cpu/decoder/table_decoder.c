@@ -11,6 +11,30 @@
 #include <pgb/device/device.h>
 
 static
+int isa_modifier_to_decoded_modifier(enum isa_operand_modifier isa_modifier, enum decoded_modifier *modifier)
+{
+	int ret;
+
+	switch (isa_modifier) {
+	case ISA_OPERAND_MODIFIER_NONE:
+		*modifier = DECODED_MODIFIER_NONE;
+		break;
+	case ISA_OPERAND_MODIFIER_MEM_READ_16:
+		*modifier = DECODED_MODIFIER_R16;
+		break;
+	case ISA_OPERAND_MODIFIER_MEM_WRITE_16:
+		*modifier = DECODED_MODIFIER_W16;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return 0;
+}
+
+static
 int isa_register_to_decoded_register(uint8_t isa_register, enum decoded_instruction_register *instruction_register)
 {
 	int ret = 0;
@@ -212,6 +236,36 @@ int cpu_decoder_decode_adc_a_reg(struct isa_instruction *isa_instruction, uint8_
 }
 
 static
+int cpu_decoder_decode_dec_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
+			       struct decoded_instruction *instruction)
+{
+	int ret;
+
+	ret = isa_operand_to_decoded_operand_type(isa_instruction->operands.a, &instruction->a.type);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_operand_to_decoded_register(isa_instruction->operands.a, &instruction->a.reg);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+static
+int cpu_decoder_decode_inc_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
+			       struct decoded_instruction *instruction)
+{
+	int ret;
+
+	ret = isa_operand_to_decoded_operand_type(isa_instruction->operands.a, &instruction->a.type);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_operand_to_decoded_register(isa_instruction->operands.a, &instruction->a.reg);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+static
 int cpu_decoder_decode_ld_reg_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
 				  struct decoded_instruction *instruction)
 {
@@ -290,8 +344,8 @@ int cpu_decoder_decode_ld_reg8_u8(struct isa_instruction *isa_instruction, uint8
 }
 
 static
-int cpu_decoder_decode_inc_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
-			       struct decoded_instruction *instruction)
+int cpu_decoder_decode_ldd(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
+			   struct decoded_instruction *instruction)
 {
 	int ret;
 
@@ -299,22 +353,37 @@ int cpu_decoder_decode_inc_reg(struct isa_instruction *isa_instruction, uint8_t 
 	OK_OR_RETURN(ret == 0, ret);
 
 	ret = isa_operand_to_decoded_register(isa_instruction->operands.a, &instruction->a.reg);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_modifier_to_decoded_modifier(isa_instruction->operands.modifier_a, &instruction->a.modifier);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_operand_to_decoded_operand_type(isa_instruction->operands.b, &instruction->b.type);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_operand_to_decoded_register(isa_instruction->operands.b, &instruction->b.reg);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = isa_modifier_to_decoded_modifier(isa_instruction->operands.modifier_b, &instruction->b.modifier);
 	OK_OR_WARN(ret == 0);
 
-	return ret;
+	return 0;
 }
 
 static
-int cpu_decoder_decode_dec_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
+int cpu_decoder_decode_xor_reg(struct isa_instruction *isa_instruction, uint8_t *instruction_buffer,
 			       struct decoded_instruction *instruction)
 {
 	int ret;
 
-	ret = isa_operand_to_decoded_operand_type(isa_instruction->operands.a, &instruction->a.type);
+	instruction->a.type = DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8;
+	instruction->a.reg = DECODED_INSTRUCTION_REGISTER_A;
+
+	ret = isa_operand_to_decoded_operand_type(isa_instruction->operands.a, &instruction->b.type);
 	OK_OR_RETURN(ret == 0, ret);
 
-	ret = isa_operand_to_decoded_register(isa_instruction->operands.a, &instruction->a.reg);
-	OK_OR_WARN(ret == 0);
+	ret = isa_operand_to_decoded_register(isa_instruction->operands.a, &instruction->b.reg);
+	OK_OR_RETURN(ret == 0, ret);
 
 	return ret;
 }
@@ -366,6 +435,9 @@ int cpu_decoder_decode_core_instruction(struct isa_instruction *isa_instruction,
 		break;
 	case LR35902_OPCODE_LD_SP_HL:
 		break;
+	case LR35902_OPCODE_LDD_W16_HL_A: case LR35902_OPCODE_LDD_R16_A_HL:
+		ret = cpu_decoder_decode_ldd(isa_instruction, instruction_buffer, decoded_instruction);
+		break;
 	case LR35902_OPCODE_ADD_A_B: case LR35902_OPCODE_ADD_A_C: case LR35902_OPCODE_ADD_A_D: case LR35902_OPCODE_ADD_A_E:
 	case LR35902_OPCODE_ADD_A_H: case LR35902_OPCODE_ADD_A_L: case LR35902_OPCODE_ADD_A_A:
 	case LR35902_OPCODE_ADC_A_B: case LR35902_OPCODE_ADC_A_C: case LR35902_OPCODE_ADC_A_D: case LR35902_OPCODE_ADC_A_E:
@@ -381,6 +453,10 @@ int cpu_decoder_decode_core_instruction(struct isa_instruction *isa_instruction,
 	case LR35902_OPCODE_DEC_H: case LR35902_OPCODE_DEC_L: case LR35902_OPCODE_DEC_A:
 	case LR35902_OPCODE_DEC_BC: case LR35902_OPCODE_DEC_DE: case LR35902_OPCODE_DEC_HL: case LR35902_OPCODE_DEC_SP:
 		ret = cpu_decoder_decode_dec_reg(isa_instruction, instruction_buffer, decoded_instruction);
+		break;
+	case LR35902_OPCODE_XOR_B: case LR35902_OPCODE_XOR_C: case LR35902_OPCODE_XOR_D: case LR35902_OPCODE_XOR_E:
+	case LR35902_OPCODE_XOR_H: case LR35902_OPCODE_XOR_L: case LR35902_OPCODE_XOR_A:
+		ret = cpu_decoder_decode_xor_reg(isa_instruction, instruction_buffer, decoded_instruction);
 		break;
 	default:
 		/* TODO: If we get here the instruction is not implemented */

@@ -292,7 +292,58 @@ int interpreter_execute_instruction_ld(struct device *device, struct decoded_ins
 static
 int interpreter_execute_instruction_ldd(struct device *device, struct decoded_instruction *instruction)
 {
-	return 0;
+	int ret;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	uint8_t dst8, src8;
+	uint16_t dst, src;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+
+	switch (instruction->a.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, instruction->a.reg, &dst8);
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, instruction->a.reg, &dst);
+		break;
+	default:
+		assert(false && "Unsupported 'dst' operand type");
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (instruction->b.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+		break;
+	default:
+		assert(false && "Unsupported 'src' operand type");
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	if (instruction->a.modifier == DECODED_MODIFIER_W16) {
+		ret = mmu_write_byte(mmu, dst, src8);
+		OK_OR_RETURN(ret == 0, ret);
+
+		ret = cpu_register_write16(cpu, instruction->a.reg, dst - 1);
+	} else {
+		ret = mmu_read_byte(mmu, src, &dst8);
+		OK_OR_RETURN(ret == 0, ret);
+
+		ret = cpu_register_write8(cpu, instruction->a.reg, dst8);
+		OK_OR_RETURN(ret == 0, ret);
+
+		ret = cpu_register_write16(cpu, instruction->b.reg, dst - 1);
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 static
@@ -389,7 +440,69 @@ int interpreter_execute_instruction_sub(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_xor(struct device *device, struct decoded_instruction *instruction)
 {
-	return 0;
+	int ret = 0;
+	uint16_t dst, src;
+	uint8_t dst8, src8;
+	struct cpu *cpu;
+
+	cpu = &device->cpu;
+
+	switch (instruction->a.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, instruction->a.reg, &dst8);
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, instruction->a.reg, &dst);
+		break;
+	default:
+		assert(false && "XOR operand 'dst' not supported");
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (instruction->b.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+		break;
+	default:
+		assert(false && "XOR operand 'src' not supported");
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (instruction->a.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		dst8 ^= src8;
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		dst ^= src;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (instruction->a.type) {
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, instruction->a.reg, dst8);
+		break;
+	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, instruction->a.reg, dst);
+		break;
+	default:
+		assert(false && "XOR operand 'dst' not supported");
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 static
