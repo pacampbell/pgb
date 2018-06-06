@@ -1,9 +1,9 @@
 CC := gcc
 CFLAGS := -Wall -Werror -std=c11
-LIBS :=
+LIBS := `pkg-config --libs gtk+-3.0`
 TARGET := pgb
 
-INCLUDE := include
+INCLUDES := -Iinclude `pkg-config --cflags gtk+-3.0`
 
 OBJS := \
 	src/pgb/main.o				\
@@ -16,6 +16,7 @@ OBJS := \
 	src/pgb/cpu/interpreter/interpreter.o	\
 	src/pgb/cpu/registers.o			\
 	src/pgb/device/device.o			\
+	src/pgb/gui/gui.o			\
 	src/pgb/mmu/mmu.o
 
 .PHONY: all debug clean force
@@ -29,7 +30,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
 
 %.o: %.c .compiler_flags
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c -MMD -MP $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c -MMD -MP $< -o $@
 
 .compiler_flags: force
 	@echo '$(CFLAGS)' | cmp -s - $@ || echo '$(CFLAGS)' > $@
