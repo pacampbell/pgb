@@ -38,7 +38,9 @@ def _parse_operand(mnemonic, operand, position):
 
     if mnemonic == 'STOP':
         raw_operand = 'NONE'
-    if mnemonic == 'PREFIX':
+    elif mnemonic == 'INVALID':
+        raw_operand = 'NONE'
+    elif mnemonic == 'PREFIX':
         raw_operand = 'NONE'
         operand_modifier = 'CB'
     elif raw_operand.isdigit() or is_hex_literal(raw_operand):
@@ -79,7 +81,7 @@ def parse_operands(mnemonic, operands):
 def parse_mnemonic(mnemonic, parts):
     return mnemonic
 
-def create_unique_define(mnemonic, operand_a, operand_b, modifier_a, modifier_b):
+def create_unique_define(mnemonic, opcode, operand_a, operand_b, modifier_a, modifier_b):
     define_name = mnemonic
 
     if modifier_a == 'MEM_WRITE_8':
@@ -98,6 +100,8 @@ def create_unique_define(mnemonic, operand_a, operand_b, modifier_a, modifier_b)
 
     if mnemonic == 'PREFIX':
         define_name = '{}_{}'.format(define_name, modifier_a)
+    elif mnemonic == 'INVALID':
+        define_name = '{}_{:02X}'.format(define_name, opcode)
 
     if operand_a != 'NONE':
         if operand_a == 'VEC':
@@ -235,7 +239,7 @@ def parse_input_file(source_path):
             c0, c1 = parse_cycle(parts[3])
             flag_z, flag_n, flag_h, flag_c, flag_mask = parse_flags(parts[4:])
 
-        define_name = create_unique_define(mnemonic, operand_a, operand_b, modifier_a, modifier_b)
+        define_name = create_unique_define(mnemonic, opcode, operand_a, operand_b, modifier_a, modifier_b)
 
         instruction = {
             'assembly': assembly,

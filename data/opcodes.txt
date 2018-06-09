@@ -209,7 +209,7 @@ cf RST 08H 1 16 - - - -
 d0 RET NC 1 20/8 - - - -
 d1 POP DE 1 12 - - - -
 d2 JP NC,a16 3 16/12 - - - -
-d3
+d3 INVALID 0 0 - - - -
 d4 CALL NC,a16 3 24/12 - - - -
 d5 PUSH DE 1 16 - - - -
 d6 SUB d8 2 8 Z 1 H C
@@ -217,32 +217,32 @@ d7 RST 10H 1 16 - - - -
 d8 RET C 1 20/8 - - - -
 d9 RETI 1 16 - - - -
 da JP C,a16 3 16/12 - - - -
-db
+db INVALID 0 0 - - - -
 dc CALL C,a16 3 24/12 - - - -
-dd
+dd INVALID 0 0 - - - -
 de SBC A,d8 2 8 Z 1 H C
 df RST 18H 1 16 - - - -
 e0 LDH (a8),A 2 12 - - - -
 e1 POP HL 1 12 - - - -
 e2 LD (C),A 1 8 - - - -
-e3
-e4
+e3 INVALID 0 0 - - - -
+e4 INVALID 0 0 - - - -
 e5 PUSH HL 1 16 - - - -
 e6 AND d8 2 8 Z 0 1 0
 e7 RST 20H 1 16 - - - -
 e8 ADD SP,r8 2 16 0 0 H C
 e9 JP (HL) 1 4 - - - -
 ea LD (a16),A 3 16 - - - -
-eb
-ec
-ed
+eb INVALID 0 0 - - - -
+ec INVALID 0 0 - - - -
+ed INVALID 0 0 - - - -
 ee XOR d8 2 8 Z 0 0 0
 ef RST 28H 1 16 - - - -
 f0 LDH A,(a8) 2 12 - - - -
 f1 POP AF 1 12 Z N H C
 f2 LD A,(C) 1 8 - - - -
 f3 DI 1 4 - - - -
-f4
+f4 INVALID 0 0 - - - -
 f5 PUSH AF 1 16 - - - -
 f6 OR d8 2 8 Z 0 0 0
 f7 RST 30H 1 16 - - - -
@@ -250,7 +250,7 @@ f8 LDHL SP,r8 2 12 0 0 H C
 f9 LD SP,HL 1 8 - - - -
 fa LD A,(a16) 3 16 - - - -
 fb EI 1 4 - - - -
-fc
-fd
+fc INVALID 0 0 - - - -
+fd INVALID 0 0 - - - -
 fe CP d8 2 8 Z 1 H C
 ff RST 38H 1 16 - - - -

@@ -74,7 +74,9 @@ enum isa_operation {
 	ISA_OPERATION_SLA,
 	ISA_OPERATION_SRA,
 	ISA_OPERATION_SRL,
-	ISA_OPERATION_SWAP
+	ISA_OPERATION_SWAP,
+	/* Place holder for invalid operations */
+	ISA_OPERATION_INVALID
 };
 
 enum isa_operand {
