@@ -1,5 +1,5 @@
-#ifndef PGB_CPU_PRIVATE_ISA_APPENDIX_H
-#define PGB_CPU_PRIVATE_ISA_APPENDIX_H
+#ifndef PGB_CPU_PRIVATE_LR35902_APPENDIX_H
+#define PGB_CPU_PRIVATE_LR35902_APPENDIX_H
 
 #define LR35902_OPCODE_ADC_A_REG_FIELD_ADDEND                               2:0
 #define LR35902_OPCODE_LD_REG_REG_FIELD_SRC                                 2:0
@@ -39,4 +39,4 @@ tab[x] tabled value x
 */
 
 
-#endif /* PGB_CPU_PRIVATE_ISA_APPENDIX_H */
+#endif /* PGB_CPU_PRIVATE_LR35902_APPENDIX_H */

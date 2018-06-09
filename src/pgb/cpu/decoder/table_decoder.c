@@ -5,8 +5,8 @@
 #include <pgb/cpu/decoder.h>
 #include <pgb/cpu/isa.h>
 #include <pgb/cpu/private/decoder.h>
-#include <pgb/cpu/private/isa.h>
-#include <pgb/cpu/private/isa_appendix.h>
+#include <pgb/cpu/private/lr35902.h>
+#include <pgb/cpu/private/lr35902_appendix.h>
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
 

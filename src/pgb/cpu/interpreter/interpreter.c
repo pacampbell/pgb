@@ -3,7 +3,7 @@
 #include <stddef.h>
 
 #include <pgb/cpu/isa.h>
-#include <pgb/cpu/private/isa.h>
+#include <pgb/cpu/private/lr35902.h>
 #include <pgb/cpu/registers.h>
 #include <pgb/debug.h>
 #include <pgb/utils.h>
