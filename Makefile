@@ -1,5 +1,6 @@
 CC := gcc
-CFLAGS := -Wall -Werror -std=c11
+UFLAGS :=
+CFLAGS := -Wall -Werror -std=c11 $(UFLAGS)
 LIBS := `pkg-config --libs gtk+-3.0`
 AR := ar
 ARFLAGS := rcs
@@ -14,7 +15,6 @@ OBJS := \
 	src/pgb/cpu/decoder.o			\
 	src/pgb/cpu/decoder/logical_decoder.o	\
 	src/pgb/cpu/decoder/table_decoder.o	\
-	src/pgb/cpu/isa.o			\
 	src/pgb/cpu/interpreter/interpreter.o	\
 	src/pgb/cpu/registers.o			\
 	src/pgb/device/device.o			\

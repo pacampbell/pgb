@@ -24,7 +24,7 @@ int mmu_read_byte(struct mmu *mmu, uint16_t address, uint8_t *result);
 int mmu_read_word(struct mmu *mmu, uint16_t address, uint16_t *result);
 
 int mmu_write_byte(struct mmu *mmu, uint16_t address, uint8_t value);
-int mmy_write_word(struct mmu *mmu, uint16_t address, uint16_t value);
+int mmu_write_word(struct mmu *mmu, uint16_t address, uint16_t value);
 
 int mmu_add_address_space(struct mmu *mmu, const char *name, size_t start, size_t end);
 

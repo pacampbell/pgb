@@ -5,61 +5,25 @@
 #include <stdint.h>
 
 struct device;
+struct instruction_info;
 
 enum decoder_type {
 	DECODER_TYPE_LOGICAL,
 	DECODER_TYPE_TABLE
 };
 
-enum decoded_instruction_operand_type {
-	DECODED_INSTRUCTION_OPERAND_TYPE_NONE,
-	DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8,
-	DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16,
-	DECODED_INSTRUCTION_OPERAND_TYPE_INT8,
-	DECODED_INSTRUCTION_OPERAND_TYPE_INT16,
-	DECODED_INSTRUCTION_OPERAND_TYPE_UINT3,
-	DECODED_INSTRUCTION_OPERAND_TYPE_UINT8,
-	DECODED_INSTRUCTION_OPERAND_TYPE_UINT16
-};
-
-enum decoded_instruction_register {
-	DECODED_INSTRUCTION_REGISTER_A,
-	DECODED_INSTRUCTION_REGISTER_B,
-	DECODED_INSTRUCTION_REGISTER_C,
-	DECODED_INSTRUCTION_REGISTER_D,
-	DECODED_INSTRUCTION_REGISTER_E,
-	DECODED_INSTRUCTION_REGISTER_F,
-	DECODED_INSTRUCTION_REGISTER_H,
-	DECODED_INSTRUCTION_REGISTER_L,
-	DECODED_INSTRUCTION_REGISTER_AF,
-	DECODED_INSTRUCTION_REGISTER_BC,
-	DECODED_INSTRUCTION_REGISTER_DE,
-	DECODED_INSTRUCTION_REGISTER_HL,
-	DECODED_INSTRUCTION_REGISTER_SP,
-	DECODED_INSTRUCTION_REGISTER_PC
-};
-
-enum decoded_modifier {
-	DECODED_MODIFIER_NONE,
-	DECODED_MODIFIER_W16,
-	DECODED_MODIFIER_R16
-};
-
 struct decoded_instruction {
-	struct {
-		enum decoded_instruction_operand_type type;
-		uint16_t value;
-		enum decoded_instruction_register reg;
-		enum decoded_modifier modifier;
-
+	union {
+		uint8_t u8;
+		int8_t i8;
+		uint16_t u16;
 	} a;
-	struct {
-		enum decoded_instruction_operand_type type;
-		uint16_t value;
-		enum decoded_instruction_register reg;
-		enum decoded_modifier modifier;
+	union {
+		uint8_t u8;
+		int8_t i8;
+		uint16_t u16;
 	} b;
-	struct isa_instruction *info;
+	struct instruction_info *info;
 };
 
 struct decoder {
@@ -69,5 +33,8 @@ struct decoder {
 
 int cpu_decoder_configure_decoder(enum decoder_type type, struct decoder *decoder);
 int string_to_decoder_type(const char *str, enum decoder_type *type);
+
+int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instruction_info);
+int cpu_decoder_get_prefix_cb_instruction(uint8_t opcode, struct instruction_info **instruction_info);
 
 #endif /* PGBA_CPU_DECODER_H */

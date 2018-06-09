@@ -14,10 +14,11 @@ fi
 for key in ${!GENERATED_FILES[@]}; do
 	name="${key}"
 	source_file="${GENERATED_FILES[${key}]}"
-	output_file=$(echo ${name} | tr '[:upper:]' '[:lower:]')
+	output_file="$(echo ${name} | tr '[:upper:]' '[:lower:]')_ops"
 
-	./${SCRIPT_ROOT}/generate_isa.py --source "${source_file}" --name "CPU_PRIVATE_${name}" --prefix "${name}" --format header > "${output_file}.h"
-	./${SCRIPT_ROOT}/generate_isa.py --source "${source_file}" --name "CPU_PRIVATE_${name}" --prefix "${name}" --format definition > "${output_file}.def"
+	./${SCRIPT_ROOT}/generate_isa.py --source "${source_file}" --name "CPU_PRIVATE_${name}_OPS" --prefix "${name}" --format header > "${output_file}.h"
+	./${SCRIPT_ROOT}/generate_isa.py --source "${source_file}" --name "CPU_PRIVATE_${name}_OPS" --prefix "${name}" --format definition > "${output_file}.def"
+	./${SCRIPT_ROOT}/generate_isa.py --source "${source_file}" --name "CPU_PRIVATE_${name}_OPS" --prefix "${name}" --format json > "${output_file}.json"
 
 	mv "${output_file}.h" "${PROJECT_ROOT}/include/pgb/cpu/private"
 	mv "${output_file}.def" "${PROJECT_ROOT}/include/pgb/cpu/private"

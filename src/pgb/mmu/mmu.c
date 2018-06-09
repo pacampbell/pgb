@@ -84,7 +84,7 @@ int mmu_write_byte(struct mmu *mmu, uint16_t address, uint8_t value)
 	return 0;
 }
 
-int mmy_write_word(struct mmu *mmu, uint16_t address, uint16_t value)
+int mmu_write_word(struct mmu *mmu, uint16_t address, uint16_t value)
 {
 	return 0;
 }

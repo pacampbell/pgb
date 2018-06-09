@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <stddef.h>
 
-#include <pgb/cpu/isa.h>
+#include <pgb/cpu/instruction_info.h>
 #include <pgb/cpu/private/lr35902.h>
 #include <pgb/cpu/registers.h>
 #include <pgb/debug.h>
@@ -20,53 +20,66 @@ int interpreter_execute_instruction_adc(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_add(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret = 0;
-	uint16_t src, dst;
+	int ret;
 	uint8_t src8, dst8;
+	uint16_t src16, dst16;
 	struct cpu *cpu;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
+	info = instruction->info;
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->a.reg, &dst8);
-		dst = dst8;
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &dst8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->a.reg, &dst);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &dst16);
 		break;
 	default:
-		assert(false && "Unsupported add operand type");
+		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->b.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
-		src = src8;
+	switch (info->operands.b.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.b.operand, &src8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.b.operand, &src16);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_NONE:
+		ret = cpu_register_read8(cpu, INSTRUCTION_OPERAND_A, &src8);
 		break;
 	default:
-		assert(false && "Unsupported add operand type");
+		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	dst += src;
-
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		dst8 = (uint8_t)dst; // TODO: Check for overlfows
-		ret = cpu_register_write8(cpu, instruction->a.reg, dst8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		dst8 += src8;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_write16(cpu, instruction->a.reg, dst);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		dst16 += src16;
 		break;
 	default:
-		assert(false && "Unsupported add operand type");
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, dst8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, info->operands.a.operand, dst16);
+		break;
+	default:
+		ret = -EINVAL;
 		break;
 	}
 	OK_OR_WARN(ret == 0);
@@ -119,31 +132,21 @@ int interpreter_execute_instruction_daa(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_dec(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret = 0;
-	uint16_t src;
+	int ret;
 	uint8_t src8;
+	uint16_t src16;
 	struct cpu *cpu;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
+	info = instruction->info;
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->a.reg, &src8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &src8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->a.reg, &src);
-		break;
-	default:
-		return 0;
-	}
-	OK_OR_RETURN(ret == 0, ret);
-
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		src8 -= 1;
-		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		src -= 1;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &src16);
 		break;
 	default:
 		ret = -EINVAL;
@@ -151,15 +154,29 @@ int interpreter_execute_instruction_dec(struct device *device, struct decoded_in
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_write8(cpu, instruction->a.reg, src8);
+	switch (info->operands.a.type) {
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		src8 -= 1;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_write16(cpu, instruction->a.reg, src);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		src16 -= 1;
 		break;
 	default:
-		return 0;
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, src8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, info->operands.a.operand, src16);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
 	}
 	OK_OR_WARN(ret == 0);
 
@@ -189,45 +206,51 @@ int interpreter_execute_instruction_halt(struct device *device, struct decoded_i
 static
 int interpreter_execute_instruction_inc(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret = 0;
-	uint16_t src;
+	int ret;
 	uint8_t src8;
+	uint16_t src16;
 	struct cpu *cpu;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
+	info = instruction->info;
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->a.reg, &src8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &src8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->a.reg, &src);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &src16);
 		break;
 	default:
-		return 0;
+		ret = -EINVAL;
+		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+	switch (info->operands.a.type) {
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
 		src8 += 1;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		src += 1;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		src16 += 1;
 		break;
 	default:
+		ret = -EINVAL;
 		break;
 	}
+	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_write8(cpu, instruction->a.reg, src8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, src8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_write16(cpu, instruction->a.reg, src);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, info->operands.a.operand, src16);
 		break;
 	default:
-		return 0;
+		ret = -EINVAL;
+		break;
 	}
 	OK_OR_WARN(ret == 0);
 
@@ -249,42 +272,103 @@ int interpreter_execute_instruction_jr(struct device *device, struct decoded_ins
 static
 int interpreter_execute_instruction_ld(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret = 0;
-	uint16_t src;
-	uint8_t src8;
+	int ret;
+	uint8_t src8, addr8;
+	uint16_t src16, addr16;
 	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
 
-	switch (instruction->b.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_UINT8:
-		src8 = (uint8_t)instruction->b.value;
+	switch (info->operands.b.modifier) {
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_READ_8:
+		ret = 0;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_UINT16:
-		src = instruction->b.value;
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_READ_16:
+		ret = 0;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
-		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+	case INSTRUCTION_OPERAND_MODIFIER_NONE:
+		switch (info->operands.b.type) {
+		case INSTRUCTION_OPERAND_TYPE_U8:
+			src8 = instruction->b.u8;
+			ret = 0;
+			break;
+		case INSTRUCTION_OPERAND_TYPE_U16:
+			src16 = instruction->b.u16;
+			ret = 0;
+			break;
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+			ret = cpu_register_read8(cpu, info->operands.b.operand, &src8);
+			break;
+		case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+			ret = cpu_register_read16(cpu, info->operands.b.operand, &src16);
+			break;
+		default:
+			ret = -EINVAL;
+			break;
+		}
 		break;
 	default:
-		return 0;
+		ret = -EINVAL;
+		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_write8(cpu, instruction->a.reg, src8);
+	switch (info->operands.a.modifier) {
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_WRITE_8:
+		{
+			switch (info->operands.a.type) {
+			case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+				ret = cpu_register_read8(cpu, info->operands.a.operand, &addr8);
+				break;
+			default:
+				ret = -EINVAL;
+				break;
+			}
+			OK_OR_RETURN(ret == 0, ret);
+
+			ret = mmu_write_byte(mmu, addr8, src8);
+		}
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_write16(cpu, instruction->a.reg, src);
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_WRITE_16:
+		{
+			switch (info->operands.a.type) {
+			case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+				ret = cpu_register_read16(cpu, info->operands.a.operand, &addr16);
+				break;
+			case INSTRUCTION_OPERAND_TYPE_U16:
+				addr16 = instruction->a.u16;
+				break;
+			default:
+				ret = -EINVAL;
+				break;
+			}
+			OK_OR_RETURN(ret == 0, ret);
+
+			ret = mmu_write_word(mmu, addr16, src16);
+		}
+		break;
+	case INSTRUCTION_OPERAND_MODIFIER_NONE:
+		switch (info->operands.a.type) {
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+			ret = cpu_register_write8(cpu, info->operands.a.operand, src8);
+			break;
+		case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+			ret = cpu_register_write16(cpu, info->operands.a.operand, src16);
+			break;
+		default:
+			ret = -EINVAL;
+			break;
+		}
 		break;
 	default:
-		return 0;
+		ret = -EINVAL;
+		break;
 	}
-	OK_OR_RETURN(ret == 0, ret);
+	OK_OR_WARN(ret == 0);
 
 	return ret;
 }
@@ -293,54 +377,67 @@ static
 int interpreter_execute_instruction_ldd(struct device *device, struct decoded_instruction *instruction)
 {
 	int ret;
+	uint8_t src8;
+	uint16_t addr16;
 	struct cpu *cpu;
 	struct mmu *mmu;
-	uint8_t dst8, src8;
-	uint16_t dst, src;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
 	mmu = &device->mmu;
+	info = instruction->info;
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->a.reg, &dst8);
+	switch (info->operands.b.modifier) {
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_READ_16:
+		{
+			ret = cpu_register_read16(cpu, info->operands.b.operand, &addr16);
+			OK_OR_RETURN(ret == 0, ret);
+
+			ret = mmu_read_byte(mmu, addr16, &src8);
+		}
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->a.reg, &dst);
+	case INSTRUCTION_OPERAND_MODIFIER_NONE:
+		switch (info->operands.b.type) {
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+			ret = cpu_register_read8(cpu, info->operands.b.operand, &src8);
+			break;
+		default:
+			ret = -EINVAL;
+			break;
+		}
 		break;
 	default:
-		assert(false && "Unsupported 'dst' operand type");
+		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->b.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
+	switch (info->operands.a.modifier) {
+	case INSTRUCTION_OPERAND_MODIFIER_MEM_WRITE_16:
+		{
+			ret = cpu_register_read16(cpu, info->operands.a.operand, &addr16);
+			OK_OR_RETURN(ret == 0, ret);
+
+			ret = mmu_write_byte(mmu, addr16, src8);
+		}
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+	case INSTRUCTION_OPERAND_MODIFIER_NONE:
+		switch (info->operands.b.type) {
+		case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+			ret = cpu_register_write8(cpu, info->operands.a.operand, src8);
+			break;
+		default:
+			ret = -EINVAL;
+			break;
+		}
 		break;
 	default:
-		assert(false && "Unsupported 'src' operand type");
+		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	if (instruction->a.modifier == DECODED_MODIFIER_W16) {
-		ret = mmu_write_byte(mmu, dst, src8);
-		OK_OR_RETURN(ret == 0, ret);
-
-		ret = cpu_register_write16(cpu, instruction->a.reg, dst - 1);
-	} else {
-		ret = mmu_read_byte(mmu, src, &dst8);
-		OK_OR_RETURN(ret == 0, ret);
-
-		ret = cpu_register_write8(cpu, instruction->a.reg, dst8);
-		OK_OR_RETURN(ret == 0, ret);
-
-		ret = cpu_register_write16(cpu, instruction->b.reg, dst - 1);
-	}
+	ret = cpu_register_write16(cpu, INSTRUCTION_OPERAND_HL, addr16 - 1);
 	OK_OR_WARN(ret == 0);
 
 	return ret;
@@ -440,47 +537,50 @@ int interpreter_execute_instruction_sub(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_xor(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret = 0;
-	uint16_t dst, src;
-	uint8_t dst8, src8;
+	int ret;
+	uint8_t src8, dst8;
+	uint16_t src16, dst16;
 	struct cpu *cpu;
+	struct instruction_info *info;
 
 	cpu = &device->cpu;
+	info = instruction->info;
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->a.reg, &dst8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &dst8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->a.reg, &dst);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &dst16);
 		break;
 	default:
-		assert(false && "XOR operand 'dst' not supported");
 		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->b.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_read8(cpu, instruction->b.reg, &src8);
+	switch (info->operands.b.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.b.operand, &src8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_read16(cpu, instruction->b.reg, &src);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.b.operand, &src16);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_NONE:
+		ret = cpu_register_read8(cpu, INSTRUCTION_OPERAND_A, &src8);
 		break;
 	default:
-		assert(false && "XOR operand 'src' not supported");
 		ret = -EINVAL;
 		break;
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
 		dst8 ^= src8;
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		dst ^= src;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		dst16 ^= src16;
 		break;
 	default:
 		ret = -EINVAL;
@@ -488,15 +588,14 @@ int interpreter_execute_instruction_xor(struct device *device, struct decoded_in
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	switch (instruction->a.type) {
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER8:
-		ret = cpu_register_write8(cpu, instruction->a.reg, dst8);
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, dst8);
 		break;
-	case DECODED_INSTRUCTION_OPERAND_TYPE_REGISTER16:
-		ret = cpu_register_write16(cpu, instruction->a.reg, dst);
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, info->operands.a.operand, dst16);
 		break;
 	default:
-		assert(false && "XOR operand 'dst' not supported");
 		ret = -EINVAL;
 		break;
 	}
@@ -601,158 +700,158 @@ int interpreter_execute_instruction(struct device *device, struct decoded_instru
 
 	assert(instruction->info != NULL && "Instruction information should not be NULL");
 
-	switch (instruction->info->isa_operation) {
-	case ISA_OPERATION_ADC:
+	switch (instruction->info->instruction_class) {
+	case INSTRUCTION_CLASS_ADC:
 		ret = interpreter_execute_instruction_adc(device, instruction);
 		break;
-	case ISA_OPERATION_ADD:
+	case INSTRUCTION_CLASS_ADD:
 		ret = interpreter_execute_instruction_add(device, instruction);
 		break;
-	case ISA_OPERATION_ADDC:
+	case INSTRUCTION_CLASS_ADDC:
 		ret = interpreter_execute_instruction_addc(device, instruction);
 		break;
-	case ISA_OPERATION_AND:
+	case INSTRUCTION_CLASS_AND:
 		ret = interpreter_execute_instruction_and(device, instruction);
 		break;
-	case ISA_OPERATION_CALL:
+	case INSTRUCTION_CLASS_CALL:
 		ret = interpreter_execute_instruction_call(device, instruction);
 		break;
-	case ISA_OPERATION_CCF:
+	case INSTRUCTION_CLASS_CCF:
 		ret = interpreter_execute_instruction_ccf(device, instruction);
 		break;
-	case ISA_OPERATION_CP:
+	case INSTRUCTION_CLASS_CP:
 		ret = interpreter_execute_instruction_cp(device, instruction);
 		break;
-	case ISA_OPERATION_CPL:
+	case INSTRUCTION_CLASS_CPL:
 		ret = interpreter_execute_instruction_cpl(device, instruction);
 		break;
-	case ISA_OPERATION_DAA:
+	case INSTRUCTION_CLASS_DAA:
 		ret = interpreter_execute_instruction_daa(device, instruction);
 		break;
-	case ISA_OPERATION_DEC:
+	case INSTRUCTION_CLASS_DEC:
 		ret = interpreter_execute_instruction_dec(device, instruction);
 		break;
-	case ISA_OPERATION_DI:
+	case INSTRUCTION_CLASS_DI:
 		ret = interpreter_execute_instruction_di(device, instruction);
 		break;
-	case ISA_OPERATION_EI:
+	case INSTRUCTION_CLASS_EI:
 		ret = interpreter_execute_instruction_ei(device, instruction);
 		break;
-	case ISA_OPERATION_HALT:
+	case INSTRUCTION_CLASS_HALT:
 		ret = interpreter_execute_instruction_halt(device, instruction);
 		break;
-	case ISA_OPERATION_INC:
+	case INSTRUCTION_CLASS_INC:
 		ret = interpreter_execute_instruction_inc(device, instruction);
 		break;
-	case ISA_OPERATION_JP:
+	case INSTRUCTION_CLASS_JP:
 		ret = interpreter_execute_instruction_jp(device, instruction);
 		break;
-	case ISA_OPERATION_JR:
+	case INSTRUCTION_CLASS_JR:
 		ret = interpreter_execute_instruction_jr(device, instruction);
 		break;
-	case ISA_OPERATION_LD:
+	case INSTRUCTION_CLASS_LD:
 		ret = interpreter_execute_instruction_ld(device, instruction);
 		break;
-	case ISA_OPERATION_LDD:
+	case INSTRUCTION_CLASS_LDD:
 		ret = interpreter_execute_instruction_ldd(device, instruction);
 		break;
-	case ISA_OPERATION_LDH:
+	case INSTRUCTION_CLASS_LDH:
 		ret = interpreter_execute_instruction_ldh(device, instruction);
 		break;
-	case ISA_OPERATION_LDHL:
+	case INSTRUCTION_CLASS_LDHL:
 		ret = interpreter_execute_instruction_ldhl(device, instruction);
 		break;
-	case ISA_OPERATION_LDI:
+	case INSTRUCTION_CLASS_LDI:
 		ret = interpreter_execute_instruction_ldi(device, instruction);
 		break;
-	case ISA_OPERATION_NOP:
+	case INSTRUCTION_CLASS_NOP:
 		ret = interpreter_execute_instruction_nop(device, instruction);
 		break;
-	case ISA_OPERATION_OR:
+	case INSTRUCTION_CLASS_OR:
 		ret = interpreter_execute_instruction_or(device, instruction);
 		break;
-	case ISA_OPERATION_POP:
+	case INSTRUCTION_CLASS_POP:
 		ret = interpreter_execute_instruction_pop(device, instruction);
 		break;
-	case ISA_OPERATION_PREFIX:
+	case INSTRUCTION_CLASS_PREFIX:
 		ret = interpreter_execute_instruction_prefix(device, instruction);
 		break;
-	case ISA_OPERATION_PUSH:
+	case INSTRUCTION_CLASS_PUSH:
 		ret = interpreter_execute_instruction_push(device, instruction);
 		break;
-	case ISA_OPERATION_RET:
+	case INSTRUCTION_CLASS_RET:
 		ret = interpreter_execute_instruction_ret(device, instruction);
 		break;
-	case ISA_OPERATION_RETI:
+	case INSTRUCTION_CLASS_RETI:
 		ret = interpreter_execute_instruction_reti(device, instruction);
 		break;
-	case ISA_OPERATION_RST:
+	case INSTRUCTION_CLASS_RST:
 		ret = interpreter_execute_instruction_rst(device, instruction);
 		break;
-	case ISA_OPERATION_SBC:
+	case INSTRUCTION_CLASS_SBC:
 		ret = interpreter_execute_instruction_sbc(device, instruction);
 		break;
-	case ISA_OPERATION_SCF:
+	case INSTRUCTION_CLASS_SCF:
 		ret = interpreter_execute_instruction_scf(device, instruction);
 		break;
-	case ISA_OPERATION_STOP:
+	case INSTRUCTION_CLASS_STOP:
 		ret = interpreter_execute_instruction_stop(device, instruction);
 		break;
-	case ISA_OPERATION_SUB:
+	case INSTRUCTION_CLASS_SUB:
 		ret = interpreter_execute_instruction_sub(device, instruction);
 		break;
-	case ISA_OPERATION_XOR:
+	case INSTRUCTION_CLASS_XOR:
 		ret = interpreter_execute_instruction_xor(device, instruction);
 		break;
 	/* Start of prefix instructions */
-	case ISA_OPERATION_BIT:
+	case INSTRUCTION_CLASS_BIT:
 		ret = interpreter_execute_instruction_bit(device, instruction);
 		break;
-	case ISA_OPERATION_RES:
+	case INSTRUCTION_CLASS_RES:
 		ret = interpreter_execute_instruction_res(device, instruction);
 		break;
-	case ISA_OPERATION_RL:
+	case INSTRUCTION_CLASS_RL:
 		ret = interpreter_execute_instruction_rl(device, instruction);
 		break;
-	case ISA_OPERATION_RLA:
+	case INSTRUCTION_CLASS_RLA:
 		ret = interpreter_execute_instruction_rla(device, instruction);
 		break;
-	case ISA_OPERATION_RLC:
+	case INSTRUCTION_CLASS_RLC:
 		ret = interpreter_execute_instruction_rlc(device, instruction);
 		break;
-	case ISA_OPERATION_RLCA:
+	case INSTRUCTION_CLASS_RLCA:
 		ret = interpreter_execute_instruction_rlca(device, instruction);
 		break;
-	case ISA_OPERATION_RR:
+	case INSTRUCTION_CLASS_RR:
 		ret = interpreter_execute_instruction_rr(device, instruction);
 		break;
-	case ISA_OPERATION_RRA:
+	case INSTRUCTION_CLASS_RRA:
 		ret = interpreter_execute_instruction_rra(device, instruction);
 		break;
-	case ISA_OPERATION_RRC:
+	case INSTRUCTION_CLASS_RRC:
 		ret = interpreter_execute_instruction_rrc(device, instruction);
 		break;
-	case ISA_OPERATION_RRCA:
+	case INSTRUCTION_CLASS_RRCA:
 		ret = interpreter_execute_instruction_rrca(device, instruction);
 		break;
-	case ISA_OPERATION_SET:
+	case INSTRUCTION_CLASS_SET:
 		ret = interpreter_execute_instruction_set(device, instruction);
 		break;
-	case ISA_OPERATION_SLA:
+	case INSTRUCTION_CLASS_SLA:
 		ret = interpreter_execute_instruction_sla(device, instruction);
 		break;
-	case ISA_OPERATION_SRA:
+	case INSTRUCTION_CLASS_SRA:
 		ret = interpreter_execute_instruction_sra(device, instruction);
 		break;
-	case ISA_OPERATION_SRL:
+	case INSTRUCTION_CLASS_SRL:
 		ret = interpreter_execute_instruction_srl(device, instruction);
 		break;
-	case ISA_OPERATION_SWAP:
+	case INSTRUCTION_CLASS_SWAP:
 		ret = interpreter_execute_instruction_swap(device, instruction);
 		break;
 	default:
 		ret = -EINVAL;
-		fprintf(stderr, "Encountered unexpected operation type '%02x'. (Emulator error?)\n", instruction->info->isa_operation);
+		fprintf(stderr, "Encountered unexpected operation type '%02x'. (Emulator error?)\n", instruction->info->instruction_class);
 		break;
 	}
 	OK_OR_WARN(ret == 0);
