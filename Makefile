@@ -1,6 +1,8 @@
 CC := gcc
 CFLAGS := -Wall -Werror -std=c11
 LIBS := `pkg-config --libs gtk+-3.0`
+AR := ar
+ARFLAGS := rcs
 TARGET := pgb
 
 INCLUDES := -Iinclude `pkg-config --cflags gtk+-3.0`
@@ -29,6 +31,9 @@ debug: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
 
+libpgb.a: $(OBJS)
+	$(AR) $(ARFLAGS) $@ $(filter-out src/pgb/main.o, $(OBJS))
+
 %.o: %.c .compiler_flags
 	$(CC) $(CFLAGS) $(INCLUDES) -c -MMD -MP $< -o $@
 
@@ -38,4 +43,4 @@ $(TARGET): $(OBJS)
 -include $(OBJS:.o=.d)
 
 clean:
-	rm -f $(OBJS) $(patsubst %.o, %.d, $(OBJS)) $(TARGET) .compiler_flags
+	rm -f $(OBJS) $(patsubst %.o, %.d, $(OBJS)) $(TARGET) .compiler_flags *.a *.so
