@@ -7,7 +7,6 @@
 
 #include <pgb/device/device.h>
 #include <pgb/debug.h>
-#include <pgb/gui/gui.h>
 #include <pgb/utils.h>
 
 const char *help_text = \
@@ -21,8 +20,6 @@ const char *help_text = \
 	"  -d, --decoder='decoder'\n"
 	"	The type of decoder to use during emulation. Valid options are 'logical' and table'.\n"
 	"	If no value is provided, 'table' is used by default.\n"
-	"  -g, --gui\n"
-	"	Determine if we want to use the GTK3+ gui. Defaults to false.\n"
 	"  -r, --rom='PATH'\n"
 	"	The path to a valid Gameboy rom image to execute.\n"
 	"";
@@ -66,18 +63,13 @@ int start_emulating(const char *rom_path, const char *decoder_type)
 int main(int argc, char *argv[])
 {
 	int ret, opt;
-	bool use_gui = false;
 	const char *rom_path = NULL;
 	const char *decoder_type = "table";
-	struct pgb_app_config config;
 
 	while ((opt = getopt(argc, argv, "d:gr:h")) != -1) {
 		switch (opt) {
 		case 'd':
 			decoder_type = optarg;
-			break;
-		case 'g':
-			use_gui = true;
 			break;
 		case 'r':
 			rom_path = optarg;
@@ -106,14 +98,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	if (use_gui) {
-		config.rom_path = rom_path;
-		config.decoder_type = decoder_type;
-		gui_create_window(&config);
-	} else {
-		ret = start_emulating(rom_path, decoder_type);
-		OK_OR_WARN(ret == 0);
-	}
+	ret = start_emulating(rom_path, decoder_type);
+	OK_OR_WARN(ret == 0);
 
 	return ret;
 }

@@ -1,12 +1,12 @@
 CC := gcc
 UFLAGS :=
 CFLAGS := -Wall -Werror -std=c11 $(UFLAGS)
-LIBS := `pkg-config --libs gtk+-3.0`
+LIBS :=
 AR := ar
 ARFLAGS := rcs
 TARGET := pgb
 
-INCLUDES := -Iinclude `pkg-config --cflags gtk+-3.0`
+INCLUDES := -Iinclude
 
 OBJS := \
 	src/pgb/main.o				\
@@ -18,7 +18,6 @@ OBJS := \
 	src/pgb/cpu/interpreter/interpreter.o	\
 	src/pgb/cpu/registers.o			\
 	src/pgb/device/device.o			\
-	src/pgb/gui/gui.o			\
 	src/pgb/mmu/mmu.o
 
 .PHONY: all debug clean force
