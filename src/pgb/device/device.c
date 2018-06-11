@@ -45,3 +45,13 @@ int device_emulate(struct device *device, const char *rom_path)
 
 	return ret;
 }
+
+int device_load_image_from_file(struct device *device, const char *rom_path)
+{
+	int ret;
+
+	ret = cpu_load_rom_from_file(&device->cpu, rom_path);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
