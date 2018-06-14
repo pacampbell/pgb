@@ -33,7 +33,7 @@ int device_emulate(struct device *device, const char *rom_path)
 		cpu_dump_register_state(&device->cpu);
 	}
 
-	ret = cpu_load_rom_from_file(&device->cpu, rom_path);
+	ret = device_load_image_from_file(device, rom_path);
 	OK_OR_RETURN(ret == 0, ret);
 
 	do {
@@ -50,7 +50,7 @@ int device_load_image_from_file(struct device *device, const char *rom_path)
 {
 	int ret;
 
-	ret = cpu_load_rom_from_file(&device->cpu, rom_path);
+	ret = cpu_load_rom_from_file(&device->cpu, &device->mmu, rom_path);
 	OK_OR_WARN(ret == 0);
 
 	return ret;

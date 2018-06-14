@@ -9,6 +9,7 @@
 #include <pgb/cpu/registers.h>
 
 struct device;
+struct mmu;
 enum instruction_operand;
 
 struct cpu_status {
@@ -29,7 +30,7 @@ struct cpu {
 };
 
 int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size);
-int cpu_load_rom_from_file(struct cpu *cpu, const char *path);
+int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path);
 int cpu_step(struct device *device, size_t step, size_t *instructions_stepped);
 int cpu_init(struct cpu *cpu, const char *decoder_str);
 int cpu_destroy(struct cpu *cpu);

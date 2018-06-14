@@ -45,7 +45,7 @@ int cpu_destroy(struct cpu *cpu)
 	return 0;
 }
 
-int cpu_load_rom_from_file(struct cpu *cpu, const char *path)
+int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path)
 {
 	int ret, fd;
 	uint8_t *data;
@@ -60,7 +60,12 @@ int cpu_load_rom_from_file(struct cpu *cpu, const char *path)
 	data = mmap(NULL, rom_st.st_size, PROT_READ, MAP_SHARED, fd, 0);
 	OK_OR_RETURN(data != MAP_FAILED, -EIO);
 
-	ret = cpu_load_rom(cpu, data, rom_st.st_size);
+	// XXX: handle rom image larger than the size of section 00
+	memcpy(mmu->ram, data, rom_st.st_size);
+
+	munmap(data, rom_st.st_size);
+
+	ret = cpu_load_rom(cpu, mmu->ram, rom_st.st_size);
 	OK_OR_WARN(ret == 0);
 
 	return ret;

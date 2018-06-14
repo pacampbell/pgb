@@ -1,36 +1,13 @@
 #include <errno.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <pgb/debug.h>
 #include <pgb/mmu/mmu.h>
+#include <pgb/mmu/private/mmu.h>
 #include <pgb/utils.h>
 
-/*
-+--------------------------------+------------------+
-| Section Name                   | Bounds           |
-+--------------------------------+------------------+
-| 16KB ROM bank 00               | [0x0000, 0x3fff] |
-+--------------------------------+------------------+
-| 16KB ROM Bank 01~NN            | [0x4000, 0x7fff] |
-+--------------------------------+------------------+
-| 8KB Video RAM (VRAM)           | [0x8000, 0x9fff] |
-+--------------------------------+------------------+
-| 4KB Work RAM (WRAM) bank 0     | [0xc000, 0xcfff] |
-+--------------------------------+------------------+
-| 4KB Work RAM (WRAM) bank 01~NN | [0xd000, 0xdfff] |
-+--------------------------------+------------------+
-| Work Ram Mirror                | [0xe000, 0xfdff] |
-+--------------------------------+------------------+
-| Sprite Attribute table         | [0xfe00, 0xfe9f] |
-+--------------------------------+------------------+
-| I/O Registers                  | [0xff00, 0xff7f] |
-+--------------------------------+------------------+
-| High Ram (HRAM)                | [0xff80, 0xfffe] |
-+--------------------------------+------------------+
-| Interrupts Enable Register     | [0xffff, 0xffff] |
-+--------------------------------+------------------+
-*/
 int mmu_init(struct mmu *mmu)
 {
 	mmu->size = LR35902_MMU_MEMORY_SIZE;
@@ -79,6 +56,19 @@ int mmu_write_word(struct mmu *mmu, uint16_t address, uint16_t value)
 
 	mmu->ram[address] = value & 0xff;
 	mmu->ram[address + 1] = (value >> 8) & 0xff;
+
+	return 0;
+}
+
+int mmu_read_region(struct mmu *mmu, uint16_t base_address, uint8_t *buffer, size_t *size)
+{
+	OK_OR_RETURN(base_address < LR35902_MMU_MEMORY_SIZE, -EINVAL);
+
+	if ((base_address + *size) >= LR35902_MMU_MEMORY_SIZE) {
+		*size = LR35902_MMU_MEMORY_SIZE - base_address;
+	}
+
+	memcpy(buffer, mmu->ram + base_address, *size);
 
 	return 0;
 }
