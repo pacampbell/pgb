@@ -22,6 +22,7 @@ OBJS      := \
 	src/pgb/main.o				\
 	src/pgb/cpu/clock.o			\
 	src/pgb/cpu/cpu.o			\
+	src/pgb/debugger/debugger.o		\
 	src/pgb/cpu/decoder.o			\
 	src/pgb/cpu/decoder/logical_decoder.o	\
 	src/pgb/cpu/decoder/table_decoder.o	\
