@@ -23,6 +23,7 @@ struct decoded_instruction {
 		int8_t i8;
 		uint16_t u16;
 	} b;
+	uint8_t raw_data[4];
 	struct instruction_info *info;
 };
 

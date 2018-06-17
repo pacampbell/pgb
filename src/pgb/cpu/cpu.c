@@ -15,13 +15,13 @@
 #include <pgb/cpu/registers.h>
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
+#include <pgb/mmu/private/mmu.h>
 
 int cpu_init(struct cpu *cpu, const char *decoder_str)
 {
 	int ret;
 	enum decoder_type decoder_type;
 
-	cpu->rom_image.data = NULL;
 	cpu->status.halted = false;
 
 	ret = registers_init(&cpu->registers);
@@ -38,10 +38,6 @@ int cpu_init(struct cpu *cpu, const char *decoder_str)
 
 int cpu_destroy(struct cpu *cpu)
 {
-	if (cpu->rom_image.data != NULL) {
-		munmap(cpu->rom_image.data, cpu->rom_image.size);
-	}
-
 	return 0;
 }
 
@@ -65,57 +61,6 @@ int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path)
 
 	munmap(data, rom_st.st_size);
 
-	ret = cpu_load_rom(cpu, mmu->ram, rom_st.st_size);
-	OK_OR_WARN(ret == 0);
-
-	return ret;
-}
-
-static
-void dump_line(size_t base, uint8_t *data, size_t size)
-{
-	size_t i;
-	size_t end = (base + 16 > size) ? (size - base + 1) : 16;
-	uint8_t byte;
-
-	for (i = 0; i < end; i++) {
-		printf("%02x ", data[base + i]);
-	}
-
-	for (; i < 16; i++) {
-		printf("   ");
-	}
-
-	for (i = 0; i < end; i++) {
-		if (data[base + i] >= ' ' && data[base + i] <= '~') {
-			byte = data[base + i];
-		} else {
-			byte = '.';
-		}
-		printf("%c", byte);
-	}
-
-	printf("\n");
-}
-
-int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size)
-{
-	unsigned i;
-
-	OK_OR_RETURN(data != NULL, -EINVAL);
-
-	cpu->rom_image.data = data;
-	cpu->rom_image.size = size;
-
-	if (IS_DEBUG()) {
-		for (i = 0; i < size; i+= 16) {
-			printf("%04x ", i);
-			dump_line(i, data, size);
-		}
-
-		printf("\n");
-	}
-
 	return 0;
 }
 
@@ -138,34 +83,32 @@ void cpu_dump_register_state(struct cpu *cpu)
 	printf("+------+---------+\n");
 }
 
-static
 int fetch(struct device *device, uint8_t *opcode, bool *found_prefix)
 {
 	struct cpu *cpu;
+	struct mmu *mmu;
 	struct registers *registers;
-	struct rom_image *rom_image;
 
 	cpu = &device->cpu;
+	mmu = &device->mmu;
 	registers = &cpu->registers;
-	rom_image = &cpu->rom_image;
 
-	OK_OR_RETURN(registers->pc < rom_image->size, -EINVAL);
+	OK_OR_RETURN(registers->pc < MMU_REGION_SIZE(ROM_BANK_00), -EINVAL);
 
 	*found_prefix = false;
-	*opcode = rom_image->data[registers->pc];
+	*opcode = mmu->ram[registers->pc];
 
 	if (*opcode == LR35902_OPCODE_PREFIX_CB) {
 		*found_prefix = true;
 
-		OK_OR_RETURN((registers->pc + 1) < rom_image->size, -EINVAL);
+		OK_OR_RETURN((registers->pc + 1) < MMU_REGION_SIZE(ROM_BANK_00), -EINVAL);
 
-		*opcode = rom_image->data[registers->pc + 1];
+		*opcode = mmu->ram[registers->pc + 1];
 	}
 
 	return 0;
 }
 
-static
 int decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
@@ -205,15 +148,13 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 
 		ret = decode(device, opcode, found_prefix, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
+		OK_OR_RETURN(decoded_instruction.info->instruction_class != INSTRUCTION_CLASS_INVALID, -EINVAL);
 
 		ret = execute(device, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
 
 		if (IS_DEBUG()) {
 			cpu_dump_register_state(&device->cpu);
-			#ifndef SKIP_KEY
-			getchar();
-			#endif
 		}
 	}
 

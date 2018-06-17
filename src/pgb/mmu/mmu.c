@@ -10,7 +10,9 @@
 
 int mmu_init(struct mmu *mmu)
 {
+	mmu->ram = NULL;
 	mmu->size = LR35902_MMU_MEMORY_SIZE;
+
 	mmu->ram = calloc(LR35902_MMU_MEMORY_SIZE, sizeof(uint8_t));
 	OK_OR_RETURN(mmu->ram != NULL, -ENOMEM);
 
@@ -19,8 +21,9 @@ int mmu_init(struct mmu *mmu)
 
 int mmu_destroy(struct mmu *mmu)
 {
-	mmu->size = 0;
 	free(mmu->ram);
+	mmu->size = 0;
+	mmu->ram = NULL;
 	return 0;
 }
 

@@ -8,6 +8,7 @@
 #include <pgb/cpu/private/lr35902.h>
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
+#include <pgb/mmu/private/mmu.h>
 
 static
 int extract_u16_from_ib(uint8_t *instruction_buffer, size_t size, uint16_t *immediate)
@@ -77,19 +78,19 @@ int fill_instruction_buffer(struct device *device, uint8_t opcode, struct instru
 			    uint8_t *instruction_buffer, size_t ib_size)
 {
 	struct cpu *cpu;
+	struct mmu *mmu;
 	struct registers *registers;
-	struct rom_image *rom_image;
 	size_t num_bytes;
 
 	cpu = &device->cpu;
+	mmu = &device->mmu;
 	registers = &cpu->registers;
-	rom_image = &cpu->rom_image;
 	num_bytes = instruction_info->num_bytes;
 
-	OK_OR_RETURN(registers->pc + (num_bytes - 1) < rom_image->size, -EINVAL);
+	OK_OR_RETURN(registers->pc + (num_bytes - 1) < MMU_REGION_SIZE(ROM_BANK_00), -EINVAL);
 	OK_OR_RETURN(num_bytes <= ib_size, -EINVAL);
 
-	memcpy(instruction_buffer, rom_image->data + registers->pc, num_bytes);
+	memcpy(instruction_buffer, mmu->ram + registers->pc, num_bytes);
 	registers->pc += num_bytes;
 
 	dump_instruction(device, instruction_info, instruction_buffer, num_bytes);
@@ -109,10 +110,11 @@ int cpu_table_decoder_decode(struct device *device, uint8_t opcode, bool is_pref
 		ret = cpu_decoder_get_instruction(opcode, &instruction_info);
 	}
 	OK_OR_RETURN(ret == 0, ret);
-	OK_OR_RETURN(instruction_info->instruction_class != INSTRUCTION_CLASS_INVALID, -EINVAL);
 
 	ret = fill_instruction_buffer(device, opcode, instruction_info, instruction_buffer, sizeof(instruction_buffer));
 	OK_OR_RETURN(ret == 0, ret);
+
+	memcpy(decoded_instruction->raw_data, instruction_buffer, sizeof(instruction_buffer));
 
 	switch (instruction_info->operands.a.type) {
 	case INSTRUCTION_OPERAND_TYPE_U8:

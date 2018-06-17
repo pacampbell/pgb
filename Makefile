@@ -40,6 +40,10 @@ debug: ## Builds the sample test main program, dynamic libary and static library
 debug: CFLAGS += -g -DDEBUG
 debug: target libs
 
+install-debug: ## Installs debug version of dynamic and static library.
+install-debug: CFLAGS += -g -DDEBUG
+install-debug: install
+
 install: ## Installs project headers, libraries, manpages, and pkg-config files.
 install: libs
 	mkdir -p $(DSTDIR)/$(PREFIX)/include
