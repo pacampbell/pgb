@@ -39,7 +39,7 @@ int mmu_read_word(struct mmu *mmu, uint16_t address, uint16_t *result)
 {
 	OK_OR_RETURN((address + 1) < LR35902_MMU_MEMORY_SIZE, -EINVAL);
 
-	*result = (mmu->ram[address] << 8) | mmu->ram[address];
+	*result = (mmu->ram[address + 1] << 8) | mmu->ram[address];
 
 	return 0;
 }

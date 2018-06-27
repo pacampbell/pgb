@@ -122,7 +122,7 @@ int cpu_table_decoder_decode(struct device *device, uint8_t opcode, bool is_pref
 		ret = extract_u8_from_ib(instruction_buffer, sizeof(instruction_buffer), &decoded_instruction->a.u8);
 		break;
 	case INSTRUCTION_OPERAND_TYPE_U16:
-		ret = extract_u16_from_ib(instruction_buffer, sizeof(instruction_buffer), &decoded_instruction->b.u16);
+		ret = extract_u16_from_ib(instruction_buffer, sizeof(instruction_buffer), &decoded_instruction->a.u16);
 		break;
 	default:
 		ret = 0;

@@ -9,7 +9,8 @@
 #include <pgb/device/device.h>
 
 static
-int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buffer,
+					struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 	uint8_t x;
@@ -38,7 +39,8 @@ int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buf
 }
 
 static
-int cpu_logical_decoder_decode_core_x_3(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode_core_x_3(uint8_t opcode, uint8_t *instruction_buffer,
+					struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 	uint8_t z;
@@ -80,14 +82,16 @@ int cpu_logical_decoder_decode_core_x_3(uint8_t opcode, uint8_t *instruction_buf
 }
 
 static
-int cpu_logical_decoder_decode_core_x_2(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode_core_x_2(uint8_t opcode, uint8_t *instruction_buffer,
+					struct decoded_instruction *decoded_instruction)
 {
 	/* Operate on accumulator and register/memory loacation */
 	return 0;
 }
 
 static
-int cpu_logical_decoder_decode_core_x_1(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode_core_x_1(uint8_t opcode, uint8_t *instruction_buffer,
+					struct decoded_instruction *decoded_instruction)
 {
 	int ret = 0;
 	uint8_t y, z, p, q;
@@ -124,7 +128,8 @@ int cpu_logical_decoder_decode_core_x_1(uint8_t opcode, uint8_t *instruction_buf
 }
 
 static
-int cpu_logical_decoder_decode_core_x_0(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode_core_x_0(uint8_t opcode, uint8_t *instruction_buffer,
+					struct decoded_instruction *decoded_instruction)
 {
 	int ret = 0;
 	uint8_t y, z, p, q;
@@ -171,7 +176,8 @@ int cpu_logical_decoder_decode_core_x_0(uint8_t opcode, uint8_t *instruction_buf
 }
 
 static
-int cpu_logical_decoder_decode_core_instr(uint8_t opcode, uint8_t *instruction_buffer, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode_core_instr(uint8_t opcode, uint8_t *instruction_buffer,
+					  struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 	uint8_t x;
@@ -200,7 +206,8 @@ int cpu_logical_decoder_decode_core_instr(uint8_t opcode, uint8_t *instruction_b
 	return 0;
 }
 
-int cpu_logical_decoder_decode(struct device *device, uint8_t opcode, struct decoded_instruction *decoded_instruction)
+int cpu_logical_decoder_decode(struct device *device, uint8_t opcode,
+			       struct decoded_instruction *decoded_instruction)
 {
 	int ret;
 

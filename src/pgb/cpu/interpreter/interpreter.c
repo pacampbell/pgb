@@ -12,6 +12,45 @@
 #define DETECT_UNSIGNED_ARITHMETIC_UNDERFLOW(a, b) (((a) - (b)) > (a))
 
 static
+int bit_u3_to_value(enum instruction_operand operand, uint8_t *value)
+{
+	int ret = 0;
+
+	switch (operand) {
+	case INSTRUCTION_OPERAND_U3_0:
+		*value = 0;
+		break;
+	case INSTRUCTION_OPERAND_U3_1:
+		*value = 1;
+		break;
+	case INSTRUCTION_OPERAND_U3_2:
+		*value = 2;
+		break;
+	case INSTRUCTION_OPERAND_U3_3:
+		*value = 3;
+		break;
+	case INSTRUCTION_OPERAND_U3_4:
+		*value = 4;
+		break;
+	case INSTRUCTION_OPERAND_U3_5:
+		*value = 5;
+		break;
+	case INSTRUCTION_OPERAND_U3_6:
+		*value = 6;
+		break;
+	case INSTRUCTION_OPERAND_U3_7:
+		*value = 7;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+static
 int interpreter_execute_instruction_adc(struct device *device, struct decoded_instruction *instruction)
 {
 	return 0;
@@ -102,6 +141,48 @@ int interpreter_execute_instruction_and(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_call(struct device *device, struct decoded_instruction *instruction)
 {
+	int ret;
+	uint16_t address;
+	bool condition_met, is_condition;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	if (info->operands.a.type == INSTRUCTION_OPERAND_TYPE_CONDITION) {
+		is_condition = true;
+		address = instruction->b.u16;
+	} else {
+		is_condition = false;
+		address = instruction->a.u16;
+	}
+
+	if (is_condition) {
+		switch (info->operands.a.operand) {
+		case INSTRUCTION_OPERAND_COND_Z:
+			condition_met = cpu->registers.flags.zero == 1;
+			break;
+		case INSTRUCTION_OPERAND_COND_NZ:
+			condition_met = cpu->registers.flags.zero == 0;
+			break;
+		default:
+			ret = -EINVAL;
+			break;
+		}
+		OK_OR_RETURN(ret == 0, ret);
+	}
+
+	if ((is_condition && condition_met) || !is_condition) {
+		ret = mmu_write_word(mmu, cpu->registers.sp - 2, cpu->registers.pc);
+		OK_OR_RETURN(ret == 0, ret);
+
+		cpu->registers.pc = address;
+		cpu->registers.sp -= 2;
+	}
+
 	return 0;
 }
 
@@ -260,12 +341,68 @@ int interpreter_execute_instruction_inc(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_jp(struct device *device, struct decoded_instruction *instruction)
 {
+	int ret = 0;
+	bool condition_met;
+	struct cpu *cpu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	info = instruction->info;
+
+	switch (info->operands.a.operand) {
+	case INSTRUCTION_OPERAND_COND_NZ:
+		condition_met = cpu->registers.flags.zero == 0;
+		break;
+	case INSTRUCTION_OPERAND_COND_Z:
+		condition_met = cpu->registers.flags.zero == 1;
+		break;
+	case INSTRUCTION_OPERAND_TYPE_U16:
+		ret = -EINVAL;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	if (condition_met) {
+		cpu->registers.pc += instruction->b.i8;
+	}
+
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_jr(struct device *device, struct decoded_instruction *instruction)
 {
+	int ret = 0;
+	bool condition_met, is_condition;
+	struct cpu *cpu;
+	struct instruction_info *info;
+
+	is_condition = false;
+	cpu = &device->cpu;
+	info = instruction->info;
+
+	switch (info->operands.a.operand) {
+	case INSTRUCTION_OPERAND_COND_NZ:
+		is_condition = true;
+		condition_met = cpu->registers.flags.zero == 0;
+		break;
+	case INSTRUCTION_OPERAND_COND_Z:
+		is_condition = true;
+		condition_met = cpu->registers.flags.zero == 1;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	if (is_condition && condition_met) {
+		cpu->registers.pc += instruction->b.i8;
+	}
+
 	return 0;
 }
 
@@ -330,7 +467,7 @@ int interpreter_execute_instruction_ld(struct device *device, struct decoded_ins
 			}
 			OK_OR_RETURN(ret == 0, ret);
 
-			ret = mmu_write_byte(mmu, addr8, src8);
+			ret = mmu_write_byte(mmu, addr8 + 0xff00, src8);
 		}
 		break;
 	case INSTRUCTION_OPERAND_MODIFIER_MEM_WRITE_16:
@@ -495,6 +632,18 @@ int interpreter_execute_instruction_push(struct device *device, struct decoded_i
 static
 int interpreter_execute_instruction_ret(struct device *device, struct decoded_instruction *instruction)
 {
+	int ret;
+	struct cpu *cpu;
+	struct mmu *mmu;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+
+	ret = mmu_read_word(mmu, cpu->registers.sp, &cpu->registers.pc);
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.sp -= 2;
+
 	return 0;
 }
 
@@ -578,9 +727,13 @@ int interpreter_execute_instruction_xor(struct device *device, struct decoded_in
 	switch (info->operands.a.type) {
 	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
 		dst8 ^= src8;
+		cpu->registers.flags.half_carry = 0;
+		cpu->registers.flags.zero = (dst8 == 0);
 		break;
 	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
 		dst16 ^= src16;
+		cpu->registers.flags.half_carry = 0;
+		cpu->registers.flags.zero = (dst16 == 0);
 		break;
 	default:
 		ret = -EINVAL;
@@ -607,6 +760,39 @@ int interpreter_execute_instruction_xor(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_bit(struct device *device, struct decoded_instruction *instruction)
 {
+	int ret;
+	uint8_t bit;
+	uint8_t reg;
+	struct cpu *cpu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	info = instruction->info;
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_U3:
+		ret = bit_u3_to_value(info->operands.a.operand, &bit);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.b.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.b.operand, &reg);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.flags.half_carry = 1;
+	cpu->registers.flags.subtraction = 0;
+	cpu->registers.flags.zero = (reg & (1 << bit)) == 0;
+
 	return 0;
 }
 
