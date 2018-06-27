@@ -13,9 +13,9 @@ PGB is a Gameboy emulator written in C as a hobby project.
 PGB itself is just a collection of function calls which emulates the Gameboy CPU, MMU, GPU, and Input devices.
 To turn PGB into something usable, you will need to use an additional front-end for it. Currently, as a learning
 project, PGB has been extended as a node napi module, and has an electron based UI. You can find the code for the napi
-module [here](TODO) and electron-ui [here](TODO).
+module [here](https://github.com/pacampbell/napi-pgb) and electron-ui [here](https://github.com/pacampbell/electron-pgb).
 
-There also exists a command line based interface for debugging and simply testing out execution with
+There also exists a command line based interface for debugging and simply testing out execution with.
 
 ## Make targets
 
