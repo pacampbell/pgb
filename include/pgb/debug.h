@@ -1,13 +1,9 @@
-#ifndef PGD_DEBUG_H
-#define PGD_DEBUG_H
+#ifndef PGB_DEBUG_H
+#define PGB_DEBUG_H
 
 #include <stdio.h>
 
-#ifdef DEBUG
-#define IS_DEBUG() 1
-#else
-#define IS_DEBUG() 0
-#endif
+#define IS_DEBUG() (DEBUG == 1)
 
 #define OK_OR_WARN(cond) do {									\
 	if (!(cond)) {										\
@@ -48,4 +44,4 @@
 		continue;		\
 	}
 
-#endif /* PGD_DEBUG_H */
+#endif /* PGB_DEBUG_H */
