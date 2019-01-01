@@ -6,7 +6,8 @@
 #define BIT_FLD_MASK(field) ((1 << (MSB(field) - LSB(field) + 1)) - 1)
 
 #define BF_GET_FLD(field, value) ((value >> LSB(field)) & BIT_FLD_MASK(field))
-#define BF_CLR_FLD(field, value) ((BIT_FLD_MASK(field) << LSB(field)) & value)
-#define BF_SET_FLD(field, value, set) (((BIT_FLD_MASK(field) << LSB(field)) & value) | ((BIT_FLD_MASK(FIELD) & set) << LSB(field)))
+#define BF_CLR_FLD(field, value) ((~BIT_FLD_MASK(field) << LSB(field)) & value)
+#define BF_SET_FLD(field, value, set) (BF_CLR_FLD(field) | ((BIT_FLD_MASK(field) & set) << LSB(field)))
 
 #endif /* PGB_BIT_FIELD_H */
+
