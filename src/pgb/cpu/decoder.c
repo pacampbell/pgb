@@ -7,6 +7,7 @@
 #include <pgb/cpu/logical_decoder.h>
 #include <pgb/cpu/table_decoder.h>
 #include <pgb/debug.h>
+#include <pgb/utils.h>
 
 int string_to_decoder_type(const char *str, enum decoder_type *type)
 {
@@ -39,6 +40,7 @@ int cpu_decoder_configure_decoder(enum decoder_type type, struct decoder *decode
 		break;
 	default:
 		ret = -EINVAL;
+		break;
 	}
 	OK_OR_WARN(ret == 0);
 
@@ -63,12 +65,19 @@ struct instruction_info prefix_isa_instruction_set[LR35902_PREFIX_CB_OPCODE_TABL
 
 int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
+	OK_OR_RETURN(opcode < ARRAY_SIZE(isa_instruction_set), -EINVAL);
+
 	*instruction = &isa_instruction_set[opcode];
+
 	return 0;
 }
 
 int cpu_decoder_get_prefix_cb_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
+	OK_OR_RETURN(opcode < ARRAY_SIZE(prefix_isa_instruction_set), -EINVAL);
+
 	*instruction = &prefix_isa_instruction_set[opcode];
+
 	return 0;
 }
+
