@@ -1,5 +1,5 @@
-CC        := gcc -std=c11
-CFLAGS    := -Wall -Werror -fPIC
+CC        := gcc
+CFLAGS    := -std=c11 -Wall -Werror -fPIC
 LIBS      :=
 AR        := ar
 ARFLAGS   := rcs
