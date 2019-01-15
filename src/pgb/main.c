@@ -10,9 +10,9 @@
 #include <pgb/utils.h>
 
 const char *help_text = \
-	"pgb - Utility for executing Gameboy classic roms.\n"
+	"pgb - Library for emulating Gameboy classic roms.\n"
 	"\n"
-	"Usage: ./pgb [-h] -r PATH\n"
+	"Usage: ./libpgb.so [-h] -r PATH\n"
 	"\n"
 	"Options:\n"
 	"  -h, --help\n"
@@ -44,6 +44,7 @@ bool is_valid_decoder_type(const char *decoder_type)
 	return false;
 }
 
+static
 int start_emulating(const char *rom_path, const char *decoder_type)
 {
 	int ret;
