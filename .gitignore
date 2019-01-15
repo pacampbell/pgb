@@ -6,4 +6,5 @@
 .compiler_flags
 roms/
 tags
+*.swp
 
