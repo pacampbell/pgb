@@ -4,7 +4,6 @@
 #include <pgb/utils.h>
 #include <pgb/device/device.h>
 
-
 int device_init(struct device *device, const char *decoder_type)
 {
 	int ret;
