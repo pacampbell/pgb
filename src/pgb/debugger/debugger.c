@@ -77,7 +77,7 @@ int literal_to_string(enum operand_option operand, struct decoded_instruction *d
 	return ret;
 }
 
-int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t size)
+int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t n)
 {
 	int ret;
 	size_t i;
@@ -89,7 +89,7 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 
 	pc_saved = device->cpu.registers.pc;
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < n; i++) {
 		memset(&decoded_instruction, 0, sizeof(decoded_instruction));
 		comment_a = NULL;
 		comment_b = NULL;
@@ -151,11 +151,11 @@ reset_pc_and_exit:
 	return ret;
 }
 
-void free_debugger_info(struct debugger_info *info, size_t size)
+void free_debugger_info(struct debugger_info *info, size_t n)
 {
 	size_t i;
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < n; i++) {
 		free(info[i].comments.a);
 		free(info[i].comments.b);
 	}

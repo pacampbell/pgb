@@ -8,3 +8,5 @@ roms/
 tags
 *.swp
 
+*.1
+*.3

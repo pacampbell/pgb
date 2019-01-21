@@ -1,0 +1,57 @@
+= pgb(1)
+:doctype: manpage
+:manmanual: PGB
+:mansource: PGB
+:man-linkstyle: pass:[blue R < >]
+
+== NAME
+
+pgb - Library for emulating classic Gameboy games.
+
+== SYNOPSIS
+
+*libpgb.so* [-h] -d _DECODER_ -r _ROM_
+
+Executing pgb is mainly used for debugging and is
+not the intended use of this library.
+
+Link with _-lpgb_.
+
+== DESCRIPTION
+*libpgb* is a library designed to explore the Gameboy
+classic architecture. It does not intend to be the fastest
+or most accurate, but instead as something someone can look
+at and learn from. It is not a standalone application by
+itself and is intended to be linked into other applications
+where its public functions can be leveraged.
+
+== OPTIONS
+*-h, --help*::
+  Displays this help menu and then exits.
+
+*-d, --decoder*=_DECODER_::
+  The type of decoder to use during emulation. Valid options are
+  *logical* and *table*. If no value is provided, *table*
+  is used by default.
+
+*-r, --rom*=_ROM_::
+  The path to a valid Gameboy rom image to execute.
+
+== EXIT STATUS
+
+*0*::
+  Success.
+  The program exited execution normally.
+
+*1*::
+  Failure.
+  The program exited execution abnormally.
+
+== SEE ALSO
+*pgb-cpu*(3), *pgb-debugger*(3), *pgb-device*(3), *pgb-mmu*(3)
+
+== AUTHOR
+Paul Campbell _pacampbell87@gmail.com_
+
+// vim: set syntax=asciidoc
+

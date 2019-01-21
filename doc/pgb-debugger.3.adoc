@@ -1,0 +1,61 @@
+= pgb-debugger(3)
+:doctype: manpage
+:manmanual: PGB
+:mansource: PGB
+:man-linkstyle: pass:[blue R < >]
+:b1: pass:[ +]
+:ptr: pass:[*]
+
+== NAME
+
+pgb-debugger - Collection  of pgb debug functions.
+
+debugger_fetch_instructions, free_debugger_info
+
+== SYNOPSIS
+
+*#include <pgb/debugger/debugger.h>*
+
+*struct debugger_info* {
+	*const char* {ptr}assembly;
+	*size_t* num_bytes;
+	*uint8_t* raw_data[_4_];
+	*uint16_t* address;
+	*struct* {
+		*char* {ptr}a;
+		*char* {ptr}b;
+	} *comments*; {b1}
+};
+
+*int debugger_fetch_instructions*(*struct device* _*device_,{b1}
+				*struct debugger_info* _{ptr}info_,{b1}
+				*size_t* _n_);{b1}
+*void free_debugger_info*(*struct debugger_info* _{ptr}info_, *size_t* _n_);
+
+== DESCRIPTION
+
+The functions in the *pgb-debugger*(3) family are intended to be used by
+the libpgb front ends for implementing debugger like functionality. The
+function *debugger_fetch_instructions*() is used to gather information about
+the next _n_ instructions from the current program counter. The argument
+_info_ should be the starting address to an array of _n_
+*struct debugger_info* structs. The function *free_debugger_info*()
+is used to free the instruction information since some of the internal
+values are allocated dynamically.
+
+== RETURN VALUE
+
+Upon the successful return, these functions return *0* if no errors have
+occured, otherwise they return a non-zero value. For the function
+*debugger_fetch_instructions*(), if the function returns *0*, then the
+struct _info_ should contain information about the next _n_ instructions
+from the current program counter.
+
+== SEE ALSO
+*pgb*(1), *pgb-cpu*(3), *pgb-device*(3), *pgb-mmu*(3)
+
+== AUTHOR
+Paul Campbell _pacampbell87@gmail.com_
+
+// vim: set syntax=asciidoc
+
