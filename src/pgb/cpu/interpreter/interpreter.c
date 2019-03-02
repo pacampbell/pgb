@@ -53,6 +53,7 @@ int bit_u3_to_value(enum instruction_operand operand, uint8_t *value)
 static
 int interpreter_execute_instruction_adc(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'adc'");
 	return 0;
 }
 
@@ -129,12 +130,14 @@ int interpreter_execute_instruction_add(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_addc(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'addc'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_and(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'and'");
 	return 0;
 }
 
@@ -189,24 +192,28 @@ int interpreter_execute_instruction_call(struct device *device, struct decoded_i
 static
 int interpreter_execute_instruction_ccf(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'ccf'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_cp(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'cp'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_cpl(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'cpl'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_daa(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'daa'");
 	return 0;
 }
 
@@ -267,12 +274,14 @@ int interpreter_execute_instruction_dec(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_di(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'di'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_ei(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'ei'");
 	return 0;
 }
 
@@ -583,49 +592,56 @@ int interpreter_execute_instruction_ldd(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_ldh(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'ldh'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_ldhl(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'ldhl'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_ldi(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'ldi'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_nop(struct device *device, struct decoded_instruction *instruction)
 {
-	/* NOP */
+	/*XXX: NOP - Should consume some cycles */
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_or(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'and'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_pop(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'pop'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_prefix(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'prefix'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_push(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'push'");
 	return 0;
 }
 
@@ -650,36 +666,42 @@ int interpreter_execute_instruction_ret(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_reti(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'reti'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rst(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rst'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_sbc(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'sbc'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_scf(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'scf'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_stop(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'stop'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_sub(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'sub'");
 	return 0;
 }
 
@@ -799,84 +821,98 @@ int interpreter_execute_instruction_bit(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_res(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'res'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rl(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rl'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rla(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rla'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rlc(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rlc'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rlca(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rlca'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rr(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rr'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rra(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rra'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rrc(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rrc'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rrca(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'rrca'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_set(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'set'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_sla(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'sla'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_sra(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'sra'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_srl(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'srl'");
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_swap(struct device *device, struct decoded_instruction *instruction)
 {
+	TRAP_GDB("Not implemented: instruction 'swap'");
 	return 0;
 }
 

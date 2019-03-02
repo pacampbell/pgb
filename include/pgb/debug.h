@@ -44,4 +44,11 @@
 		continue;		\
 	}
 
+#define TRAP_GDB(msg) do {								\
+	if (!IS_DEBUG())								\
+		break;									\
+	fprintf(stderr, "%s:%s:%u %s\n", __FILE__, __FUNCTION__, __LINE__, msg);	\
+	__asm__("int $3");								\
+} while (0)
+
 #endif /* PGB_DEBUG_H */
