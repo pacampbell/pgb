@@ -17,7 +17,10 @@ struct debugger_info {
 	} comments;
 };
 
-int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t size);
+int debugger_fetch_instructions_from_address(struct device *device, struct debugger_info *info,
+					     size_t n, size_t *num_decoded, uint16_t address);
+int debugger_fetch_instructions(struct device *device, struct debugger_info *info,
+				size_t n, size_t *num_decoded);
 void free_debugger_info(struct debugger_info *info, size_t size);
 
 #endif /* PGB_DEBUGGER_DEBUGGER_H */

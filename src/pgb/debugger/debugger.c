@@ -77,7 +77,23 @@ int literal_to_string(enum operand_option operand, struct decoded_instruction *d
 	return ret;
 }
 
-int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t n)
+int debugger_fetch_instructions_from_address(struct device *device, struct debugger_info *info, size_t n, size_t *num_decoded, uint16_t address)
+{
+	int ret;
+	uint16_t pc_saved;
+
+	pc_saved = device->cpu.registers.pc;
+	device->cpu.registers.pc = address;
+
+	ret = debugger_fetch_instructions(device, info, n, num_decoded);
+	OK_OR_WARN(ret == 0);
+
+	device->cpu.registers.pc = pc_saved;
+
+	return ret;
+}
+
+int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t n, size_t *num_decoded)
 {
 	int ret;
 	size_t i;
@@ -97,16 +113,15 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 		address = device->cpu.registers.pc;
 
 		ret = fetch(device, &opcode, &is_prefix);
-		OK_OR_GOTO(ret == 0, reset_pc_and_exit);
+		OK_OR_BREAK(ret == 0);
 
 		ret = decode(device, opcode, is_prefix, &decoded_instruction);
-		OK_OR_GOTO(ret == 0, reset_pc_and_exit);
+		OK_OR_BREAK(ret == 0);
 
 		info[i].assembly = decoded_instruction.info->assembly;
 		info[i].address = address;
 		info[i].num_bytes = decoded_instruction.info->num_bytes;
 		memcpy(info[i].raw_data, decoded_instruction.raw_data, info[i].num_bytes);
-
 
 		switch (decoded_instruction.info->operands.a.type) {
 		case INSTRUCTION_OPERAND_TYPE_I8:
@@ -120,7 +135,7 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 			ret = 0;
 			break;
 		}
-		OK_OR_GOTO(ret == 0, reset_pc_and_exit);
+		OK_OR_BREAK(ret == 0);
 
 		switch (decoded_instruction.info->operands.b.type) {
 		case INSTRUCTION_OPERAND_TYPE_I8:
@@ -134,21 +149,17 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 			ret = 0;
 			break;
 		}
-		OK_OR_GOTO(ret == 0, reset_pc_and_exit);
+		OK_OR_BREAK(ret == 0);
 
 		info[i].comments.a = comment_a;
 		info[i].comments.b = comment_b;
 	}
 
-reset_pc_and_exit:
+	*num_decoded = i;
+
 	device->cpu.registers.pc = pc_saved;
 
-	// if (ret != 0) {
-	// 	for (i = 0)
-	// }
-	// TODO: Free memory if error occurred
-
-	return ret;
+	return 0;
 }
 
 void free_debugger_info(struct debugger_info *info, size_t n)
