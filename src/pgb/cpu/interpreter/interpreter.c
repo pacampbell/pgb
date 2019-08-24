@@ -592,8 +592,45 @@ int interpreter_execute_instruction_ldd(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_ldh(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'ldh'");
-	return 0;
+	int ret;
+	uint8_t n8, value8;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	switch (info->operands.b.type) {
+	case INSTRUCTION_OPERAND_TYPE_U8 :
+		n8 = instruction->b.u8;
+		ret = mmu_read_byte(mmu, n8 + 0xff00, &value8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.b.operand, &value8);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_U8 :
+		n8 = instruction->a.u8;
+		ret = mmu_write_byte(mmu, n8 + 0xff00, value8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, value8);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 static
@@ -627,7 +664,33 @@ int interpreter_execute_instruction_or(struct device *device, struct decoded_ins
 static
 int interpreter_execute_instruction_pop(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'pop'");
+	int ret;
+	uint16_t v16, sp;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	sp = cpu->registers.sp;
+
+	ret = mmu_read_word(mmu, sp, &v16);
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16 :
+		ret = cpu_register_write16(cpu, info->operands.a.operand, v16);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.sp += 2;
+
 	return 0;
 }
 
@@ -641,7 +704,33 @@ int interpreter_execute_instruction_prefix(struct device *device, struct decoded
 static
 int interpreter_execute_instruction_push(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'push'");
+	int ret;
+	uint16_t r16, sp;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	sp = cpu->registers.sp;
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16 :
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &r16);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = mmu_write_word(mmu, sp, r16);
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.sp -= 2;
+
 	return 0;
 }
 
@@ -828,14 +917,55 @@ int interpreter_execute_instruction_res(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_rl(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'rl'");
+	int ret;
+	uint8_t r8;
+	struct cpu *cpu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	info = instruction->info;
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &r8);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = cpu_register_write8(cpu, info->operands.a.operand, r8 << 1);
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.flags.zero = (r8 << 1) == 0;
+	cpu->registers.flags.carry = (r8 >> 7) & 1;
+	cpu->registers.flags.half_carry = 0;
+	cpu->registers.flags.subtraction = 0;
+
 	return 0;
 }
 
 static
 int interpreter_execute_instruction_rla(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'rla'");
+	uint8_t r8;
+	bool has_carry;
+	struct cpu *cpu;
+
+	cpu = &device->cpu;
+
+	r8 = cpu->registers.a;
+	has_carry = r8 & 0x80;
+	r8 = (r8 << 7) | cpu->registers.flags.carry;
+
+	cpu->registers.a = r8;
+
+	cpu->registers.flags.zero = r8 == 0;
+	cpu->registers.flags.carry = has_carry;
+	cpu->registers.flags.half_carry = 0;
+	cpu->registers.flags.subtraction = 0;
+
 	return 0;
 }
 

@@ -1,8 +1,8 @@
-#include "pgb/cpu/registers.h"
+#include <pgb/cpu/registers.h>
 
 int registers_init(struct registers *registers)
 {
-	registers->a = 0xba;
+	registers->a = 0x0;
 	registers->b = 0x0;
 	registers->c = 0x0;
 	registers->d = 0x0;
