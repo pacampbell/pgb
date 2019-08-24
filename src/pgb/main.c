@@ -9,7 +9,7 @@
 #include <pgb/debug.h>
 #include <pgb/utils.h>
 
-const char *help_text = \
+const char *help_text =
 	"pgb - Library for emulating Gameboy classic roms.\n"
 	"\n"
 	"Usage: ./libpgb.so [-h] -r PATH\n"
@@ -48,13 +48,25 @@ static
 int start_emulating(const char *rom_path, const char *decoder_type)
 {
 	int ret;
+	size_t stepped_instructions, num_instructions = 0;
 	struct device device;
 
 	ret = device_init(&device, decoder_type);
 	OK_OR_RETURN(ret == 0, ret);
 
-	ret = device_emulate(&device, rom_path);
-	OK_OR_WARN(ret == 0);
+	if (IS_DEBUG()) {
+		cpu_dump_register_state(&device.cpu);
+	}
+
+	ret = device_load_image_from_file(&device, rom_path);
+	OK_OR_RETURN(ret == 0, ret);
+
+	do {
+		ret = cpu_step(&device, 1, &stepped_instructions);
+		OK_OR_BREAK(ret == 0);
+
+		num_instructions += stepped_instructions;
+	} while (!cpu_is_halted(&device.cpu));
 
 	device_destroy(&device);
 

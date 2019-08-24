@@ -25,28 +25,6 @@ int device_destroy(struct device *device)
 	return 0;
 }
 
-int device_emulate(struct device *device, const char *rom_path)
-{
-	int ret;
-	size_t stepped_instructions, num_instructions = 0;
-
-	if (IS_DEBUG()) {
-		cpu_dump_register_state(&device->cpu);
-	}
-
-	ret = device_load_image_from_file(device, rom_path);
-	OK_OR_RETURN(ret == 0, ret);
-
-	do {
-		ret = cpu_step(device, 1, &stepped_instructions);
-		OK_OR_BREAK(ret == 0);
-
-		num_instructions += stepped_instructions;
-	} while (!cpu_is_halted(&device->cpu));
-
-	return ret;
-}
-
 int device_load_image_from_file(struct device *device, const char *rom_path)
 {
 	int ret;

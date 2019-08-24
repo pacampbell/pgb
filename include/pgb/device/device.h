@@ -23,7 +23,6 @@ struct device {
 
 int device_init(struct device *device, const char *decoder_type);
 int device_destroy(struct device *device);
-int device_emulate(struct device *device, const char *rom_path);
 int device_load_image_from_file(struct device *device, const char *rom_path);
 int device_reset_system(struct device *device, const char *decoder_type, const char *boot_rom_path);
 int device_configure_setting(struct device *device, enum device_setting setting, const char *value);
