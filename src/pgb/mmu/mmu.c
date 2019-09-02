@@ -27,7 +27,7 @@ int mmu_destroy(struct mmu *mmu)
 	return 0;
 }
 
-int mmu_read_byte(struct mmu *mmu, uint16_t address, uint8_t *result)
+int mmu_read8(struct mmu *mmu, uint16_t address, uint8_t *result)
 {
 	OK_OR_RETURN(address < LR35902_MMU_MEMORY_SIZE, -EINVAL);
 
@@ -35,7 +35,7 @@ int mmu_read_byte(struct mmu *mmu, uint16_t address, uint8_t *result)
 	return 0;
 }
 
-int mmu_read_word(struct mmu *mmu, uint16_t address, uint16_t *result)
+int mmu_read16(struct mmu *mmu, uint16_t address, uint16_t *result)
 {
 	OK_OR_RETURN((address + 1) < LR35902_MMU_MEMORY_SIZE, -EINVAL);
 
@@ -44,7 +44,7 @@ int mmu_read_word(struct mmu *mmu, uint16_t address, uint16_t *result)
 	return 0;
 }
 
-int mmu_write_byte(struct mmu *mmu, uint16_t address, uint8_t value)
+int mmu_write8(struct mmu *mmu, uint16_t address, uint8_t value)
 {
 	OK_OR_RETURN(address < LR35902_MMU_MEMORY_SIZE, -EINVAL);
 
@@ -53,7 +53,7 @@ int mmu_write_byte(struct mmu *mmu, uint16_t address, uint8_t value)
 	return 0;
 }
 
-int mmu_write_word(struct mmu *mmu, uint16_t address, uint16_t value)
+int mmu_write16(struct mmu *mmu, uint16_t address, uint16_t value)
 {
 	OK_OR_RETURN((address + 1) < LR35902_MMU_MEMORY_SIZE, -EINVAL);
 

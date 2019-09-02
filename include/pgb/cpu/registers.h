@@ -9,10 +9,10 @@ struct registers {
 			union {
 				struct {
 					uint8_t rsvd        : 4;
-					uint8_t carry       : 1;
-					uint8_t half_carry  : 1;
-					uint8_t subtraction : 1;
-					uint8_t zero        : 1;
+					uint8_t carry       : 1; /* C */
+					uint8_t half_carry  : 1; /* H */
+					uint8_t subtraction : 1; /* N */
+					uint8_t zero        : 1; /* Z */
 				} flags;
 				uint8_t f;
 			};

@@ -51,6 +51,42 @@ int bit_u3_to_value(enum instruction_operand operand, uint8_t *value)
 }
 
 static
+int utils_pop16(struct device *device, uint16_t *result)
+{
+	int ret;
+	struct cpu *cpu;
+	struct mmu *mmu;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+
+	ret = mmu_read16(mmu, cpu->registers.sp, result);
+	OK_OR_RETURN(ret == 0, ret);
+
+	cpu->registers.sp += 2;
+
+	return 0;
+}
+
+static
+int utils_push16(struct device *device, uint16_t value)
+{
+	int ret;
+	struct cpu *cpu;
+	struct mmu *mmu;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+
+	cpu->registers.sp -= 2;
+
+	ret = mmu_write16(mmu, cpu->registers.sp, value);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+static
 int interpreter_execute_instruction_adc(struct device *device, struct decoded_instruction *instruction)
 {
 	TRAP_GDB("Not implemented: instruction 'adc'");
@@ -148,11 +184,9 @@ int interpreter_execute_instruction_call(struct device *device, struct decoded_i
 	uint16_t address;
 	bool condition_met, is_condition;
 	struct cpu *cpu;
-	struct mmu *mmu;
 	struct instruction_info *info;
 
 	cpu = &device->cpu;
-	mmu = &device->mmu;
 	info = instruction->info;
 
 	if (info->operands.a.type == INSTRUCTION_OPERAND_TYPE_CONDITION) {
@@ -179,11 +213,10 @@ int interpreter_execute_instruction_call(struct device *device, struct decoded_i
 	}
 
 	if ((is_condition && condition_met) || !is_condition) {
-		ret = mmu_write_word(mmu, cpu->registers.sp - 2, cpu->registers.pc);
+		ret = utils_push16(device, cpu->registers.pc);
 		OK_OR_RETURN(ret == 0, ret);
 
 		cpu->registers.pc = address;
-		cpu->registers.sp -= 2;
 	}
 
 	return 0;
@@ -199,7 +232,39 @@ int interpreter_execute_instruction_ccf(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_cp(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'cp'");
+	int ret = 0;
+	uint8_t a, v8;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &v8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = mmu_read8(mmu, cpu->registers.hl, &v8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_U8:
+		v8 = instruction->a.u8;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	a = cpu->registers.a;
+	// Operation performed here is A - n
+	cpu->registers.flags.zero = (a == v8);
+	cpu->registers.flags.subtraction = 1;
+	cpu->registers.flags.half_carry = (((a & 0xf) - (v8 & 0xf)) < 0);
+	cpu->registers.flags.carry = (a < v8);
+
 	return 0;
 }
 
@@ -476,7 +541,7 @@ int interpreter_execute_instruction_ld(struct device *device, struct decoded_ins
 			}
 			OK_OR_RETURN(ret == 0, ret);
 
-			ret = mmu_write_byte(mmu, addr8 + 0xff00, src8);
+			ret = mmu_write8(mmu, addr8 + 0xff00, src8);
 		}
 		break;
 	case INSTRUCTION_OPERAND_MODIFIER_MEM_WRITE_16:
@@ -494,7 +559,7 @@ int interpreter_execute_instruction_ld(struct device *device, struct decoded_ins
 			}
 			OK_OR_RETURN(ret == 0, ret);
 
-			ret = mmu_write_word(mmu, addr16, src16);
+			ret = mmu_write16(mmu, addr16, src16);
 		}
 		break;
 	case INSTRUCTION_OPERAND_MODIFIER_NONE:
@@ -539,7 +604,7 @@ int interpreter_execute_instruction_ldd(struct device *device, struct decoded_in
 			ret = cpu_register_read16(cpu, info->operands.b.operand, &addr16);
 			OK_OR_RETURN(ret == 0, ret);
 
-			ret = mmu_read_byte(mmu, addr16, &src8);
+			ret = mmu_read8(mmu, addr16, &src8);
 		}
 		break;
 	case INSTRUCTION_OPERAND_MODIFIER_NONE:
@@ -564,7 +629,7 @@ int interpreter_execute_instruction_ldd(struct device *device, struct decoded_in
 			ret = cpu_register_read16(cpu, info->operands.a.operand, &addr16);
 			OK_OR_RETURN(ret == 0, ret);
 
-			ret = mmu_write_byte(mmu, addr16, src8);
+			ret = mmu_write8(mmu, addr16, src8);
 		}
 		break;
 	case INSTRUCTION_OPERAND_MODIFIER_NONE:
@@ -605,7 +670,7 @@ int interpreter_execute_instruction_ldh(struct device *device, struct decoded_in
 	switch (info->operands.b.type) {
 	case INSTRUCTION_OPERAND_TYPE_U8 :
 		n8 = instruction->b.u8;
-		ret = mmu_read_byte(mmu, n8 + 0xff00, &value8);
+		ret = mmu_read8(mmu, n8 + 0xff00, &value8);
 		break;
 	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
 		ret = cpu_register_read8(cpu, info->operands.b.operand, &value8);
@@ -619,7 +684,7 @@ int interpreter_execute_instruction_ldh(struct device *device, struct decoded_in
 	switch (info->operands.a.type) {
 	case INSTRUCTION_OPERAND_TYPE_U8 :
 		n8 = instruction->a.u8;
-		ret = mmu_write_byte(mmu, n8 + 0xff00, value8);
+		ret = mmu_write8(mmu, n8 + 0xff00, value8);
 		break;
 	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
 		ret = cpu_register_write8(cpu, info->operands.a.operand, value8);
@@ -643,7 +708,30 @@ int interpreter_execute_instruction_ldhl(struct device *device, struct decoded_i
 static
 int interpreter_execute_instruction_ldi(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'ldi'");
+	/*
+	 LDI A, (HL)
+	 LDI (HL), A
+	 */
+	int ret;
+	uint8_t v8;
+	struct cpu *cpu;
+	struct mmu *mmu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	mmu = &device->mmu;
+	info = instruction->info;
+
+	if (info->operands.a.type == INSTRUCTION_OPERAND_TYPE_REGISTER8) {
+		ret = mmu_read8(mmu, cpu->registers.hl, &v8);
+		OK_OR_RETURN(ret == 0, ret);
+
+		cpu->registers.a = v8;
+	} else {
+		ret = mmu_write8(mmu, cpu->registers.hl, cpu->registers.a);
+		OK_OR_RETURN(ret == 0, ret);
+	}
+
 	return 0;
 }
 
@@ -665,18 +753,14 @@ static
 int interpreter_execute_instruction_pop(struct device *device, struct decoded_instruction *instruction)
 {
 	int ret;
-	uint16_t v16, sp;
+	uint16_t v16;
 	struct cpu *cpu;
-	struct mmu *mmu;
 	struct instruction_info *info;
 
 	cpu = &device->cpu;
-	mmu = &device->mmu;
 	info = instruction->info;
 
-	sp = cpu->registers.sp;
-
-	ret = mmu_read_word(mmu, sp, &v16);
+	ret = utils_pop16(device, &v16);
 	OK_OR_RETURN(ret == 0, ret);
 
 	switch (info->operands.a.type) {
@@ -687,11 +771,9 @@ int interpreter_execute_instruction_pop(struct device *device, struct decoded_in
 		ret = -EINVAL;
 		break;
 	}
-	OK_OR_RETURN(ret == 0, ret);
+	OK_OR_WARN(ret == 0);
 
-	cpu->registers.sp += 2;
-
-	return 0;
+	return ret;
 }
 
 static
@@ -705,16 +787,12 @@ static
 int interpreter_execute_instruction_push(struct device *device, struct decoded_instruction *instruction)
 {
 	int ret;
-	uint16_t r16, sp;
+	uint16_t r16;
 	struct cpu *cpu;
-	struct mmu *mmu;
 	struct instruction_info *info;
 
 	cpu = &device->cpu;
-	mmu = &device->mmu;
 	info = instruction->info;
-
-	sp = cpu->registers.sp;
 
 	switch (info->operands.a.type) {
 	case INSTRUCTION_OPERAND_TYPE_REGISTER16 :
@@ -726,12 +804,10 @@ int interpreter_execute_instruction_push(struct device *device, struct decoded_i
 	}
 	OK_OR_RETURN(ret == 0, ret);
 
-	ret = mmu_write_word(mmu, sp, r16);
-	OK_OR_RETURN(ret == 0, ret);
+	ret = utils_push16(device, r16);
+	OK_OR_WARN(ret == 0);
 
-	cpu->registers.sp -= 2;
-
-	return 0;
+	return ret;
 }
 
 static
@@ -739,17 +815,13 @@ int interpreter_execute_instruction_ret(struct device *device, struct decoded_in
 {
 	int ret;
 	struct cpu *cpu;
-	struct mmu *mmu;
 
 	cpu = &device->cpu;
-	mmu = &device->mmu;
 
-	ret = mmu_read_word(mmu, cpu->registers.sp, &cpu->registers.pc);
-	OK_OR_RETURN(ret == 0, ret);
+	ret = utils_pop16(device, &cpu->registers.pc);
+	OK_OR_WARN(ret == 0);
 
-	cpu->registers.sp -= 2;
-
-	return 0;
+	return ret;
 }
 
 static
