@@ -45,6 +45,12 @@ else
 	CFLAGS += -DDEBUG=0 -O1
 endif
 
+ifneq (,$(wildcard include/bios/nintendo_bios.h))
+	CFLAGS += -DHAS_BIOS_ROM=1
+else
+	CFLAGS += -DHAS_BIOS_ROM=0
+endif
+
 .PHONY: all clean doc force help install uninstall
 
 all: ## Builds manpages and dynamic (.so) and static (.a) libraries.

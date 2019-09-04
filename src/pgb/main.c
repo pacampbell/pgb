@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <pgb/bios.h>
 #include <pgb/device/device.h>
 #include <pgb/debug.h>
 #include <pgb/utils.h>
@@ -17,12 +19,16 @@ const char *help_text =
 	"\n"
 	"Options:\n"
 	"  -h, --help\n"
-	"	Displays this help menu and then exits.\n"
+	"    Displays this help menu and then exits.\n"
+	"  -b, --bios='PATH'\n"
+	"    The path to a valid Gameboy BIOS image to execute.\n"
+	"    If not provided and library was built without BIOS data,\n"
+	"    the default state approximating what BIOS does will set.\n"
 	"  -d, --decoder='decoder'\n"
-	"	The type of decoder to use during emulation. Valid options are 'logical' and table'.\n"
-	"	If no value is provided, 'table' is used by default.\n"
+	"    The type of decoder to use during emulation. Valid options are 'logical' and table'.\n"
+	"    If no value is provided, 'table' is used by default.\n"
 	"  -r, --rom='PATH'\n"
-	"	The path to a valid Gameboy rom image to execute.\n"
+	"    The path to a valid Gameboy rom image to execute.\n"
 	"";
 
 static
@@ -46,7 +52,25 @@ bool is_valid_decoder_type(const char *decoder_type)
 }
 
 static
-int start_emulating(const char *rom_path, const char *decoder_type)
+int setup_bios(struct device *device, const char *bios_path)
+{
+	int ret;
+
+	if (bios_path != NULL) {
+		ret = device_load_bios_from_file(device, bios_path);
+	} else if (internal_bios_rom != NULL) {
+		ret = device_load_bios_from_address(device, internal_bios_rom, internal_bios_rom_length);
+	} else {
+		/* XXX: Move program counter to address 255 and setup default register values */
+		ret = -EINVAL;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
+}
+
+static
+int start_emulating(const char *bios_path, const char *rom_path, const char *decoder_type)
 {
 	int ret;
 	size_t stepped_instructions, num_instructions = 0;
@@ -58,6 +82,9 @@ int start_emulating(const char *rom_path, const char *decoder_type)
 	if (IS_DEBUG()) {
 		cpu_dump_register_state(&device.cpu);
 	}
+
+	ret = setup_bios(&device, bios_path);
+	OK_OR_RETURN(ret == 0, ret);
 
 	ret = device_load_image_from_file(&device, rom_path);
 	OK_OR_RETURN(ret == 0, ret);
@@ -77,11 +104,15 @@ int start_emulating(const char *rom_path, const char *decoder_type)
 int main(int argc, char *argv[])
 {
 	int ret, opt;
+	const char *bios_path = NULL;
 	const char *rom_path = NULL;
 	const char *decoder_type = "table";
 
-	while ((opt = getopt(argc, argv, "d:gr:h")) != -1) {
+	while ((opt = getopt(argc, argv, "b:d:gr:h")) != -1) {
 		switch (opt) {
+		case 'b':
+			bios_path = optarg;
+			break;
 		case 'd':
 			decoder_type = optarg;
 			break;
@@ -93,6 +124,13 @@ int main(int argc, char *argv[])
 			exit(EXIT_SUCCESS);
 		default:
 			fprintf(stderr, "%s", help_text);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	if (bios_path != NULL) {
+		if (access(bios_path, F_OK) < 0) {
+			fprintf(stderr, "The BIOS file '%s' does not exist at the given path. Exiting.\n", bios_path);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -112,7 +150,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	ret = start_emulating(rom_path, decoder_type);
+	ret = start_emulating(bios_path, rom_path, decoder_type);
 	OK_OR_WARN(ret == 0);
 
 	return ret;

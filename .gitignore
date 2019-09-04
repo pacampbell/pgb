@@ -5,6 +5,7 @@
 *.d
 .compiler_flags
 roms/
+include/bios
 tags
 *.swp
 

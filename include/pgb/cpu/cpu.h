@@ -1,5 +1,5 @@
-#ifndef PGBA_CPU_CPU_H
-#define PGBA_CPU_CPU_H
+#ifndef PGB_CPU_CPU_H
+#define PGB_CPU_CPU_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -24,8 +24,6 @@ struct cpu {
 	struct decoder decoder;
 };
 
-int cpu_load_rom(struct cpu *cpu, uint8_t *data, size_t size);
-int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path);
 int cpu_step(struct device *device, size_t step, size_t *instructions_stepped);
 int cpu_init(struct cpu *cpu, const char *decoder_str);
 int cpu_destroy(struct cpu *cpu);
@@ -40,4 +38,4 @@ int cpu_register_write8(struct cpu *cpu, enum instruction_operand reg, uint8_t v
 int cpu_register_read16(struct cpu *cpu, enum instruction_operand reg, uint16_t *value);
 int cpu_register_write16(struct cpu *cpu, enum instruction_operand reg, uint16_t value);
 
-#endif /* PGBA_CPU_CPU_H */
+#endif /* PGB_CPU_CPU_H */
