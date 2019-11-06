@@ -815,13 +815,16 @@ int interpreter_execute_instruction_ret(struct device *device, struct decoded_in
 {
 	int ret;
 	struct cpu *cpu;
+	uint16_t pc;
 
 	cpu = &device->cpu;
 
-	ret = utils_pop16(device, &cpu->registers.pc);
-	OK_OR_WARN(ret == 0);
+	ret = utils_pop16(device, &pc);
+	OK_OR_RETURN(ret == 0, ret);
 
-	return ret;
+	cpu->registers.pc = pc;
+
+	return 0;
 }
 
 static
