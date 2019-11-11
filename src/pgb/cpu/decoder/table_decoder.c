@@ -9,6 +9,7 @@
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
 #include <pgb/mmu/private/mmu.h>
+#include <pgb/utils.h>
 
 static
 int extract_u16_from_ib(uint8_t *instruction_buffer, size_t size, uint16_t *immediate)
@@ -98,6 +99,7 @@ int fill_instruction_buffer(struct device *device, uint8_t opcode, struct instru
 	return 0;
 }
 
+LIBEXPORT
 int cpu_table_decoder_decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction)
 {
 	int ret;

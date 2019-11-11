@@ -4,6 +4,7 @@
 #include <pgb/utils.h>
 #include <pgb/device/device.h>
 
+LIBEXPORT
 int device_init(struct device *device, const char *decoder_type)
 {
 	int ret;
@@ -17,6 +18,7 @@ int device_init(struct device *device, const char *decoder_type)
 	return 0;
 }
 
+LIBEXPORT
 int device_destroy(struct device *device)
 {
 	cpu_destroy(&device->cpu);
@@ -25,6 +27,7 @@ int device_destroy(struct device *device)
 	return 0;
 }
 
+LIBEXPORT
 int device_load_image_from_file(struct device *device, const char *rom_path)
 {
 	int ret;
@@ -35,6 +38,7 @@ int device_load_image_from_file(struct device *device, const char *rom_path)
 	return ret;
 }
 
+LIBEXPORT
 int device_reset_system(struct device *device, const char *decoder_type, const char *boot_rom_path)
 {
 	int ret;
@@ -51,6 +55,7 @@ int device_reset_system(struct device *device, const char *decoder_type, const c
 	return ret;
 }
 
+LIBEXPORT
 int device_configure_setting(struct device *device, enum device_setting setting, const char *value)
 {
 	int ret = 0;

@@ -3,12 +3,13 @@
 
 #include <pgb/cpu/decoder.h>
 #include <pgb/cpu/instruction_info.h>
-#include <pgb/cpu/private/lr35902.h>
 #include <pgb/cpu/logical_decoder.h>
+#include <pgb/cpu/private/lr35902.h>
 #include <pgb/cpu/table_decoder.h>
 #include <pgb/debug.h>
 #include <pgb/utils.h>
 
+LIBEXPORT
 int string_to_decoder_type(const char *str, enum decoder_type *type)
 {
 	int ret = 0;
@@ -25,6 +26,7 @@ int string_to_decoder_type(const char *str, enum decoder_type *type)
 	return ret;
 }
 
+LIBEXPORT
 int cpu_decoder_configure_decoder(enum decoder_type type, struct decoder *decoder)
 {
 	int ret = 0;
@@ -63,6 +65,7 @@ struct instruction_info prefix_isa_instruction_set[LR35902_PREFIX_CB_OPCODE_TABL
 #undef SET
 };
 
+LIBEXPORT
 int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
 	OK_OR_RETURN(opcode < ARRAY_SIZE(isa_instruction_set), -EINVAL);
@@ -72,6 +75,7 @@ int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instru
 	return 0;
 }
 
+LIBEXPORT
 int cpu_decoder_get_prefix_cb_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
 	OK_OR_RETURN(opcode < ARRAY_SIZE(prefix_isa_instruction_set), -EINVAL);
@@ -80,4 +84,3 @@ int cpu_decoder_get_prefix_cb_instruction(uint8_t opcode, struct instruction_inf
 
 	return 0;
 }
-

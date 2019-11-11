@@ -9,6 +9,7 @@
 #include <pgb/debug.h>
 #include <pgb/utils.h>
 
+static
 const char *help_text =
 	"pgb - Library for emulating Gameboy classic roms.\n"
 	"\n"

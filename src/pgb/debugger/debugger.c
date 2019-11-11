@@ -7,6 +7,7 @@
 #include <pgb/debug.h>
 #include <pgb/debugger/debugger.h>
 #include <pgb/device/device.h>
+#include <pgb/utils.h>
 
 enum operand_option {
 	OPERAND_OPTION_A,
@@ -77,6 +78,7 @@ int literal_to_string(enum operand_option operand, struct decoded_instruction *d
 	return ret;
 }
 
+LIBEXPORT
 int debugger_fetch_instructions_from_address(struct device *device, struct debugger_info *info, size_t n, size_t *num_decoded, uint16_t address)
 {
 	int ret;
@@ -93,6 +95,7 @@ int debugger_fetch_instructions_from_address(struct device *device, struct debug
 	return ret;
 }
 
+LIBEXPORT
 int debugger_fetch_instructions(struct device *device, struct debugger_info *info, size_t n, size_t *num_decoded)
 {
 	int ret;
@@ -162,6 +165,7 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 	return 0;
 }
 
+LIBEXPORT
 void free_debugger_info(struct debugger_info *info, size_t n)
 {
 	size_t i;

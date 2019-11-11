@@ -7,6 +7,7 @@
 #include <pgb/cpu/private/lr35902.h>
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
+#include <pgb/utils.h>
 
 static
 int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buffer,
@@ -206,6 +207,7 @@ int cpu_logical_decoder_decode_core_instr(uint8_t opcode, uint8_t *instruction_b
 	return 0;
 }
 
+LIBEXPORT
 int cpu_logical_decoder_decode(struct device *device, uint8_t opcode,
 			       struct decoded_instruction *decoded_instruction)
 {

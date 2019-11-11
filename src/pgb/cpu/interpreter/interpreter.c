@@ -1121,6 +1121,7 @@ int interpreter_execute_instruction_swap(struct device *device, struct decoded_i
 	return 0;
 }
 
+LIBEXPORT
 int interpreter_execute_instruction(struct device *device, struct decoded_instruction *instruction)
 {
 	int ret = 0;

@@ -1,7 +1,7 @@
 #include <errno.h>
+#include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <fcntl.h>
 #include <string.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -16,7 +16,9 @@
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
 #include <pgb/mmu/private/mmu.h>
+#include <pgb/utils.h>
 
+LIBEXPORT
 int cpu_init(struct cpu *cpu, const char *decoder_str)
 {
 	int ret;
@@ -36,11 +38,13 @@ int cpu_init(struct cpu *cpu, const char *decoder_str)
 	return ret;
 }
 
+LIBEXPORT
 int cpu_destroy(struct cpu *cpu)
 {
 	return 0;
 }
 
+LIBEXPORT
 int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path)
 {
 	int ret, fd;
@@ -64,11 +68,13 @@ int cpu_load_rom_from_file(struct cpu *cpu, struct mmu *mmu, const char *path)
 	return 0;
 }
 
+LIBEXPORT
 bool cpu_is_halted(struct cpu *cpu)
 {
 	return cpu->status.halted;
 }
 
+LIBEXPORT
 void cpu_dump_register_state(struct cpu *cpu)
 {
 	printf("+------+---------+\n");
@@ -83,6 +89,7 @@ void cpu_dump_register_state(struct cpu *cpu)
 	printf("+------+---------+\n");
 }
 
+LIBEXPORT
 int fetch(struct device *device, uint8_t *opcode, bool *found_prefix)
 {
 	struct cpu *cpu;
@@ -109,6 +116,7 @@ int fetch(struct device *device, uint8_t *opcode, bool *found_prefix)
 	return 0;
 }
 
+LIBEXPORT
 int decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
@@ -119,7 +127,7 @@ int decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded
 	return ret;
 }
 
-static
+LIBEXPORT
 int execute(struct device *device, struct decoded_instruction *decoded_instruction)
 {
 	int ret;
@@ -130,9 +138,10 @@ int execute(struct device *device, struct decoded_instruction *decoded_instructi
 	return ret;
 }
 
+LIBEXPORT
 int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 {
-	int ret;
+	int ret = 0;
 	size_t i;
 	uint8_t opcode;
 	struct decoded_instruction decoded_instruction;
@@ -163,6 +172,7 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 	return ret;
 }
 
+LIBEXPORT
 int cpu_register_read8(struct cpu *cpu, enum instruction_operand reg, uint8_t *value)
 {
 	int ret = 0;
@@ -201,6 +211,7 @@ int cpu_register_read8(struct cpu *cpu, enum instruction_operand reg, uint8_t *v
 	return ret;
 }
 
+LIBEXPORT
 int cpu_register_write8(struct cpu *cpu, enum instruction_operand reg, uint8_t value)
 {
 	int ret = 0;
@@ -239,6 +250,7 @@ int cpu_register_write8(struct cpu *cpu, enum instruction_operand reg, uint8_t v
 	return ret;
 }
 
+LIBEXPORT
 int cpu_register_read16(struct cpu *cpu, enum instruction_operand reg, uint16_t *value)
 {
 	int ret = 0;
@@ -271,6 +283,7 @@ int cpu_register_read16(struct cpu *cpu, enum instruction_operand reg, uint16_t 
 	return ret;
 }
 
+LIBEXPORT
 int cpu_register_write16(struct cpu *cpu, enum instruction_operand reg, uint16_t value)
 {
 	int ret = 0;

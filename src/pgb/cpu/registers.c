@@ -1,5 +1,7 @@
 #include <pgb/cpu/registers.h>
+#include <pgb/utils.h>
 
+LIBEXPORT
 int registers_init(struct registers *registers)
 {
 	registers->a = 0x0;
