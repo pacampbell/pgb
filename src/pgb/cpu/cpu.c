@@ -167,7 +167,8 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 		}
 	}
 
-	*instructions_stepped = i;
+	if (instructions_stepped != NULL)
+		*instructions_stepped = i;
 
 	return ret;
 }
