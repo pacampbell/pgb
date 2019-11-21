@@ -102,13 +102,13 @@ $(STATIC_LIB): $(OBJS)
 	fi
 
 $(DYNAMIC_LIB): $(OBJS)
-	$(CC) -shared -fPIC -pie -Wl,-E -o $@ $(OBJS)
+	$(CC) -shared -fPIE -fpic -Wl,-E -o $@ $(OBJS)
 	@if [ "$(DEBUG)" -eq "0" ]; then \
 		strip --strip-all $(DYNAMIC_LIB); \
 	fi
 
 %.o: %.c .compiler_flags
-	$(CC) $(CFLAGS) $(INCLUDES) -c -MMD -MP $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -c -MMD -MP $< -o $@
 
 .compiler_flags: force
 	@echo '$(CFLAGS)' | cmp -s - $@ || echo '$(CFLAGS)' > $@
