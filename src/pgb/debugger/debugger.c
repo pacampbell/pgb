@@ -7,6 +7,8 @@
 #include <pgb/debug.h>
 #include <pgb/debugger/debugger.h>
 #include <pgb/device/device.h>
+#include <pgb/io/io.h>
+#include <pgb/io/private/io.h>
 #include <pgb/utils.h>
 
 enum operand_option {
@@ -174,4 +176,105 @@ void free_debugger_info(struct debugger_info *info, size_t n)
 		free(info[i].comments.a);
 		free(info[i].comments.b);
 	}
+}
+
+#define IO_REGISTER(NAME) \
+	{#NAME, LR35902_IO_REGS_##NAME}
+
+struct io_register_map {
+	const char *name;
+	uint16_t address;
+} io_register_mappings[] = {
+	IO_REGISTER(P1),
+	IO_REGISTER(SB),
+	IO_REGISTER(SC),
+	IO_REGISTER(DIV),
+	IO_REGISTER(TIMA),
+	IO_REGISTER(TMA),
+	IO_REGISTER(TAC),
+	IO_REGISTER(IF),
+	IO_REGISTER(NR10),
+	IO_REGISTER(NR11),
+	IO_REGISTER(NR12),
+	IO_REGISTER(NR13),
+	IO_REGISTER(NR14),
+	IO_REGISTER(NR21),
+	IO_REGISTER(NR22),
+	IO_REGISTER(NR23),
+	IO_REGISTER(NR24),
+	IO_REGISTER(NR30),
+	IO_REGISTER(NR31),
+	IO_REGISTER(NR32),
+	IO_REGISTER(NR33),
+	IO_REGISTER(NR34),
+	IO_REGISTER(NR41),
+	IO_REGISTER(NR42),
+	IO_REGISTER(NR43),
+	IO_REGISTER(NR44),
+	IO_REGISTER(NR50),
+	IO_REGISTER(NR51),
+	IO_REGISTER(NR52),
+	IO_REGISTER(LCDC),
+	IO_REGISTER(STAT),
+	IO_REGISTER(SCY),
+	IO_REGISTER(SCX),
+	IO_REGISTER(LY),
+	IO_REGISTER(LYC),
+	IO_REGISTER(DMA),
+	IO_REGISTER(BGP),
+	IO_REGISTER(OBP0),
+	IO_REGISTER(OBP1),
+	IO_REGISTER(WY),
+	IO_REGISTER(WX),
+	IO_REGISTER(IE)
+};
+
+LIBEXPORT
+int debugger_io_register_read(struct device *device, uint16_t address, uint8_t *__value)
+{
+	int ret;
+	unsigned i;
+	uint8_t value;
+	bool found = false;
+	struct mmu *mmu = &device->mmu;
+	struct io_register_map *map;
+
+	for (i = 0; i < ARRAY_SIZE(io_register_mappings); i++) {
+		map = &io_register_mappings[i];
+		if (map->address == address) {
+			found = true;
+			break;
+		}
+	}
+
+	OK_OR_RETURN(found, -EINVAL);
+
+	ret = mmu_read8(mmu, address, &value);
+	OK_OR_RETURN(ret == 0, ret);
+
+	*__value = value;
+
+	return 0;
+}
+
+LIBEXPORT
+int debugger_io_register_address_to_name(uint16_t address, const char **__name)
+{
+	unsigned i;
+	const char *name;
+	struct io_register_map *map;
+
+	for (i = 0; i < ARRAY_SIZE(io_register_mappings); i++) {
+		map = &io_register_mappings[i];
+		if (map->address == address) {
+			name = map->name;
+			break;
+		}
+	}
+
+	OK_OR_RETURN(name != NULL, -EINVAL);
+
+	*__name = name;
+
+	return 0;
 }

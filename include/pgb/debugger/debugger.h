@@ -23,4 +23,7 @@ int debugger_fetch_instructions(struct device *device, struct debugger_info *inf
 				size_t n, size_t *num_decoded);
 void free_debugger_info(struct debugger_info *info, size_t size);
 
+int debugger_io_register_read(struct device *device, uint16_t address, uint8_t *value);
+int debugger_io_register_address_to_name(uint16_t address, const char **name);
+
 #endif /* PGB_DEBUGGER_DEBUGGER_H */
