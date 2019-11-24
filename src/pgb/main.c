@@ -15,7 +15,7 @@ static
 const char *help_text =
 	"pgb - Library for emulating Gameboy classic roms.\n"
 	"\n"
-	"Usage: ./libpgb.so [-h] -r PATH\n"
+	"Usage: ./libpgb [-h] [-b PATH] -r PATH\n"
 	"\n"
 	"Options:\n"
 	"  -h, --help\n"
