@@ -261,7 +261,7 @@ LIBEXPORT
 int debugger_io_register_address_to_name(uint16_t address, const char **__name)
 {
 	unsigned i;
-	const char *name;
+	const char *name = NULL;
 	struct io_register_map *map;
 
 	for (i = 0; i < ARRAY_SIZE(io_register_mappings); i++) {
@@ -277,4 +277,43 @@ int debugger_io_register_address_to_name(uint16_t address, const char **__name)
 	*__name = name;
 
 	return 0;
+}
+
+LIBEXPORT
+int debugger_io_register_listing(struct device *device,
+				 struct debugger_io_register_info **_io_register_listing,
+				 size_t *n)
+{
+	int ret = 0;
+	unsigned i;
+	uint8_t value;
+	struct mmu *mmu = &device->mmu;
+	struct debugger_io_register_info *io_register_listing;
+
+	io_register_listing = malloc(ARRAY_SIZE(io_register_mappings) * sizeof(*io_register_listing));
+	OK_OR_RETURN(io_register_listing != NULL, -ENOMEM);
+
+	for (i = 0; i < ARRAY_SIZE(io_register_mappings); i++) {
+		ret = mmu_read8(mmu, io_register_mappings[i].address, &value);
+		OK_OR_GOTO(ret == 0, free_and_exit);
+
+		io_register_listing[i].address = io_register_mappings[i].address;
+		io_register_listing[i].name = io_register_mappings[i].name;
+		io_register_listing[i].value = value;
+	}
+
+	*n = ARRAY_SIZE(io_register_mappings);
+	*_io_register_listing = io_register_listing;
+
+free_and_exit:
+	if (ret != 0)
+		free(io_register_listing);
+
+	return ret;
+}
+
+LIBEXPORT
+void debugger_io_register_free(struct debugger_io_register_info *io_register_listing)
+{
+	free(io_register_listing);
 }

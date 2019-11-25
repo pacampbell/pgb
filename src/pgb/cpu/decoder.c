@@ -68,7 +68,7 @@ struct instruction_info prefix_isa_instruction_set[LR35902_PREFIX_CB_OPCODE_TABL
 LIBEXPORT
 int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
-	OK_OR_RETURN(opcode < ARRAY_SIZE(isa_instruction_set), -EINVAL);
+	OK_OR_RETURN((unsigned)opcode < ARRAY_SIZE(isa_instruction_set), -EINVAL);
 
 	*instruction = &isa_instruction_set[opcode];
 
@@ -78,7 +78,7 @@ int cpu_decoder_get_instruction(uint8_t opcode, struct instruction_info **instru
 LIBEXPORT
 int cpu_decoder_get_prefix_cb_instruction(uint8_t opcode, struct instruction_info **instruction)
 {
-	OK_OR_RETURN(opcode < ARRAY_SIZE(prefix_isa_instruction_set), -EINVAL);
+	OK_OR_RETURN((unsigned)opcode < ARRAY_SIZE(prefix_isa_instruction_set), -EINVAL);
 
 	*instruction = &prefix_isa_instruction_set[opcode];
 

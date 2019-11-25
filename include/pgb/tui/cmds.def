@@ -1,0 +1,5 @@
+&tui_break_cmd,
+&tui_help_cmd,
+&tui_quit_cmd,
+&tui_run_cmd,
+&tui_step_cmd,

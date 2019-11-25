@@ -75,21 +75,6 @@ bool cpu_is_halted(struct cpu *cpu)
 }
 
 LIBEXPORT
-void cpu_dump_register_state(struct cpu *cpu)
-{
-	printf("+------+---------+\n");
-	printf("| PC   | 0x%04x  |\n", cpu->registers.pc);
-	printf("| SP   | 0x%04x  |\n", cpu->registers.sp);
-	printf("| AF   | 0x%04x  |\n", cpu->registers.af);
-	printf("| BC   | 0x%04x  |\n", cpu->registers.bc);
-	printf("| DE   | 0x%04x  |\n", cpu->registers.de);
-	printf("| HL   | 0x%04x  |\n", cpu->registers.hl);
-	printf("| CHNZ | 0b%u%u%u%u  |\n", cpu->registers.flags.carry, cpu->registers.flags.half_carry,
-					   cpu->registers.flags.subtraction, cpu->registers.flags.zero);
-	printf("+------+---------+\n");
-}
-
-LIBEXPORT
 int fetch(struct device *device, uint8_t *opcode, bool *found_prefix)
 {
 	struct cpu *cpu;
@@ -161,10 +146,6 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 
 		ret = execute(device, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
-
-		if (IS_DEBUG()) {
-			cpu_dump_register_state(&device->cpu);
-		}
 	}
 
 	if (instructions_stepped != NULL)

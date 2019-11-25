@@ -180,7 +180,7 @@ int interpreter_execute_instruction_and(struct device *device, struct decoded_in
 static
 int interpreter_execute_instruction_call(struct device *device, struct decoded_instruction *instruction)
 {
-	int ret;
+	int ret = 0;
 	uint16_t address;
 	bool condition_met, is_condition;
 	struct cpu *cpu;

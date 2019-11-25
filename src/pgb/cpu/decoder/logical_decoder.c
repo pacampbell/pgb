@@ -13,7 +13,7 @@ static
 int cpu_logical_decoder_prefix_cb_instr(uint8_t opcode, uint8_t *instruction_buffer,
 					struct decoded_instruction *decoded_instruction)
 {
-	int ret;
+	int ret = 0;
 	uint8_t x;
 
 	x = BF_GET_FLD(LR35902_OPCODE_FIELD_X, opcode);
@@ -43,7 +43,7 @@ static
 int cpu_logical_decoder_decode_core_x_3(uint8_t opcode, uint8_t *instruction_buffer,
 					struct decoded_instruction *decoded_instruction)
 {
-	int ret;
+	int ret = 0;
 	uint8_t z;
 
 	z = BF_GET_FLD(LR35902_OPCODE_FIELD_Z, opcode);

@@ -43,7 +43,7 @@ int extract_u8_from_ib(uint8_t *instruction_buffer, size_t size, uint8_t *immedi
 	return 0;
 }
 
-static
+static __attribute__((used))
 void dump_instruction(struct device *device, struct instruction_info *instruction_info, uint8_t *instruction_buffer, size_t size)
 {
 	unsigned i, j;
@@ -94,7 +94,9 @@ int fill_instruction_buffer(struct device *device, uint8_t opcode, struct instru
 	memcpy(instruction_buffer, mmu->ram + registers->pc, num_bytes);
 	registers->pc += num_bytes;
 
+#if 0
 	dump_instruction(device, instruction_info, instruction_buffer, num_bytes);
+#endif
 
 	return 0;
 }

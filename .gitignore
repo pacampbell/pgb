@@ -10,5 +10,6 @@
 include/bios
 include/pgb/banner.h
 libpgb
+libpgb-dbg
 roms/
 tags
