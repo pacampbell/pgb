@@ -14,6 +14,7 @@ enum device_setting {
 struct device {
 	struct cpu cpu;
 	struct mmu mmu;
+	struct gpu gpu;
 	struct {
 		const char *boot_rom_path;
 		const char *loaded_cart_path;

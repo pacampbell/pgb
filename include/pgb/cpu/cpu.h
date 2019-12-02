@@ -32,6 +32,8 @@ void cpu_dump_register_state(struct cpu *cpu);
 
 int fetch(struct device *device, uint8_t *opcode, bool *found_prefix);
 int decode(struct device *device, uint8_t opcode, bool is_prefix, struct decoded_instruction *decoded_instruction);
+int execute(struct device *device, struct decoded_instruction *decoded_instruction);
+int update_clock(struct device *device, struct decoded_instruction *decoded_instruction);
 
 int cpu_register_read8(struct cpu *cpu, enum instruction_operand reg, uint8_t *value);
 int cpu_register_write8(struct cpu *cpu, enum instruction_operand reg, uint8_t value);

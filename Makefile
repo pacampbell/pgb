@@ -37,6 +37,7 @@ OBJS      := \
 	src/pgb/cpu/interpreter/interpreter.o	\
 	src/pgb/cpu/registers.o			\
 	src/pgb/device/device.o			\
+	src/pgb/gpu/gpu.o			\
 	src/pgb/io/io.o				\
 	src/pgb/mmu/mmu.o
 

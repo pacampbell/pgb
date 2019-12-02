@@ -15,6 +15,7 @@
 #include <pgb/cpu/registers.h>
 #include <pgb/debug.h>
 #include <pgb/device/device.h>
+#include <pgb/gpu/gpu.h>
 #include <pgb/mmu/private/mmu.h>
 #include <pgb/utils.h>
 
@@ -30,6 +31,9 @@ int cpu_init(struct cpu *cpu, const char *decoder_str)
 	OK_OR_RETURN(ret == 0, ret);
 
 	ret = string_to_decoder_type(decoder_str, &decoder_type);
+	OK_OR_RETURN(ret == 0, ret);
+
+	ret = clock_init(&cpu->clock);
 	OK_OR_RETURN(ret == 0, ret);
 
 	ret = cpu_decoder_configure_decoder(decoder_type, &cpu->decoder);
@@ -124,6 +128,17 @@ int execute(struct device *device, struct decoded_instruction *decoded_instructi
 }
 
 LIBEXPORT
+int update_clock(struct device *device, struct decoded_instruction *decoded_instruction)
+{
+
+	/* Update CPU timings */
+	device->cpu.clock.m += decoded_instruction->info->timing.c0;
+	device->cpu.clock.t += decoded_instruction->info->timing.c1;
+
+	return 0;
+}
+
+LIBEXPORT
 int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 {
 	int ret = 0;
@@ -142,9 +157,16 @@ int cpu_step(struct device *device, size_t step, size_t *instructions_stepped)
 
 		ret = decode(device, opcode, found_prefix, &decoded_instruction);
 		OK_OR_BREAK(ret == 0);
-		OK_OR_RETURN(decoded_instruction.info->instruction_class != INSTRUCTION_CLASS_INVALID, -EINVAL);
+		OK_OR_BREAK(decoded_instruction.info->instruction_class != INSTRUCTION_CLASS_INVALID);
 
 		ret = execute(device, &decoded_instruction);
+		OK_OR_BREAK(ret == 0);
+
+		ret = update_clock(device, &decoded_instruction);
+		OK_OR_BREAK(ret == 0);
+
+		/* Update GPU timings */
+		ret = gpu_step(&device->gpu, &device->mmu, device->cpu.clock.t);
 		OK_OR_BREAK(ret == 0);
 	}
 
@@ -296,4 +318,10 @@ int cpu_register_write16(struct cpu *cpu, enum instruction_operand reg, uint16_t
 	OK_OR_WARN(ret == 0);
 
 	return ret;
+}
+
+LIBEXPORT
+int cpu_handle_irq(struct device *device)
+{
+	return 0;
 }

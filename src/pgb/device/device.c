@@ -21,7 +21,10 @@ int device_init(struct device *device, const char *decoder_type)
 	ret = mmu_init(&device->mmu);
 	OK_OR_RETURN(ret == 0, ret);
 
-	return 0;
+	ret = gpu_init(&device->gpu);
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 LIBEXPORT

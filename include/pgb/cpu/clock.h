@@ -8,6 +8,6 @@ struct clock {
 	uint16_t t;
 };
 
-void clock_init();
+int clock_init(struct clock *clock);
 
 #endif /* PGB_CPU_CLOCK_H */
