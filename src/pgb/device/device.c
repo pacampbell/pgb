@@ -72,6 +72,7 @@ int device_load_bios_from_file(struct device *device, const char *bios_path)
 
 	memcpy(mmu->ram, data, bios_st.st_size);
 
+	// XXX: Store pointer instead of releasing
 	munmap(data, bios_st.st_size);
 
 	return 0;
@@ -96,8 +97,10 @@ int device_load_image_from_file(struct device *device, const char *rom_path)
 
 	// XXX: Handle rom image larger than the size of section 00
 	// XXX: Rom images are loaded starting at address 256
-	memcpy(mmu->ram + 0x100, data, rom_st.st_size);
+	// XXX: when addres 0xff50 is written, unmap firmware and map first 256 bytes of the rom
+	memcpy(mmu->ram + 0x100, data + 0x100, rom_st.st_size - 0x100);
 
+	// XXX: Store pointer instead of releasing
 	munmap(data, rom_st.st_size);
 
 	return 0;
