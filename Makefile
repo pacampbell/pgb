@@ -140,7 +140,7 @@ tester: $(OBJS) $(TESTER_OBJS)
 	@echo "#define GIT_BRANCH_NAME \"$(shell git symbolic-ref --short HEAD)\"" >> include/pgb/banner.h
 	@echo "#define GIT_HEAD_HASH \"$(shell git rev-parse HEAD)\"" >> include/pgb/banner.h
 	@echo "#define GIT_REPO_LOCATION \"https://github.com/pacampbell/lib-pgb\"" >> include/pgb/banner.h
-	@echo "#define CC_VERSION \"$(shell gcc --version | head -n 1)\"" >> include/pgb/banner.h
+	@echo "#define CC_VERSION \"$(shell $(CC) --version | head -n 1)\"" >> include/pgb/banner.h
 
 .compiler_flags: force
 	@echo '$(CFLAGS)' | cmp -s - $@ || echo '$(CFLAGS)' > $@

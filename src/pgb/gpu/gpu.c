@@ -179,5 +179,5 @@ int gpu_step(struct gpu *gpu, struct mmu *mmu, uint16_t t)
 	}
 	OK_OR_WARN(ret == 0);
 
-	return 0;
+	return ret;
 }
