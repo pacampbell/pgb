@@ -331,9 +331,13 @@ int interpreter_execute_instruction_dec(struct device *device, struct decoded_in
 		ret = -EINVAL;
 		break;
 	}
-	OK_OR_WARN(ret == 0);
+	OK_OR_RETURN(ret == 0, ret);
 
-	return ret;
+	cpu->registers.flags.zero = (info->operands.a.type == INSTRUCTION_OPERAND_TYPE_REGISTER8 ? (src8 == 0) : (src16 == 0));
+	cpu->registers.flags.subtraction = 1;
+	cpu->registers.flags.half_carry = cpu->registers.flags.zero;
+
+	return 0;
 }
 
 static
@@ -467,6 +471,8 @@ int interpreter_execute_instruction_jr(struct device *device, struct decoded_ins
 		is_condition = true;
 		condition_met = cpu->registers.flags.zero == 1;
 		break;
+	case INSTRUCTION_OPERAND_I8:
+		break;
 	default:
 		ret = -EINVAL;
 		break;
@@ -475,6 +481,8 @@ int interpreter_execute_instruction_jr(struct device *device, struct decoded_ins
 
 	if (is_condition && condition_met) {
 		cpu->registers.pc += instruction->b.i8;
+	} else if (!is_condition) {
+		cpu->registers.pc += instruction->a.i8;
 	}
 
 	return 0;
@@ -865,8 +873,71 @@ int interpreter_execute_instruction_stop(struct device *device, struct decoded_i
 static
 int interpreter_execute_instruction_sub(struct device *device, struct decoded_instruction *instruction)
 {
-	TRAP_GDB("Not implemented: instruction 'sub'");
-	return 0;
+	int ret;
+	uint8_t src8, dst8;
+	uint16_t src16, dst16;
+	struct cpu *cpu;
+	struct instruction_info *info;
+
+	cpu = &device->cpu;
+	info = instruction->info;
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.a.operand, &dst8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.a.operand, &dst16);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.b.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_read8(cpu, info->operands.b.operand, &src8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_read16(cpu, info->operands.b.operand, &src16);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_NONE:
+		ret = cpu_register_read8(cpu, INSTRUCTION_OPERAND_A, &src8);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		dst8 -= src8;
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		dst16 -= src16;
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_RETURN(ret == 0, ret);
+
+	switch (info->operands.a.type) {
+	case INSTRUCTION_OPERAND_TYPE_REGISTER8:
+		ret = cpu_register_write8(cpu, info->operands.a.operand, dst8);
+		break;
+	case INSTRUCTION_OPERAND_TYPE_REGISTER16:
+		ret = cpu_register_write16(cpu, info->operands.a.operand, dst16);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+	OK_OR_WARN(ret == 0);
+
+	return ret;
 }
 
 static
