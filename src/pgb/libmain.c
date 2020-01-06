@@ -13,8 +13,7 @@ const char *banner_text =
 	"BUILD_OPTIONS = " LIB_BUILD_FLAGS "\n"
 	"LIBS = " LIB_BUILD_DEPS "\n"
 	"\n"
-	"All bugs, feature requests, pull requests, etc. should be directed to "
-	GIT_REPO_LOCATION ".\n"
+	"All bugs, feature requests, pull requests, etc. should be directed to " GIT_REPO_LOCATION ".\n"
 	"";
 
 void lib_main()
